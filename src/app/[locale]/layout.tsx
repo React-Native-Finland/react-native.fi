@@ -81,7 +81,7 @@ export default async function LocaleLayout({ children, params }: Props) {
     logo: `${siteConfig.url}/images/og.jpg`,
     sameAs: [
       'https://meetup.com/react-native-helsinki',
-      'https://github.com/react-native-helsinki',
+      'https://github.com/React-Native-Finland',
     ],
     areaServed: {
       '@type': 'Country',

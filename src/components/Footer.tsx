@@ -33,9 +33,8 @@ export function Footer() {
               </div>
             </Link>
             <p className='mt-6 max-w-md text-sm leading-6 text-[rgb(var(--mono-600))]'>
-              Building the React Native community in Finland since 2018. Join
-              our meetups, learn from articles, and connect with fellow
-              developers.
+              Building the React Native community in Finland. Join our meetups,
+              learn from articles, and connect with fellow developers.
             </p>
 
             {/* Social links */}
@@ -56,7 +55,7 @@ export function Footer() {
                 </svg>
               </a>
               <a
-                href='https://github.com/react-native-helsinki'
+                href='https://github.com/React-Native-Finland'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='flex h-10 w-10 items-center justify-center rounded-full bg-[rgb(var(--mono-100))] text-[rgb(var(--mono-600))] transition-all hover:bg-[rgb(var(--mono-900))] hover:text-white'

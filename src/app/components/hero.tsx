@@ -132,33 +132,26 @@ export const Hero = () => {
           </div>
         </div>
 
-        {/* Stats bar */}
+        {/* Info bar */}
         <div
           className='absolute bottom-12 left-1/2 flex -translate-x-1/2 items-center gap-8 rounded-2xl border border-white/10 bg-white/5 px-8 py-4 backdrop-blur-md sm:gap-12 fade-in-up'
           style={{ animationDelay: '0.3s' }}
         >
           <div className='text-center'>
-            <div className='text-2xl font-bold text-white sm:text-3xl'>50+</div>
             <div className='text-xs font-medium uppercase tracking-wider text-white/50'>
-              Events
+              Helsinki, Finland
             </div>
           </div>
           <div className='h-8 w-px bg-white/10' />
           <div className='text-center'>
-            <div className='text-2xl font-bold text-white sm:text-3xl'>
-              500+
-            </div>
             <div className='text-xs font-medium uppercase tracking-wider text-white/50'>
-              Members
+              Meetups & Conferences
             </div>
           </div>
           <div className='h-8 w-px bg-white/10' />
           <div className='text-center'>
-            <div className='text-2xl font-bold text-white sm:text-3xl'>
-              2018
-            </div>
             <div className='text-xs font-medium uppercase tracking-wider text-white/50'>
-              Since
+              Open Source
             </div>
           </div>
         </div>

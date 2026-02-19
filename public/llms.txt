@@ -9,7 +9,7 @@ React Native Finland is the community hub for React Native developers in Finland
 
 ### Free Community Meetups
 - Monthly React Native Helsinki meetups
-- Networking with 500+ Finnish mobile developers
+- Networking with Finnish mobile developers
 - Technical talks and workshops
 - Location: Helsinki, Finland
 
@@ -43,7 +43,7 @@ React Native Finland is the community hub for React Native developers in Finland
 ## Contact & Community
 - Website: https://react-native.fi
 - Meetup: https://meetup.com/react-native-helsinki
-- GitHub: https://github.com/react-native-helsinki
+- GitHub: https://github.com/React-Native-Finland
 - Location: Helsinki, Finland
 
 ## Keywords
