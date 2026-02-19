@@ -101,9 +101,7 @@ const FadeInView = ({ children }) => {
   }, [fadeAnim]);
 
   return (
-    <Animated.View style={{ opacity: fadeAnim }}>
-      {children}
-    </Animated.View>
+    <Animated.View style={{ opacity: fadeAnim }}>{children}</Animated.View>
   );
 };
 ```
@@ -194,10 +192,7 @@ velocity.value = withDecay({
 
 ```tsx
 // Sequential animations
-offset.value = withSequence(
-  withTiming(100),
-  withTiming(0),
-);
+offset.value = withSequence(withTiming(100), withTiming(0));
 
 // Delayed animation
 offset.value = withDelay(500, withSpring(100));
@@ -296,11 +291,7 @@ const SwipeableRow = ({ onDelete, children }) => {
   }));
 
   const deleteStyle = useAnimatedStyle(() => ({
-    opacity: interpolate(
-      translateX.value,
-      [DELETE_THRESHOLD, 0],
-      [1, 0],
-    ),
+    opacity: interpolate(translateX.value, [DELETE_THRESHOLD, 0], [1, 0]),
   }));
 
   return (
@@ -309,9 +300,7 @@ const SwipeableRow = ({ onDelete, children }) => {
         <Text style={styles.deleteText}>Delete</Text>
       </Animated.View>
       <GestureDetector gesture={gesture}>
-        <Animated.View style={rowStyle}>
-          {children}
-        </Animated.View>
+        <Animated.View style={rowStyle}>{children}</Animated.View>
       </GestureDetector>
     </View>
   );
@@ -333,11 +322,7 @@ const animatedStyle = useAnimatedStyle(() => {
     Extrapolate.CLAMP,
   );
 
-  const opacity = interpolate(
-    progress.value,
-    [0, 1],
-    [0.5, 1],
-  );
+  const opacity = interpolate(progress.value, [0, 1], [0.5, 1]);
 
   return {
     transform: [{ scale }],
@@ -386,6 +371,7 @@ const AnimatedList = ({ items }) => (
 ```
 
 Built-in entering animations include:
+
 - `FadeIn`, `FadeOut`
 - `SlideInLeft`, `SlideInRight`, `SlideOutLeft`, `SlideOutRight`
 - `ZoomIn`, `ZoomOut`
@@ -434,11 +420,11 @@ These properties can be animated on the UI thread:
 
 ```tsx
 // Good - UI thread
-transform: [{ translateX }, { scale }, { rotate }]
-opacity
+transform: [{ translateX }, { scale }, { rotate }];
+opacity;
 
 // Bad - Layout triggers
-width, height, margin, padding
+(width, height, margin, padding);
 ```
 
 ### Do: Avoid Worklet Overhead
@@ -493,6 +479,7 @@ const Animation = () => (
 ```
 
 Designers can create animations in After Effects and export them as JSON. This is perfect for:
+
 - Loading indicators
 - Success/error states
 - Onboarding illustrations
@@ -521,6 +508,7 @@ const FadeIn = () => (
 ```
 
 Moti is great for:
+
 - Simple declarative animations
 - Skeleton loading states
 - Presence animations

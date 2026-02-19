@@ -44,6 +44,7 @@ Finland has a strong mobile development heritage — from Nokia's early days to 
 React Native lets you build native mobile apps using JavaScript and React. Write once, run on both iOS and Android. But unlike hybrid approaches, React Native renders actual native components, giving you the performance and feel of a truly native app.
 
 For Finnish companies, this means:
+
 - **Faster development** — One codebase instead of two
 - **Easier hiring** — JavaScript developers are abundant
 - **Lower costs** — Less code to maintain
@@ -56,6 +57,7 @@ For Finnish companies, this means:
 The best free React Native course available is right here in Finland. The [Mobile Development MOOC](https://studies.helsinki.fi/courses/cu/hy-CU-142439323-2021-08-01) from the University of Helsinki is created by the same team behind the famous Full Stack Open course.
 
 The course covers:
+
 - React Native fundamentals
 - State management
 - Navigation
@@ -96,6 +98,7 @@ npx @react-native-community/cli@latest init MyApp
 ```
 
 You'll need:
+
 - **For iOS**: macOS with Xcode installed
 - **For Android**: Android Studio with SDK and emulator
 
@@ -108,6 +111,7 @@ The React Native docs have detailed setup instructions for both platforms.
 Join [React Native Helsinki on Meetup](https://meetup.com/react-native-helsinki) for regular events. We host talks, workshops, and networking events in the Helsinki area. It's the best way to meet other React Native developers in Finland and learn from their experiences.
 
 Events typically feature:
+
 - Technical talks from Finnish RN developers
 - Company case studies
 - Networking with free food and drinks
@@ -116,6 +120,7 @@ Events typically feature:
 ### Online Communities
 
 Connect with Finnish developers online:
+
 - **Finland's developer Slack communities** — Several have React Native channels
 - **Twitter/X** — Follow Finnish RN developers and join the conversation
 - **LinkedIn** — Connect with the professional community
@@ -158,10 +163,7 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.title}>My First RN App</Text>
       <Text style={styles.count}>{count}</Text>
-      <Pressable
-        style={styles.button}
-        onPress={() => setCount(count + 1)}
-      >
+      <Pressable style={styles.button} onPress={() => setCount(count + 1)}>
         <Text style={styles.buttonText}>Increment</Text>
       </Pressable>
     </View>
@@ -221,6 +223,7 @@ npx expo install react-native-screens react-native-safe-area-context
 ### State Management
 
 For simple apps, React's built-in useState and useContext are sufficient. For complex apps:
+
 - **Zustand** — Simple and lightweight
 - **TanStack Query** — For server state
 - **Redux Toolkit** — If you need the full Redux experience

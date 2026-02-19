@@ -89,6 +89,7 @@ import * as Location from 'expo-location';
 ### You Want Fast Iteration
 
 Expo's development experience is excellent:
+
 - Hot reloading works reliably
 - No Xcode/Android Studio needed for development
 - Expo Go app for quick testing
@@ -117,6 +118,7 @@ The productivity gains from Expo are significant when you don't have dedicated n
 ### You Need Specific Native Libraries
 
 Some libraries require custom native code that isn't compatible with Expo:
+
 - Bluetooth LE with specific configurations
 - Custom video processing
 - Proprietary SDKs with native dependencies
@@ -129,6 +131,7 @@ If you're adding React Native to an existing native app (brownfield), bare React
 ### You Need Fine-Grained Control
 
 Sometimes you need to:
+
 - Customize the native build process
 - Use specific native library versions
 - Implement complex native modules
@@ -144,17 +147,17 @@ Large enterprise apps often have requirements that push the boundaries of what E
 
 ## Feature Comparison
 
-| Feature | Expo | Bare RN |
-|---------|------|---------|
-| Setup time | Minutes | Hours |
-| Native code access | Via dev builds | Direct |
-| Build complexity | Low (EAS) | High |
-| Update mechanism | EAS Update | Manual |
-| Debugging | Excellent | Good |
-| Bundle size | Slightly larger | Minimal |
-| Library compatibility | Most | All |
-| Native customization | Limited | Full |
-| Team requirements | JS only | JS + Native |
+| Feature               | Expo            | Bare RN     |
+| --------------------- | --------------- | ----------- |
+| Setup time            | Minutes         | Hours       |
+| Native code access    | Via dev builds  | Direct      |
+| Build complexity      | Low (EAS)       | High        |
+| Update mechanism      | EAS Update      | Manual      |
+| Debugging             | Excellent       | Good        |
+| Bundle size           | Slightly larger | Minimal     |
+| Library compatibility | Most            | All         |
+| Native customization  | Limited         | Full        |
+| Team requirements     | JS only         | JS + Native |
 
 ## The Hybrid Approach
 
@@ -167,12 +170,14 @@ npx expo prebuild
 ```
 
 This gives you Expo's tooling with bare React Native's flexibility. You can:
+
 - Use Expo SDK modules
 - Add any custom native code
 - Still use EAS for builds and updates
 - Maintain full control when needed
 
 Many teams use this hybrid approach:
+
 1. Start with Expo managed workflow
 2. Create development builds when needed
 3. Use `expo prebuild` for full native access if required
@@ -182,22 +187,27 @@ Many teams use this hybrid approach:
 Ask yourself these questions:
 
 **1. Do you need custom native modules not in Expo SDK?**
+
 - Yes → Consider bare RN or Expo with dev builds
 - No → Expo managed
 
 **2. Does your team have native development experience?**
+
 - Yes → Either approach works
 - No → Expo is safer
 
 **3. How important is development speed?**
+
 - Critical → Expo
 - Can invest time → Either
 
 **4. Do you have complex CI/CD requirements?**
+
 - Yes → Bare RN gives more control
 - No → EAS handles it well
 
 **5. Is this a new app or brownfield?**
+
 - New → Either approach works
 - Brownfield → Bare RN is easier
 
@@ -234,6 +244,7 @@ For most projects, especially in 2025, **start with Expo**. Here's why:
 5. **Community momentum** — Most new libraries support Expo
 
 The exceptions are:
+
 - Brownfield apps (adding RN to existing native apps)
 - Apps requiring very specific native SDKs
 - Teams with strong native expertise who prefer direct control

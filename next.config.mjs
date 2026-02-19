@@ -84,7 +84,8 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/:locale(en|fi)/articles/using-environment-variables-in-netlify',
+        source:
+          '/:locale(en|fi)/articles/using-environment-variables-in-netlify',
         destination: '/:locale/articles',
         permanent: true,
       },
@@ -101,12 +102,14 @@ const nextConfig = {
       },
       {
         source: '/articles/hackathon-diaries-kuohu-creative-hackathon',
-        destination: 'https://perttu.dev/articles/hackathon-diaries-kuohu-creative-hackathon',
+        destination:
+          'https://perttu.dev/articles/hackathon-diaries-kuohu-creative-hackathon',
         permanent: true,
       },
       {
         source: '/articles/designing-a-winning-hackathon-concept',
-        destination: 'https://perttu.dev/articles/designing-a-winning-hackathon-concept',
+        destination:
+          'https://perttu.dev/articles/designing-a-winning-hackathon-concept',
         permanent: true,
       },
       {
@@ -115,23 +118,29 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/articles/the-role-of-designers-subjective-interpretations-in-human-centered-design',
-        destination: 'https://perttu.dev/articles/the-role-of-designers-subjective-interpretations-in-human-centered-design',
+        source:
+          '/articles/the-role-of-designers-subjective-interpretations-in-human-centered-design',
+        destination:
+          'https://perttu.dev/articles/the-role-of-designers-subjective-interpretations-in-human-centered-design',
         permanent: true,
       },
       {
-        source: '/articles/screenwriting-vs-novel-writing-and-the-se7en-novelization',
-        destination: 'https://perttu.dev/articles/screenwriting-vs-novel-writing-and-the-se7en-novelization',
+        source:
+          '/articles/screenwriting-vs-novel-writing-and-the-se7en-novelization',
+        destination:
+          'https://perttu.dev/articles/screenwriting-vs-novel-writing-and-the-se7en-novelization',
         permanent: true,
       },
       {
         source: '/articles/how-to-get-the-old-slack-ui-back',
-        destination: 'https://perttu.dev/articles/how-to-get-the-old-slack-ui-back',
+        destination:
+          'https://perttu.dev/articles/how-to-get-the-old-slack-ui-back',
         permanent: true,
       },
       {
         source: '/articles/throttling-and-memoing-app-store-scraping',
-        destination: 'https://perttu.dev/articles/throttling-and-memoing-app-store-scraping',
+        destination:
+          'https://perttu.dev/articles/throttling-and-memoing-app-store-scraping',
         permanent: true,
       },
     ];

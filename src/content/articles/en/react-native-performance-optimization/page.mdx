@@ -105,11 +105,7 @@ Shopify's FlashList is significantly faster than the built-in FlatList:
 ```tsx
 import { FlashList } from '@shopify/flash-list';
 
-<FlashList
-  data={items}
-  renderItem={renderItem}
-  estimatedItemSize={80}
-/>
+<FlashList data={items} renderItem={renderItem} estimatedItemSize={80} />;
 ```
 
 The key is providing an accurate `estimatedItemSize`. Measure your actual item heights and use that value.
@@ -131,9 +127,10 @@ const styles = StyleSheet.create({
   container: { padding: 16, backgroundColor: '#fff' },
 });
 
-const renderItem = useCallback(({ item }) => (
-  <ListItem item={item} onPress={handlePress} />
-), [handlePress]);
+const renderItem = useCallback(
+  ({ item }) => <ListItem item={item} onPress={handlePress} />,
+  [handlePress],
+);
 ```
 
 ### Use getItemType for Heterogeneous Lists
@@ -153,16 +150,20 @@ If your list has different item types, tell FlashList about them:
 
 ```tsx
 // Bad
-{items.map((item) => (
-  <Pressable key={item.id} onPress={() => selectItem(item.id)}>
-    <Text>{item.name}</Text>
-  </Pressable>
-))}
+{
+  items.map((item) => (
+    <Pressable key={item.id} onPress={() => selectItem(item.id)}>
+      <Text>{item.name}</Text>
+    </Pressable>
+  ));
+}
 
 // Good - use a component
-{items.map((item) => (
-  <SelectableItem key={item.id} item={item} onSelect={selectItem} />
-))}
+{
+  items.map((item) => (
+    <SelectableItem key={item.id} item={item} onSelect={selectItem} />
+  ));
+}
 ```
 
 ## Image Optimization
@@ -179,9 +180,9 @@ import { Image } from 'expo-image';
 <Image
   source={{ uri: imageUrl }}
   style={styles.image}
-  contentFit="cover"
+  contentFit='cover'
   transition={200}
-/>
+/>;
 ```
 
 ### Resize Images Server-Side
@@ -193,7 +194,7 @@ const getOptimizedUrl = (url: string, width: number) => {
   return `${url}?w=${width}&q=80&fm=webp`;
 };
 
-<Image source={{ uri: getOptimizedUrl(imageUrl, 200) }} />
+<Image source={{ uri: getOptimizedUrl(imageUrl, 200) }} />;
 ```
 
 ### Use Placeholder and Progressive Loading
@@ -202,7 +203,7 @@ const getOptimizedUrl = (url: string, width: number) => {
 <Image
   source={{ uri: imageUrl }}
   placeholder={blurhash}
-  contentFit="cover"
+  contentFit='cover'
   transition={300}
 />
 ```
@@ -247,9 +248,9 @@ const HeavyScreen = React.lazy(() => import('./HeavyScreen'));
 
 // In your navigator
 <Stack.Screen
-  name="Heavy"
+  name='Heavy'
   getComponent={() => require('./HeavyScreen').default}
-/>
+/>;
 ```
 
 ## Animation Performance
@@ -304,6 +305,7 @@ Flipper provides detailed performance insights, network inspection, and React De
 ### Enable Performance Monitor
 
 In development, shake your device and enable "Show Perf Monitor". Watch for:
+
 - JS thread FPS drops (should stay at 60)
 - UI thread FPS drops
 - RAM usage spikes
