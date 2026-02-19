@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "perttu-lahteenlahti",
+    "name": "Perttu Lähteenlahti",
+    "role": "Developer Advocate at RevenueCat",
+    "location": "Helsinki, Finland",
+    "imageUrl": "/images/perttu.jpeg",
+    "bio": "Experienced React Native developer with a strong background in mobile app development and user experience design. Specializing in creating performant cross-platform applications with modern JavaScript and TypeScript. Currently working as a Developer Advocate at RevenueCat, helping developers monetize their apps.",
+    "xUrl": "https://twitter.com/plahteenlahti",
+    "linkedinUrl": "https://www.linkedin.com/in/plahteenlahti/",
+    "githubUrl": "https://github.com/plahteenlahti",
+    "websiteUrl": "https://perttu.dev",
+    "expertise": [
+      "React Native",
+      "TypeScript",
+      "In-App Purchases",
+      "Mobile Development"
+    ],
+    "availability": "Not available for hire"
+  },
+  {
+    "slug": "tobias-helsing",
+    "name": "Tobias Helsing",
+    "role": "Senior Mobile Developer",
+    "location": "Helsinki, Finland",
+    "imageUrl": "/images/tobias.jpeg",
+    "bio": "Expert React Native developer focused on building scalable mobile applications. Deep expertise in building custom native modules and great visual user experiences. Passionate about creating apps that users love.",
+    "linkedinUrl": "https://www.linkedin.com/in/tobias-helsing/",
+    "expertise": ["React Native", "Native Modules", "UI/UX", "iOS", "Android"],
+    "availability": "Open to consulting"
+  }
+]

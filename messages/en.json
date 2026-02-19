@@ -1,0 +1,350 @@
+{
+  "metadata": {
+    "title": "React Native Finland | Meetups, Developers & Tutorials",
+    "description": "The React Native community in Finland. Join Helsinki meetups, hire Finnish RN developers, learn from the University of Helsinki MOOC, and read practical tutorials.",
+    "homeTitle": "React Native Finland | Build Cross-Platform Apps with the Finnish Community",
+    "homeDescription": "Join the React Native community in Finland. Helsinki meetups, developer directory, free University of Helsinki MOOC, and tutorials from devs shipping RN apps."
+  },
+  "nav": {
+    "events": "Events",
+    "articles": "Articles",
+    "developers": "Developers",
+    "openMenu": "Open main menu",
+    "closeMenu": "Close menu",
+    "siteName": "React Native Finland",
+    "siteNameShort": "RN Finland"
+  },
+  "hero": {
+    "badge": "Meetups in Helsinki. Content in English & Finnish.",
+    "seeEvents": "See upcoming events",
+    "title": "Build React Native apps in Finland",
+    "description": "The community for developers shipping cross-platform apps from Helsinki to Oulu. Join meetups, learn from the University of Helsinki MOOC, and connect with the devs building RN in the Nordics.",
+    "viewEvents": "Join the Next Meetup",
+    "learnMore": "Browse tutorials"
+  },
+  "home": {
+    "introTitle": "Why React Native in Finland?",
+    "introDescription": "Finland punches above its weight in mobile. From Nokia's legacy to today's thriving startup scene, Finnish developers have been shipping mobile apps for decades. React Native fits right in — and this community connects the people making it happen.",
+    "exploreTitle": "Developers, meetups, tutorials",
+    "exploreSubtitle": "Everything you need to build with RN in Finland",
+    "events": {
+      "title": "Meetups",
+      "count": "{count} events so far",
+      "description": "Technical talks from Finnish RN engineers. Real conversations, free pizza, and actual networking (not the awkward kind).",
+      "cta": "See upcoming talks"
+    },
+    "developers": {
+      "title": "Developer Directory",
+      "count": "{count} listed developers",
+      "description": "Looking to hire? Need a consultant? Browse vetted React Native specialists based in Finland — or add yourself to get discovered.",
+      "cta": "Find RN talent"
+    },
+    "articles": {
+      "title": "Tutorials",
+      "count": "{count} guides & deep-dives",
+      "description": "Practical tutorials from devs who ship RN apps daily. Performance, animations, native modules — no fluff.",
+      "cta": "Start reading"
+    },
+    "learn": {
+      "title": "Free MOOC Course",
+      "subtitle": "University of Helsinki",
+      "description": "The Mobile Development MOOC is one of the best free React Native courses in the world. Built by the same team behind the famous fullstackopen.com.",
+      "cta": "Take the course"
+    },
+    "community": {
+      "title": "Ship RN apps with us",
+      "description": "Whether you're learning React Native, hiring developers, or just want to geek out about mobile — you're in the right place.",
+      "ctaPrimary": "RSVP on Meetup",
+      "ctaSecondary": "Browse the site"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "questions": [
+        {
+          "question": "How do I join React Native Helsinki meetups?",
+          "answer": "Join our Meetup.com group at meetup.com/react-native-helsinki to get notified about upcoming events and RSVP. Events are free and open to everyone interested in React Native."
+        },
+        {
+          "question": "Is the University of Helsinki React Native course free?",
+          "answer": "Yes! The Mobile Development MOOC from the University of Helsinki is completely free. It's built by the same team behind fullstackopen.com and covers React Native from basics to advanced topics."
+        },
+        {
+          "question": "How can I add myself to the developer directory?",
+          "answer": "Submit a pull request on GitHub to add your profile. You'll need to add your details as a JSON entry in src/data/developers.json including name, expertise, availability, and social links."
+        },
+        {
+          "question": "Can I sponsor React Native Helsinki events?",
+          "answer": "Yes! We're always looking for sponsors to help with venue costs, food, and drinks. Sponsors get visibility with the Finnish React Native community. Reach out via GitHub or Meetup to discuss."
+        }
+      ]
+    }
+  },
+  "footer": {
+    "siteName": "React Native Finland",
+    "tagline": "Community hub for React Native developers in Finland",
+    "builtBy": "Built by"
+  },
+  "articles": {
+    "pageTitle": "Learn React Native | Free Tutorials, MOOC Course & Guides",
+    "pageDescription": "Learn React Native with the free University of Helsinki MOOC and practical tutorials from Finnish developers. Performance, animations, native modules — real-world guides.",
+    "header": "Learn & Grow",
+    "title": "Learn React Native in Finland",
+    "description": "Whether you're completely new to mobile development or looking to deepen your React Native expertise, this page brings together the best learning resources and community-written content available in Finland.",
+    "startCourse": "Start the Helsinki MOOC course",
+    "moocTitle": "University of Helsinki Mobile Development MOOC",
+    "moocDescription": "The Mobile Development MOOC from the University of Helsinki is one of the strongest introductions to React Native anywhere in the world. It covers modern JavaScript, key mobile concepts, and hands-on app development.",
+    "startTheCourse": "Start the course",
+    "communityArticles": "Community Articles",
+    "communityDescription": "Articles written by the Finnish React Native community — from tutorials and deep dives to case studies and project write-ups.",
+    "heroAlt": "React Native Articles and Learning Resources"
+  },
+  "developers": {
+    "pageTitle": "Hire React Native Developers in Finland | Developer Directory",
+    "pageDescription": "Find and hire React Native developers, consultants, and engineers based in Finland. Browse the directory or add your profile to get discovered by hiring managers.",
+    "title": "React Native Developer Directory",
+    "description": "The go-to list for finding React Native talent in Finland. Whether you're hiring for a project or looking for your next opportunity — this is where Finnish RN developers get discovered.",
+    "addYourself": "Get Listed",
+    "addDescription": "Are you a React Native developer in Finland? Add your profile to get visibility with hiring managers, connect with the community, and showcase your expertise.",
+    "viewOnGithub": "Add your profile on GitHub",
+    "heroAlt": "React Native Developers in Finland",
+    "forHiring": "For Hiring Managers",
+    "forHiringDescription": "Looking to build or scale a React Native team in Finland? Browse profiles below or contact us about sponsoring the community to reach more developers.",
+    "howToAdd": "How to Add Your Profile",
+    "howToAddDescription": "Adding yourself takes 5 minutes. Here's how:",
+    "steps": [
+      {
+        "title": "Fork the repository",
+        "description": "Go to github.com/React-Native-Finland/react-native.fi and click 'Fork' to create your own copy."
+      },
+      {
+        "title": "Add your profile",
+        "description": "Add your entry to src/data/developers.json using the template below."
+      },
+      {
+        "title": "Add your photo",
+        "description": "Put your headshot in public/images/ (square, at least 400x400px)."
+      },
+      {
+        "title": "Open a pull request",
+        "description": "Submit your changes and we'll review and merge within a few days."
+      }
+    ],
+    "templateTitle": "Profile Template",
+    "templateDescription": "Copy this template and fill in your details:",
+    "startPR": "Open GitHub to start"
+  },
+  "events": {
+    "pageTitle": "React Native Helsinki Meetups & Events | React Native Finland",
+    "pageDescription": "Join React Native Helsinki meetups — technical talks, workshops, and networking with Finnish mobile developers. Free events, great speakers, real community.",
+    "title": "Events",
+    "description": "Join React Native Helsinki meetups to connect with developers, hear technical talks, and be part of the Finnish React Native community.",
+    "upcoming": "Upcoming Events",
+    "past": "Past Events",
+    "upcomingBadge": "Upcoming",
+    "talks": "{count, plural, one {# talk} other {# talks}}",
+    "neverMiss": "Never Miss an Event",
+    "neverMissDescription": "Join us on Meetup.com to get notified about upcoming React Native Helsinki events and RSVP to secure your spot.",
+    "joinMeetup": "Join on Meetup.com",
+    "heroAlt": "React Native Helsinki Events"
+  },
+  "article": {
+    "by": "By",
+    "originallyPublished": "This article was originally published at"
+  },
+  "social": {
+    "x": "X",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "website": "Website"
+  },
+  "common": {
+    "readMore": "Read more",
+    "viewAll": "View all",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "notFound": "Not found"
+  },
+  "images": {
+    "eventsAlt": "React Native Helsinki Events",
+    "developersAlt": "React Native Developers in Finland",
+    "articlesAlt": "React Native Articles",
+    "learnAlt": "Learn React Native"
+  },
+  "sponsors": {
+    "pageTitle": "Sponsor React Native Helsinki | Reach Finnish Mobile Developers",
+    "pageDescription": "Sponsor React Native Helsinki meetups and reach the Finnish mobile development community. Get your brand in front of talented React Native developers.",
+    "title": "Sponsor React Native Helsinki",
+    "subtitle": "Get your brand in front of Finland's React Native community",
+    "description": "React Native Helsinki is the largest React Native meetup in the Nordics. Sponsoring our events gets your company visibility with talented mobile developers, potential hires, and decision-makers building cross-platform apps.",
+    "whySponsor": "Why Sponsor?",
+    "benefits": [
+      {
+        "title": "Reach Qualified Developers",
+        "description": "Our audience is 100% React Native developers — no noise, just the people building mobile apps in Finland."
+      },
+      {
+        "title": "Hiring Pipeline",
+        "description": "Looking to grow your team? Sponsoring events puts you in front of developers who might be your next hire."
+      },
+      {
+        "title": "Brand Awareness",
+        "description": "Logo placement on event pages, shoutouts during meetups, and mentions in our communications."
+      },
+      {
+        "title": "Community Goodwill",
+        "description": "Supporting the community builds authentic relationships and positions you as a company that gives back."
+      }
+    ],
+    "whatYouGet": "What Sponsors Get",
+    "packages": [
+      {
+        "name": "Event Sponsor",
+        "description": "Sponsor a single meetup event",
+        "includes": [
+          "Logo on event page",
+          "2-minute intro at the event",
+          "Social media mention",
+          "Post-event shoutout"
+        ]
+      },
+      {
+        "name": "Venue Sponsor",
+        "description": "Host the meetup at your office",
+        "includes": [
+          "All Event Sponsor benefits",
+          "Your space as the venue",
+          "Extended company introduction",
+          "Networking opportunity with attendees"
+        ]
+      }
+    ],
+    "cta": "Interested in Sponsoring?",
+    "ctaDescription": "Reach out to discuss sponsorship opportunities. We're flexible and happy to create a package that works for your goals.",
+    "contactButton": "Contact Us on GitHub",
+    "contactEmail": "Or email us directly"
+  },
+  "testimonials": {
+    "title": "What the Community Says",
+    "placeholder": "We're collecting feedback from our community. Check back soon for testimonials from developers who've attended our meetups and used our resources.",
+    "joinCommunity": "Join the community",
+    "contribute": "Share Your Experience",
+    "contributeDescription": "Attended a meetup? Found our tutorials helpful? We'd love to hear from you.",
+    "howToContribute": "How to Submit a Testimonial",
+    "howToContributeDescription": "It only takes a minute:",
+    "contributeSteps": [
+      {
+        "title": "Open a GitHub discussion",
+        "description": "Go to the Discussions tab in our repo and create a new post."
+      },
+      {
+        "title": "Share your experience",
+        "description": "Tell us about your experience with React Native Helsinki — meetups, articles, or the community."
+      },
+      {
+        "title": "Include your details",
+        "description": "Add your name, role, company (optional), and a photo if you'd like."
+      }
+    ],
+    "submitButton": "Share your testimonial",
+    "orEmail": "Or email us at"
+  },
+  "consulting": {
+    "pageTitle": "React Native Consulting & Development Services in Finland",
+    "pageDescription": "Hire React Native consultants and development teams in Finland. Expert mobile app development, migration to React Native, performance optimization, and ongoing support from Finnish developers.",
+    "keywords": "React Native consulting, React Native consultants, React Native development Finland, hire React Native developers, React Native consultancy, mobile app development Finland, React Native outsourcing, React Native agency Finland",
+    "title": "React Native Consulting in Finland",
+    "subtitle": "Connect with experienced React Native consultants and development teams based in Finland. From greenfield apps to migration projects, find the right expertise for your mobile project.",
+    "ctaBrowse": "Browse Developers",
+    "ctaContact": "Get in Touch",
+    "servicesTitle": "What Finnish RN Consultants Offer",
+    "servicesSubtitle": "React Native developers in Finland work across startups, agencies, and enterprise clients. Here's what you can expect.",
+    "services": [
+      {
+        "title": "New App Development",
+        "description": "Build cross-platform iOS and Android apps from scratch using React Native and Expo. Finnish developers bring deep experience shipping production apps."
+      },
+      {
+        "title": "Migration to React Native",
+        "description": "Move your existing native iOS or Android app to React Native. Get a single codebase without sacrificing performance or native feel."
+      },
+      {
+        "title": "Performance Optimization",
+        "description": "Fix slow renders, reduce bundle size, eliminate jank. Finnish RN specialists will profile your app and implement measurable improvements."
+      },
+      {
+        "title": "Code Review & Architecture",
+        "description": "Get expert eyes on your React Native codebase. Architecture reviews, best practices audit, and actionable recommendations."
+      }
+    ],
+    "whyTitle": "Why Hire React Native Consultants from Finland?",
+    "whySubtitle": "Finland has a strong tradition in mobile development, from Nokia to today's thriving tech scene.",
+    "why": [
+      {
+        "title": "Deep Mobile Heritage",
+        "description": "Finnish developers have been building mobile apps since before smartphones. That experience translates to better React Native architecture decisions."
+      },
+      {
+        "title": "Timezone-Friendly for Europe",
+        "description": "GMT+2/+3 timezone makes Finland ideal for European clients. Overlap with US East Coast mornings too."
+      },
+      {
+        "title": "Strong English Skills",
+        "description": "Finland consistently ranks among the best non-native English speaking countries. Communication is never a barrier."
+      }
+    ],
+    "developersTitle": "Browse React Native Developers",
+    "developersSubtitle": "Our directory lists {count}+ React Native developers based in Finland. Filter by expertise, availability, and specialization.",
+    "faqTitle": "Frequently Asked Questions",
+    "faq": [
+      {
+        "question": "How do I hire a React Native consultant in Finland?",
+        "answer": "Browse our developer directory to find React Native specialists based in Finland. Each profile includes expertise, availability, and contact information. You can reach out directly or post in our GitHub discussions."
+      },
+      {
+        "question": "What does React Native consulting cost in Finland?",
+        "answer": "Rates for React Native consultants in Finland typically range from €80-150/hour depending on experience and project scope. Team engagements and longer projects may have different pricing structures."
+      },
+      {
+        "question": "Can Finnish React Native developers work remotely?",
+        "answer": "Yes. Most React Native consultants in Finland work remotely and are experienced with distributed teams. Finland's timezone (GMT+2/+3) works well for European and US East Coast clients."
+      },
+      {
+        "question": "Should I use React Native or native development?",
+        "answer": "React Native is ideal when you need to ship on both iOS and Android with a single team. It's used by Meta, Microsoft, Shopify, and thousands of production apps. Our developers can help you evaluate whether React Native fits your specific use case."
+      }
+    ],
+    "ctaTitle": "Ready to Build?",
+    "ctaDescription": "Find the right React Native expertise for your project. Browse our developer directory or reach out to discuss your needs."
+  },
+  "jobs": {
+    "pageTitle": "React Native Jobs in Finland | Find RN Developer Positions",
+    "pageDescription": "Find React Native developer jobs in Finland. Browse open positions from Finnish companies hiring mobile developers, or post your job to reach the RN community.",
+    "title": "React Native Jobs in Finland",
+    "subtitle": "Open positions from companies hiring RN developers",
+    "description": "Looking for your next React Native role in Finland? This page will list open positions from Finnish companies. We're building this feature — check back soon or join our Meetup to network directly with hiring companies.",
+    "comingSoon": "Coming Soon",
+    "comingSoonDescription": "We're building the jobs board. In the meantime:",
+    "alternatives": [
+      {
+        "title": "Browse the Developer Directory",
+        "description": "Companies often reach out directly to listed developers",
+        "cta": "View developers",
+        "href": "/developers"
+      },
+      {
+        "title": "Join the Meetups",
+        "description": "Many hiring conversations happen at our events",
+        "cta": "See events",
+        "href": "/events"
+      },
+      {
+        "title": "Post a Job (Companies)",
+        "description": "Want to list a position? Open a GitHub discussion",
+        "cta": "Contact us",
+        "href": "https://github.com/React-Native-Finland/react-native.fi/discussions"
+      }
+    ],
+    "notify": "Get Notified",
+    "notifyDescription": "Join the Meetup group to stay updated when the jobs board launches and hear about opportunities shared at events."
+  }
+}

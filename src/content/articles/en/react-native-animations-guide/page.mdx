@@ -1,0 +1,537 @@
+import { ArticleLayout } from '@/components/ArticleLayout';
+import { ArticleJsonLd } from '@/components/ArticleJsonLd';
+
+export const article = {
+  author: 'React Native Finland',
+  date: '2025-01-21',
+  title: 'React Native Animations: From Basics to Advanced Techniques',
+  description:
+    'Master animations in React Native. Learn the Animated API, React Native Reanimated, gesture handling, and how to create smooth, performant animations.',
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  openGraph: {
+    publishedTime: article.date,
+    modifiedTime: article.updated || article.date,
+    authors: [article.author],
+    title: article.title,
+    description: article.description,
+    siteName: 'React Native Finland',
+    locale: 'en_US',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: article.title,
+    description: article.description,
+  },
+  authors: [{ name: article.author }],
+};
+
+export default (props) => (
+  <>
+    <ArticleJsonLd article={article} />
+    <ArticleLayout article={article} {...props} />
+  </>
+);
+
+Animations are what separate a good app from a great one. They provide feedback, guide attention, and make interactions feel natural. In React Native, you have several options for creating animations — from the built-in Animated API to the powerful React Native Reanimated library. This guide covers everything you need to know.
+
+## The Animation Landscape
+
+React Native offers several animation approaches:
+
+1. **Animated API** — Built-in, good for simple animations
+2. **LayoutAnimation** — Automatic layout transitions
+3. **React Native Reanimated** — UI thread animations, best performance
+4. **Moti** — Declarative animations built on Reanimated
+5. **Lottie** — Complex vector animations from After Effects
+
+For most apps, you'll use a combination of Reanimated for custom animations and Lottie for complex illustrative animations.
+
+## Animated API Basics
+
+The built-in Animated API is a good starting point. It runs animations on the JavaScript thread, which works fine for simple use cases.
+
+### Creating an Animated Value
+
+```tsx
+import { Animated } from 'react-native';
+
+const opacity = new Animated.Value(0);
+```
+
+### Running an Animation
+
+```tsx
+Animated.timing(opacity, {
+  toValue: 1,
+  duration: 300,
+  useNativeDriver: true,
+}).start();
+```
+
+Always set `useNativeDriver: true` when animating `transform` and `opacity`. This runs the animation on the UI thread for better performance.
+
+### Applying to Components
+
+```tsx
+<Animated.View style={{ opacity }}>
+  <Text>I fade in!</Text>
+</Animated.View>
+```
+
+### A Complete Example
+
+```tsx
+import { useRef, useEffect } from 'react';
+import { Animated, View, Text, StyleSheet } from 'react-native';
+
+const FadeInView = ({ children }) => {
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 500,
+      useNativeDriver: true,
+    }).start();
+  }, [fadeAnim]);
+
+  return (
+    <Animated.View style={{ opacity: fadeAnim }}>
+      {children}
+    </Animated.View>
+  );
+};
+```
+
+## React Native Reanimated
+
+For serious animation work, React Native Reanimated is the standard. It runs entirely on the UI thread, giving you 60 FPS animations even when the JS thread is busy.
+
+### Installation
+
+```bash
+npx expo install react-native-reanimated
+```
+
+Add the plugin to your babel.config.js:
+
+```js
+module.exports = {
+  presets: ['babel-preset-expo'],
+  plugins: ['react-native-reanimated/plugin'],
+};
+```
+
+### Shared Values
+
+Reanimated uses "shared values" instead of Animated.Value:
+
+```tsx
+import { useSharedValue } from 'react-native-reanimated';
+
+const offset = useSharedValue(0);
+```
+
+### Animated Styles
+
+Create animated styles with `useAnimatedStyle`:
+
+```tsx
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+} from 'react-native-reanimated';
+
+const Box = () => {
+  const offset = useSharedValue(0);
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: offset.value }],
+  }));
+
+  const handlePress = () => {
+    offset.value = withSpring(offset.value + 50);
+  };
+
+  return (
+    <Animated.View style={[styles.box, animatedStyle]}>
+      <Pressable onPress={handlePress}>
+        <Text>Tap me</Text>
+      </Pressable>
+    </Animated.View>
+  );
+};
+```
+
+### Animation Types
+
+Reanimated provides several animation functions:
+
+```tsx
+// Spring physics
+offset.value = withSpring(100);
+
+// Timing with easing
+offset.value = withTiming(100, {
+  duration: 500,
+  easing: Easing.bezier(0.25, 0.1, 0.25, 1),
+});
+
+// Decay (momentum-based)
+velocity.value = withDecay({
+  velocity: gestureVelocity,
+  clamp: [0, 200],
+});
+```
+
+### Sequencing and Combining
+
+```tsx
+// Sequential animations
+offset.value = withSequence(
+  withTiming(100),
+  withTiming(0),
+);
+
+// Delayed animation
+offset.value = withDelay(500, withSpring(100));
+
+// Repeating
+offset.value = withRepeat(
+  withTiming(100),
+  -1, // infinite
+  true, // reverse
+);
+```
+
+## Gesture-Driven Animations
+
+The real power of Reanimated comes with gesture handling. Combined with React Native Gesture Handler, you can create fluid, interactive animations.
+
+### Installation
+
+```bash
+npx expo install react-native-gesture-handler
+```
+
+### Pan Gesture Example
+
+```tsx
+import { GestureDetector, Gesture } from 'react-native-gesture-handler';
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+} from 'react-native-reanimated';
+
+const DraggableBox = () => {
+  const translateX = useSharedValue(0);
+  const translateY = useSharedValue(0);
+  const context = useSharedValue({ x: 0, y: 0 });
+
+  const gesture = Gesture.Pan()
+    .onStart(() => {
+      context.value = {
+        x: translateX.value,
+        y: translateY.value,
+      };
+    })
+    .onUpdate((event) => {
+      translateX.value = context.value.x + event.translationX;
+      translateY.value = context.value.y + event.translationY;
+    })
+    .onEnd(() => {
+      // Snap back to origin
+      translateX.value = withSpring(0);
+      translateY.value = withSpring(0);
+    });
+
+  const animatedStyle = useAnimatedStyle(() => ({
+    transform: [
+      { translateX: translateX.value },
+      { translateY: translateY.value },
+    ],
+  }));
+
+  return (
+    <GestureDetector gesture={gesture}>
+      <Animated.View style={[styles.box, animatedStyle]} />
+    </GestureDetector>
+  );
+};
+```
+
+### Swipe to Delete
+
+A common pattern in mobile apps:
+
+```tsx
+const SwipeableRow = ({ onDelete, children }) => {
+  const translateX = useSharedValue(0);
+  const DELETE_THRESHOLD = -100;
+
+  const gesture = Gesture.Pan()
+    .activeOffsetX([-10, 10])
+    .onUpdate((event) => {
+      translateX.value = Math.min(0, event.translationX);
+    })
+    .onEnd(() => {
+      if (translateX.value < DELETE_THRESHOLD) {
+        translateX.value = withTiming(-500, {}, () => {
+          runOnJS(onDelete)();
+        });
+      } else {
+        translateX.value = withSpring(0);
+      }
+    });
+
+  const rowStyle = useAnimatedStyle(() => ({
+    transform: [{ translateX: translateX.value }],
+  }));
+
+  const deleteStyle = useAnimatedStyle(() => ({
+    opacity: interpolate(
+      translateX.value,
+      [DELETE_THRESHOLD, 0],
+      [1, 0],
+    ),
+  }));
+
+  return (
+    <View>
+      <Animated.View style={[styles.deleteBackground, deleteStyle]}>
+        <Text style={styles.deleteText}>Delete</Text>
+      </Animated.View>
+      <GestureDetector gesture={gesture}>
+        <Animated.View style={rowStyle}>
+          {children}
+        </Animated.View>
+      </GestureDetector>
+    </View>
+  );
+};
+```
+
+## Interpolation
+
+Interpolation maps input ranges to output ranges. Essential for complex animations:
+
+```tsx
+import { interpolate, Extrapolate } from 'react-native-reanimated';
+
+const animatedStyle = useAnimatedStyle(() => {
+  const scale = interpolate(
+    progress.value,
+    [0, 0.5, 1],
+    [1, 1.2, 1],
+    Extrapolate.CLAMP,
+  );
+
+  const opacity = interpolate(
+    progress.value,
+    [0, 1],
+    [0.5, 1],
+  );
+
+  return {
+    transform: [{ scale }],
+    opacity,
+  };
+});
+```
+
+### Color Interpolation
+
+```tsx
+import { interpolateColor } from 'react-native-reanimated';
+
+const animatedStyle = useAnimatedStyle(() => {
+  const backgroundColor = interpolateColor(
+    progress.value,
+    [0, 1],
+    ['#FF0000', '#00FF00'],
+  );
+
+  return { backgroundColor };
+});
+```
+
+## Layout Animations
+
+Reanimated 2+ provides layout animations for entering, exiting, and layout changes:
+
+```tsx
+import Animated, { FadeIn, FadeOut, Layout } from 'react-native-reanimated';
+
+const AnimatedList = ({ items }) => (
+  <View>
+    {items.map((item) => (
+      <Animated.View
+        key={item.id}
+        entering={FadeIn.duration(300)}
+        exiting={FadeOut.duration(200)}
+        layout={Layout.springify()}
+      >
+        <ListItem item={item} />
+      </Animated.View>
+    ))}
+  </View>
+);
+```
+
+Built-in entering animations include:
+- `FadeIn`, `FadeOut`
+- `SlideInLeft`, `SlideInRight`, `SlideOutLeft`, `SlideOutRight`
+- `ZoomIn`, `ZoomOut`
+- `BounceIn`, `BounceOut`
+- And many more
+
+## Scroll Animations
+
+Create scroll-driven animations with `useAnimatedScrollHandler`:
+
+```tsx
+const scrollOffset = useSharedValue(0);
+
+const scrollHandler = useAnimatedScrollHandler({
+  onScroll: (event) => {
+    scrollOffset.value = event.contentOffset.y;
+  },
+});
+
+const headerStyle = useAnimatedStyle(() => {
+  const height = interpolate(
+    scrollOffset.value,
+    [0, 100],
+    [200, 60],
+    Extrapolate.CLAMP,
+  );
+
+  return { height };
+});
+
+return (
+  <>
+    <Animated.View style={[styles.header, headerStyle]} />
+    <Animated.ScrollView onScroll={scrollHandler} scrollEventThrottle={16}>
+      {/* content */}
+    </Animated.ScrollView>
+  </>
+);
+```
+
+## Performance Tips
+
+### Do: Use Transform and Opacity
+
+These properties can be animated on the UI thread:
+
+```tsx
+// Good - UI thread
+transform: [{ translateX }, { scale }, { rotate }]
+opacity
+
+// Bad - Layout triggers
+width, height, margin, padding
+```
+
+### Do: Avoid Worklet Overhead
+
+Keep worklets simple. Heavy computations should happen on the JS thread:
+
+```tsx
+// Bad - heavy computation in worklet
+const animatedStyle = useAnimatedStyle(() => {
+  const result = heavyCalculation(values); // Don't do this
+  return { transform: [{ translateX: result }] };
+});
+
+// Good - compute on JS, animate the result
+const computedValue = useMemo(() => heavyCalculation(values), [values]);
+const animatedStyle = useAnimatedStyle(() => ({
+  transform: [{ translateX: computedValue }],
+}));
+```
+
+### Do: Use Native Driver
+
+With the Animated API, always use native driver for transform/opacity:
+
+```tsx
+Animated.timing(value, {
+  toValue: 1,
+  duration: 300,
+  useNativeDriver: true, // Required for performance
+}).start();
+```
+
+## Lottie for Complex Animations
+
+For complex illustrative animations, use Lottie:
+
+```bash
+npx expo install lottie-react-native
+```
+
+```tsx
+import LottieView from 'lottie-react-native';
+
+const Animation = () => (
+  <LottieView
+    source={require('./animation.json')}
+    autoPlay
+    loop
+    style={{ width: 200, height: 200 }}
+  />
+);
+```
+
+Designers can create animations in After Effects and export them as JSON. This is perfect for:
+- Loading indicators
+- Success/error states
+- Onboarding illustrations
+- Empty states
+
+## Moti: Declarative Animations
+
+If you prefer a more declarative API, Moti builds on Reanimated:
+
+```bash
+npm install moti
+```
+
+```tsx
+import { MotiView } from 'moti';
+
+const FadeIn = () => (
+  <MotiView
+    from={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ type: 'timing', duration: 500 }}
+  >
+    <Text>Hello!</Text>
+  </MotiView>
+);
+```
+
+Moti is great for:
+- Simple declarative animations
+- Skeleton loading states
+- Presence animations
+
+## Recap
+
+- **Start with Reanimated** for most custom animations
+- **Use shared values** and animated styles for UI thread performance
+- **Combine with Gesture Handler** for interactive animations
+- **Stick to transform and opacity** for best performance
+- **Use Lottie** for complex illustrative animations
+- **Consider Moti** for simple declarative animations
+
+Animations are an investment that pays off in user experience. Start simple, profile performance, and gradually add polish to your app's most important interactions.

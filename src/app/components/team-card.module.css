@@ -1,0 +1,30 @@
+.zigZagBackground {
+  --bg-color: rgba(255, 255, 255, 0.1);
+  --bg-color-dark: rgba(255, 255, 255, 0.12);
+  --bg-color-light: rgba(255, 255, 255, 0.15);
+  background-color: var(--bg-color);
+  opacity: 0.8;
+  background:
+    linear-gradient(135deg, var(--bg-color-dark) 25%, transparent 25%) -10px 0/
+      20px 20px,
+    linear-gradient(225deg, var(--bg-color-light) 25%, transparent 25%) -10px 0/
+      20px 20px,
+    linear-gradient(315deg, var(--bg-color-dark) 25%, transparent 25%) 0px 0/
+      20px 20px,
+    linear-gradient(45deg, var(--bg-color-light) 25%, var(--bg-color) 25%) 0px
+      0/ 20px 20px;
+}
+
+.diagonalBackground {
+  --bg-color: rgba(255, 255, 255, 0.1);
+  --bg-color-dark: rgba(255, 255, 255, 0.125);
+  background-color: var(--bg-color);
+  opacity: 0.8;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--bg-color-dark),
+    var(--bg-color-dark) 15px,
+    var(--bg-color) 5px,
+    var(--bg-color) 25px
+  );
+}

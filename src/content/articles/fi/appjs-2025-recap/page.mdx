@@ -1,0 +1,110 @@
+import { ArticleLayout } from '@/components/ArticleLayout';
+import { ArticleJsonLd } from '@/components/ArticleJsonLd';
+import Image from 'next/image';
+import tweet from './tweet.png';
+
+export const article = {
+  author: 'Perttu Lähteenlahti',
+  authorTagline: 'Developer Advocate at RevenueCat',
+  authorSlug: 'perttu-lahteenlahti',
+  canonical: 'https://perttu.dev/articles/appjs-2025-recap',
+  date: '2025-06-03',
+  title: 'App.js 2025 recap',
+  description:
+    'A personal recap of App.js 2025: speaking about in-app purchases, highlights from Krakow, favorite talks, and why this conference remains one of my top picks. ',
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: {
+    canonical: 'https://perttu.dev/articles/appjs-2025-recap',
+  },
+  openGraph: {
+    publishedTime: article.date,
+    modifiedTime: article.updated || article.date,
+    authors: [article.author],
+    title: article.title,
+    description: article.description,
+    url: 'https://perttu.dev/articles/appjs-2025-recap',
+    siteName: 'React Native Finland',
+    locale: 'en_US',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: article.title,
+    description: article.description,
+  },
+  authors: [{ name: article.author }],
+};
+
+export default (props) => (
+  <>
+    <ArticleJsonLd article={article} />
+    <ArticleLayout article={article} {...props} />
+  </>
+);
+
+Took a quick visit to Krakow to give a talk at [App.js](https://appjs.co/), right after spending two weeks in Japan. This is actually almost the exact same way I spent last May too. I do wonder if it’s becoming a tradition of sorts to fight jet lag every time I’m visiting Krakow.
+
+So yeah, I was there to give a talk. This time about how to monetize your app with in-app purchases. Funnily enough, when I submitted the talk, I wasn’t working at RevenueCat yet, a company whose entire thing is in-app purchases. So this wasn’t meant to be some “toot my own horn, sponsor-y kind of talk,” but it definitely had the building blocks to become one. Mainly because the truth is, RevenueCat isn’t just the biggest thing in the room when it comes to in-app purchases–it is the room.
+
+I’ll talk a bit about how I think I managed to avoid making it feel like a corporate pitch, but also just want to recap this conference, which continues to be my favorite to date (to be honest, it’s actually tied for first place with ChainReact, which is an unbelievably well-crafted conference).
+
+## Speakers Dinner (Wednesday)
+
+As mentioned, I came almost directly from Tokyo to Krakow, with a small 4-hour layover at Helsinki airport. I finally landed around noon at Krakow's airport and took a taxi to the hotel the organizers had booked for the speakers. Puro Hotel; the hotel picked by Software Mansion, the conference organizers; didn't disappoint. Well, the gym could have had dumbbells over 14kg, but that's just the meathead in me talking. Otherwise, it was a lovely hotel and served well from Wednesday through Saturday.
+
+I had managed to sleep decently on the flight from Tokyo to Helsinki, thanks to business class seats, so I didn't need a nap. What I did need was to catch up on work and, surprisingly, laundry. I found the nearest self-service laundromat (who knew these make for wonderful co-working spaces) and joined some calls with teammates to get up to speed on the avalanche of things that had happened at RevenueCat while I was away. In traditional RevenueCat fashion: basically a few month's worth of updates packed into two weeks. I ended up doing catchups and calls basically right up until the speakers' dinner at 19:00.
+
+The speakers' dinner was held at Software Mansion's office, just like at RTC.ON last September. Great vibes, good drinks, and solid food. It's funny how many familiar faces you run into at these conferences. Like, I've run into Rafael Mendiola at almost every React Native conference I've been to in the past year. I ended up chatting with some new people too, like Jani Eväkallio, one of the two MCs (to my knowledge), who got his speaker video intro recorded just before me. Oh and Jay Meistrich!
+
+I wish I could have stayed longer but I really had to excuse myself when I started yawning while listening to a pitch. Sorry about that, it wasn’t you, it was just my jet lag.
+
+## Conference day 1 (Thursday)
+
+Thanks to jet lag, I woke up at 7. Had a solid hotel breakfast and went for a quick run to get some energy out before diving into a full day of nerding out. Since my talk was going to be the last talk of the conference (on day two), I could take Thursday pretty easy and just enjoy the talks and connect with people.
+
+The main venue is this old brick building in the middle of Krakow’s old jewish district. The venue is sizable, and you can catch the talks from pretty much every part of the venue which is nice. The jewish district is full of great little restaurants and street food vendors, so even if you for some reason skip the food they serve at the conference (I don’t think you should), you will not be disappointed.
+
+I spent the day mostly attending talks, and chatting with Expo folks. Favorite talks of the day ended up being:
+
+- Life After Legacy: The New Architecture Future, by Nico Corti and Riccardo Cipolleschi.
+- Legend List: Optimizing for Peak List Performance by Jay Meistrich
+- WebGPU === High performant 3D animations in React Native, by Krzysztof Piaskowy.
+
+Others were great as well, I don’t think there was a single one that I didn’t get something out of. Talks at App.js are really good (he says while being one the speakers himself; talk about implicit self-praise). I have no idea how the speakers are picked, but I’m guessing that the developers at Software Mansion have something to do with it?
+
+## Conference day 2 (Friday)
+
+The last day of the conference started with a little bit of a scare when I opened my laptop and for some reason Mac’s Spotlight couldn’t find my presentation at all. It wasn’t in Keynote either. I resigned almost immediately and was fully ready to spend most of my day redoing all the slides. However while having breakfast I discovered the Keynote presentation on my phone. I have no idea what it was doing there.
+
+My talk was the very last one of the conference, which to be honest is not the best spot to be since everyone is already itching to get to the after party and start drinking. In the worst case a lot of people have already slid back to their hotels to get ready for the evening. In this case the audience was still mostly there, and energy was good to talk a little bit about in-app purchases.
+
+This talk follows much of the same structure I gave at React Native London end of last year, with the first part focusing on the unique aspects of in-app purchases, and the last focusing on implementation. However I ended up including more statistics about how well React Native apps monetize. Gradually revealing the following points:
+
+> "React Native apps make more money…
+> …than Flutter apps
+> …and native apps."
+
+<Image
+  src={tweet}
+  alt='Tweet from user Simek: Did you know that for React Native apps are making more money than Flutter and even the native apps for  RevenueCat? Mid blowing right! 🤯 @plahteenlahti shares the data and breaks down monetization strategies you can implement today with their integrations.'
+/>
+
+got the response I was hoping for. All the insights about the state of monetization of React Native are based on RevenueCat’s State of Subscription Apps 2025 report, which you should read if you want to uncover industry secrets such as what length of subscriptions should you use with health and fitness apps for example.
+
+Otherwise talk went well, of course there’s still room for improvement and I would kinda like to make a live coding demo at some point. That could be for example showing how I add the necessary code parts and update the paywall in RevenueCat’s paywall editor and how those changes magically get updated on the app. However that would require stripping some fundamental info about subscriptions from the talk, so might need to rethink the whole structure to make more time.
+
+Oh I ran into some Finns after the talk. SOK people, if you’re reading this, I have a bunch of ideas on how to add in-app purchases to your apps. Let's chat.
+
+After the closing ceremony, the afterparty kicked off at the Museum of Japanese Art and Technology, which as a place is great. Due to its size it allows for many different types of spaces, from dancing to casual conversations. Well I mostly just enjoyed the latter ones, no dances for me. Ended up staying late enough, and just chatting and drinking with people.
+
+## Conclusion
+
+Great conference! Had even better experience than last year, and last year was also stellar. I will definitely apply to talk again next year. Just have to come up with a unique topic, since although in-app purchases are a nice topic, I would in all honesty talk about something else that has less risk of being a sponsor talk.
+
+You can by the way watch all the talks already from the live stream for [day 1 here](https://www.youtube.com/live/K2JTTKpptGs?si=ER9Nfir6Ba9BWp7r), and for [day 2 here](https://www.youtube.com/live/UTaJlqhTk2g?si=p6rdoOrTPYCtUfJD). My talk is on day 2 at [this time](https://www.youtube.com/live/UTaJlqhTk2g?si=p6rdoOrTPYCtUfJD&t=25906).
+
+Last, huge thanks to Software Mansion for organizing another amazing event. Already looking forward to next year; and maybe, just maybe, without jet lag.

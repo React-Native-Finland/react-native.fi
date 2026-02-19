@@ -1,0 +1,98 @@
+[
+  {
+    "slug": "react-native-helsinki-december-2024",
+    "title": "React Native Helsinki Meetup",
+    "date": "2024-12-12",
+    "startTime": "16:30",
+    "endTime": "18:30",
+    "timezone": "EET",
+    "venue": {
+      "name": "Futurice",
+      "address": "Kansakoulukatu 3, 00100",
+      "city": "Helsinki"
+    },
+    "host": "Mehrad M.",
+    "description": "The next React Native Helsinki Meetup is just around the corner! Join us to meet fellow developers and enthusiasts, learn from real-world experience, and help shaping our growing local community.",
+    "talks": [
+      {
+        "title": "Building Native Modules for Old & New Architecture",
+        "description": "How to create your own native modules with full backward compatibility.",
+        "level": "Intermediate",
+        "speaker": {
+          "name": "Ivan Osipov"
+        }
+      },
+      {
+        "title": "SQLite Inserts at the Speed of Light",
+        "description": "Learn how to achieve over 10x faster data ingestion into your on-device SQLite database.",
+        "level": "Beginner/Intermediate",
+        "speaker": {
+          "name": "Daniel Dunderfelt"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "react-native-helsinki-shipaton-september-2024",
+    "title": "React Native Helsinki, Shipaton Edition",
+    "date": "2024-09-05",
+    "startTime": "16:30",
+    "endTime": "19:00",
+    "timezone": "EEST",
+    "venue": {
+      "name": "Futurice",
+      "address": "Kansakoulukatu 3, 00100",
+      "city": "Helsinki"
+    },
+    "host": "Mehrad M.",
+    "description": "After a warm summer, it's the perfect time for the second React Native Helsinki event. This time in collaboration with Shipaton by RevenueCat. Whether you're a beginner or a pro, hopefully you'll find valuable insights here. Join us to connect with fellow developers, learn from real-world projects, and help to shape this growing local community.",
+    "talks": [
+      {
+        "title": "Subscriptions and Virtual Currencies - Monetizing Your React Native App",
+        "description": "Learn how to monetize your React Native app with subscriptions and virtual currencies.",
+        "speaker": {
+          "name": "Perttu Lähteenlahti",
+          "slug": "perttu-lahteenlahti"
+        }
+      },
+      {
+        "title": "Deep Linking in React Native",
+        "description": "Learn how to implement deep linking in your React Native applications.",
+        "speaker": {
+          "name": "Enbo Chen"
+        }
+      }
+    ]
+  },
+  {
+    "slug": "react-native-helsinki-launch-april-2024",
+    "title": "React Native Helsinki Launch Event",
+    "date": "2024-04-24",
+    "startTime": "16:30",
+    "endTime": "19:00",
+    "timezone": "EEST",
+    "venue": {
+      "name": "Witted Helsinki office",
+      "address": "Kaikukatu 4C",
+      "city": "Helsinki"
+    },
+    "host": "Mehrad M.",
+    "description": "We're excited to invite you to the React Native Helsinki Launch Event, the first official meetup of the community. This event is for anyone interested in building with React Native, whether you're just getting started or already building apps professionally. Come meet fellow developers, learn from real-life projects, and take part in shaping this new local community.",
+    "talks": [
+      {
+        "title": "Building Hybrid Native/Web Apps",
+        "description": "See how you can build web apps using React Native and convert existing web apps into native apps with practical, real-life examples.",
+        "speaker": {
+          "name": "Krister Kari"
+        }
+      },
+      {
+        "title": "React Native Accessibility 360",
+        "description": "How to build accessible apps in React Native. From design processes to hands-on development tips.",
+        "speaker": {
+          "name": "Jesse Ukkonen and Mehrad Mohammadi"
+        }
+      }
+    ]
+  }
+]

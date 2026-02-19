@@ -1,0 +1,74 @@
+[
+  {
+    "name": "App.js Conf",
+    "location": "Krakow, Poland",
+    "date": "May 2026",
+    "dateDetail": "May 27-29, 2026",
+    "description": "The biggest React Native & Expo conference. Three days of talks and workshops with creators from Meta, Microsoft, Shopify, and Amazon. 450+ attendees, 20k+ livestream views.",
+    "url": "https://appjs.co",
+    "tags": ["React Native", "Expo", "Europe"],
+    "recurring": "Annual (May)",
+    "cfpStatus": "Closes February 28, 2026",
+    "cfpUrl": "https://appjs.co"
+  },
+  {
+    "name": "React Summit",
+    "location": "Amsterdam, Netherlands",
+    "date": "June 2026",
+    "dateDetail": "June 12-16, 2026",
+    "description": "The biggest React conference worldwide with 10,000+ developers globally. Two tracks, 60+ speakers, and a dedicated React Native track with top mobile developers.",
+    "url": "https://reactsummit.com",
+    "tags": ["React", "React Native", "Netherlands"],
+    "recurring": "Annual (June)",
+    "cfpStatus": "Closes March 2, 2026",
+    "cfpUrl": "https://reactsummit.com"
+  },
+  {
+    "name": "Chain React",
+    "location": "Portland, Oregon, USA",
+    "date": "July 2026",
+    "dateDetail": "July 30-31, 2026",
+    "description": "The US React Native conference by Infinite Red & Expo. Now in its 6th year, featuring leaders from Meta, Amazon, Microsoft, and the global RN community.",
+    "url": "https://chainreactconf.com",
+    "tags": ["React Native", "USA", "Workshops"],
+    "recurring": "Annual (July)",
+    "cfpStatus": "TBA",
+    "cfpUrl": "https://chainreactconf.com"
+  },
+  {
+    "name": "React Universe Conf",
+    "location": "Wroclaw, Poland",
+    "date": "September 2026",
+    "dateDetail": "September 2026",
+    "description": "Formerly React Native EU, organized by Callstack. Three days covering React Native, React, and the broader ecosystem. 25+ speakers, 600+ developers, hands-on workshops.",
+    "url": "https://www.reactuniverseconf.com",
+    "tags": ["React Native", "React", "Europe"],
+    "recurring": "Annual (September)",
+    "cfpStatus": "Opens Spring 2026",
+    "cfpUrl": "https://www.reactuniverseconf.com"
+  },
+  {
+    "name": "React Native Connection",
+    "location": "Paris, France",
+    "date": "September 2026",
+    "dateDetail": "September 24, 2026",
+    "description": "The French React Native conference — a comprehensive, full-day event in Paris with French and international speakers. Great for networking and staying updated on RN trends.",
+    "url": "https://reactnativeconnection.io",
+    "tags": ["React Native", "France", "One Day"],
+    "recurring": "Annual (September)",
+    "cfpStatus": "Coming soon",
+    "cfpUrl": "https://reactnativeconnection.io"
+  },
+  {
+    "name": "React Native London Conf",
+    "location": "London, UK",
+    "date": "November 2026",
+    "dateDetail": "November 2026",
+    "description": "A two-day conference with hands-on workshops and 12+ sessions from speakers at Meta, Amazon, Expo, and Microsoft. 400 attendees in a historic London venue near Trafalgar Square.",
+    "url": "https://www.reactnativelondon.co.uk",
+    "tags": ["React Native", "UK", "Workshops"],
+    "recurring": "Annual (November)",
+    "cfpStatus": "TBA",
+    "cfpUrl": "https://www.reactnativelondon.co.uk"
+  }
+]

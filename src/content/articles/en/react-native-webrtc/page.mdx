@@ -1,0 +1,152 @@
+import { ArticleLayout } from '@/components/ArticleLayout';
+import { ArticleJsonLd } from '@/components/ArticleJsonLd';
+import Image from 'next/image';
+import speaking from './speaking.jpg';
+
+export const article = {
+  author: 'Perttu Lähteenlahti',
+  authorTagline: 'Developer Advocate at RevenueCat',
+  authorSlug: 'perttu-lahteenlahti',
+  canonical: 'https://perttu.dev/articles/react-native-webrtc',
+  date: '2024-09-30',
+  title: 'React Native WebRTC',
+  description:
+    'Full article version of the talk I gave at RTC.ON Conference 2024 about getting started with WebRTC in React Native',
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: {
+    canonical: 'https://perttu.dev/articles/react-native-webrtc',
+  },
+  openGraph: {
+    publishedTime: article.date,
+    modifiedTime: article.updated || article.date,
+    authors: [article.author],
+    title: article.title,
+    description: article.description,
+    url: 'https://perttu.dev/articles/react-native-webrtc',
+    siteName: 'React Native Finland',
+    locale: 'en_US',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: article.title,
+    description: article.description,
+  },
+  authors: [{ name: article.author }],
+};
+
+export default (props) => (
+  <>
+    <ArticleJsonLd article={article} />
+    <ArticleLayout article={article} {...props} />
+  </>
+);
+
+This is a work in progress article version of the talk I gave in Krakow at RTC.ON Conference 2024.
+In this article, I’ll guide you through using WebRTC in React Native. We’ll start with the motivations behind real-time media on mobile, introduce React Native WebRTC, and finally explore the limitations and potential improvements for mobile implementations.
+
+## Why WebRTC on Mobile?
+
+Real-time communication isn’t just a feature for companies anymore; it’s something customers expect. People want to video call doctors, live stream content, or chat with friends—functionality that’s increasingly common across various apps. With mobile phones being the primary device for many people to stay connected, building for mobile becomes a natural first step for real-time communication applications.
+
+## Why React Native?
+
+WebRTC on the web has proven to be fairly straightforward, and thankfully, the complexity doesn’t have to increase significantly on mobile—thanks to React Native. In case you’re unfamiliar, React Native is essentially JavaScript-based technology that enables cross-platform app development for iOS, Android, TVs, and even cars. What makes it effective is its ability to leverage web knowledge in a mobile environment and stay close to native APIs.
+
+React Native provides a relatively quick way to get apps up and running in the app stores, and in my experience, the cross-platform aspect is highly efficient.
+
+## How to Get Started
+
+To start a new React Native project, I recommend using Expo, a framework that simplifies access to native APIs, deployment, and rapid prototyping. To create a new Expo app:
+
+`npx create-expo-app@latest`
+
+Run the project with:
+
+`npx expo start`
+
+Now we have one small thing we need to take in to consideration, we need to run npx expo prebuild so that we can start using the native code parts as well.
+
+`npx expo prebuild`
+
+Next we need to think about how to integrate WebRTC to our project. We thankfully don’t have to look far since in react-native it is usually enough to just write “react native” and the technology you’re interested in, so let’s do react-native-webrtc and lo and behold, we have react native webrtc package!
+
+## React Native WebRTC
+
+Most of the functionality that react-native-webrtc provides is identical to that of web. So for example these are most likely familiar to you if you’ve worked on WebRTC before. If not, worry not, let’s look at some basic things:
+
+```javascript
+import {
+  ScreenCapturePickerView,
+  RTCPeerConnection,
+  RTCIceCandidate,
+  RTCSessionDescription,
+  RTCView,
+  MediaStream,
+  MediaStreamTrack,
+  mediaDevices,
+  registerGlobals,
+} from 'react-native-webrtc';
+```
+
+### Getting local stream
+
+WebRTC provides standard APIs for accessing cameras and microphones on computers and smartphones, same goes for React Native WebRTC. We can access these devices through the get mediaDevices API:
+
+```javascript
+const mediaStream = await mediaDevices.getUserMedia();
+```
+
+By default react-native-webrtc expects us to send both audio and video. To limit this we can define media constraints:
+
+```javascript
+let mediaConstraints = {
+  audio: true,
+  video: {
+    frameRate: 30,
+    facingMode: 'user',
+  },
+};
+```
+
+If we want to share our screen we can use
+
+```javascript
+const mediaStream = await mediaDevices.getDisplayMedia();
+```
+
+To actually display anything we can make use of the `<RTCView />` component to render both local and remote streams:
+
+And there we have it, a very quick, but working implementation of WebRTC on React Native.
+
+### Additional Packages for a Full Video Calling App
+
+For a complete calling experience, consider adding:
+
+    •	react-native-incall-manager: Manages events like headset plug-ins.
+    •	react-native-callkeep: Integrates your app with native call screens.
+
+## WebRTC Across Platforms
+
+The beauty of React Native WebRTC is that it works seamlessly on iOS and Android, requiring minimal platform-specific code—only permissions differ between platforms. Performance holds up well, though lower-end Android devices may struggle slightly.
+
+Beyond mobile, React Native WebRTC opens possibilities for platforms like tvOS and even web through React Native Web. The react-native-webrtc-web-shim allows you to extend your React Native app to the web, making it possible to build a mobile-first, cross-platform app supporting WebRTC.
+
+## Limitations of React Native WebRTC
+
+While react-native-webrtc offers a solid foundation, it’s primarily geared toward voice and video calls. For example, if you’re using it solely for streaming, the package still requires microphone permissions, which can be a roadblock. In our project, we customized our instance of react-native-webrtc to avoid this.
+
+Another limitation is the lack of picture-in-picture (PIP) support on mobile. PIP currently only functions within the app, not when users switch to other apps. However, recent developments suggest iOS PIP support might be on the way.
+
+## Conclusion
+
+React Native WebRTC makes implementing real-time communication feasible on mobile, with extensive cross-platform support. While there are limitations, its flexibility allows it to serve various real-time media needs. Whether you’re building a video-calling app or incorporating streaming features, React Native WebRTC is a powerful choice that could simplify your development process.
+
+<Image
+  src={speaking}
+  alt='Perttu Lähteenlahti speaking at RTC.ON Conference 2024'
+/>

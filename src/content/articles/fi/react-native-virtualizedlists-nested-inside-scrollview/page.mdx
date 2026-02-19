@@ -1,0 +1,142 @@
+import { ArticleLayout } from '@/components/ArticleLayout';
+import { ArticleJsonLd } from '@/components/ArticleJsonLd';
+import { Callout } from '@/components/Callout';
+
+export const article = {
+  author: 'Perttu Lähteenlahti',
+  authorTagline: 'Developer Advocate at RevenueCat',
+  authorSlug: 'perttu-lahteenlahti',
+  canonical:
+    'https://perttu.dev/articles/react-native-virtualizedlists-nested-inside-scrollview',
+  date: '2020-06-13',
+  updated: '2025-12-01',
+  title:
+    "Fix 'VirtualizedLists should never be nested inside plain ScrollViews' in React Native",
+  description:
+    "How to fix the 'VirtualizedLists should never be nested inside plain ScrollViews with the same orientation' warning in React Native using ListHeaderComponent and ListFooterComponent.",
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: {
+    canonical:
+      'https://perttu.dev/articles/react-native-virtualizedlists-nested-inside-scrollview',
+  },
+  creator: article.author,
+  publisher: article.author,
+  robots: 'index, follow',
+  keywords:
+    'React Native, VirtualizedLists, ScrollView, warning, fix, nested, plain ScrollViews, error, FlatList, SectionList',
+  openGraph: {
+    publishedTime: article.date,
+    modifiedTime: article.updated || article.date,
+    authors: [article.author],
+    title: article.title,
+    description: article.description,
+    url: 'https://perttu.dev/articles/react-native-virtualizedlists-nested-inside-scrollview',
+    siteName: 'React Native Finland',
+    locale: 'en_US',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: article.title,
+    description: article.description,
+  },
+  authors: [{ name: article.author }],
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
+export default (props) => (
+  <>
+    <ArticleJsonLd article={article} />
+    <ArticleLayout article={article} {...props} />
+  </>
+);
+
+When developing with React Native and nesting `FlatList` or `SectionList` components inside a plain `ScrollView`, your debugger might display the following warning:
+
+<Callout variant='error' title='React Native Error'>
+  VirtualizedLists should never be nested inside plain ScrollViews with the same
+  orientation because it can break windowing and other functionality - use
+  another VirtualizedList-backed container instead.
+</Callout>
+
+This warning pretty much tells what it is about. What it doesn't tell is why this is bad and how to fix the warning (other than changing the orientation of the nested VirtualizedList, but that is not always possible). Let's look at why this happens and how to fix it.
+
+### Why nesting VirtualizedList inside a plain ScrollView is bad?
+
+Virtualized lists, such as `<SectionList>` and `<FlatList>`, are performance-optimized, meaning they massively improve memory consumption and performance when rendering large lists of content. The way this optimization works is by rendering only the content currently visible in the window, usually the container/screen of your device. It also replaces all other list items with same-sized blank spaces and renders them based on your scrolling position.
+
+Now, if you put either of these two lists inside a ScrollView, they fail to calculate the size of the current window and will instead try to render everything, possibly causing performance problems, and, of course, it will also give you the warning mentioned before.
+
+### How to fix this warning the right way
+
+The fix to this warning is simpler than you think: get rid of the `ScrollView`, and place all the components that surround the `FlatList` inside `ListFooterComponent` and `ListHeaderComponent`.
+
+Let's see how this works in practice. In this example, we have an app where the user can scroll through different recipes. The main view consists of a `ScrollView`, and inside that view, we have a collection of components such as a header, a footer, some text, and a cover photo. It looks something like this:
+
+```tsx
+const Main = () => {
+  return (
+    <ScrollView>
+      <CoverPhoto src={images[0]} />
+      <Title>Welcome</Title>
+      <Text>Take a look at the list of recipes below:</Text>
+      <Footer />
+    </ScrollView>
+  );
+};
+```
+
+Now, say we want to list all the recipes under the last Text element using `FlatList`, after which it would look something like this:
+
+```tsx
+const Main = () => {
+  const renderItem = (item, index) => {
+    return <Recipe key={index} recipe={item} />;
+  };
+
+  return (
+    <ScrollView>
+      <CoverPhoto src={images[0]} />
+      <Title>Welcome</Title>
+      <Text>Take a look at the list of recipes below:</Text>
+      <FlatList data={recipes} renderItem={renderItem} />
+      <Footer />
+    </ScrollView>
+  );
+};
+```
+
+This will, of course, give you the warning mentioned before, and you will also not be able to use the performance features `FlatList` offers. That is why we are going to get rid of the `ScrollView` completely and instead use the `ListFooterComponent` and `ListHeaderComponent` props like so:
+
+```tsx
+const Main = () => {
+  const renderItem = (item, index) => {
+    return <Recipe key={index} recipe={item} />;
+  };
+
+  return (
+    <FlatList
+      ListHeaderComponent={() => (
+        <>
+          <CoverPhoto src={images[0]} />
+          <Title>Welcome</Title>
+          <Text>Take a look at the list of recipes below:</Text>
+        </>
+      )}
+      data={recipes}
+      renderItem={renderItem}
+      ListFooterComponent={() => <Footer />}
+    />
+  );
+};
+```
+
+Both props only accept one component, so we wrapped the components in the `ListHeaderComponent` with Fragments. But there you have it: no more warnings, and everything still looks the same.

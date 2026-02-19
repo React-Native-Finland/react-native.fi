@@ -1,0 +1,98 @@
+import { ArticleLayout } from '@/components/ArticleLayout';
+import { ArticleJsonLd } from '@/components/ArticleJsonLd';
+import Image from 'next/image';
+import { Keyboard } from '@/components/Keyboard';
+import MenuImage from './developer-menu.png';
+
+export const article = {
+  author: 'Perttu Lähteenlahti',
+  authorTagline: 'Developer Advocate at RevenueCat',
+  authorSlug: 'perttu-lahteenlahti',
+  canonical:
+    'https://perttu.dev/articles/adding-custom-options-to-react-native-developer-menu',
+  date: '2023-12-02',
+  title: 'Mukautettujen toimintojen lisääminen React Native Developer Menuun',
+  description:
+    'React Native Developer Menua voi laajentaa omilla toiminnoilla DevSettings-moduulin avulla.',
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: {
+    canonical:
+      'https://perttu.dev/articles/adding-custom-options-to-react-native-developer-menu',
+  },
+  openGraph: {
+    publishedTime: article.date,
+    modifiedTime: article.updated || article.date,
+    authors: [article.author],
+    title: article.title,
+    description: article.description,
+    url: 'https://perttu.dev/articles/adding-custom-options-to-react-native-developer-menu',
+    siteName: 'React Native Finland',
+    locale: 'fi_FI',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: article.title,
+    description: article.description,
+  },
+  authors: [{ name: article.author }],
+};
+
+export default (props) => (
+  <>
+    <ArticleJsonLd article={article} />
+    <ArticleLayout article={article} {...props} />
+  </>
+);
+
+TLDR: React Native Developer Menuun voi lisätä omia toimintoja. Jos Developer Menu on sinulle jo tuttu, [siirry suoraan mukauttamista käsittelevään osioon](#developer-menun-mukauttaminen).
+
+## Mikä on React Native Developer Menu
+
+Kun ajat React Native -sovellusta kehitystilassa, käytettävissä on erillinen Developer Menu. Sen voi avata joko ravistamalla fyysistä laitetta (ei simulaattoria) tai käyttämällä seuraavia näppäinoikoteitä:
+
+- iOS <Keyboard>Cmd ⌘</Keyboard> + <Keyboard>D</Keyboard>
+- Android <Keyboard>Cmd ⌘</Keyboard> + <Keyboard>M</Keyboard>
+
+Jompikumpi näistä avaa Developer Menun, joka näyttää tältä:
+
+<Image src={MenuImage} alt='React Native Developer menu' />
+
+Alla on lyhyt kuvaus valikon oletustoiminnoista:
+
+1. **Reload**  
+   Lataa sovelluksen uudelleen käyttäen Metro Bundlerin tuottamaa uusinta JavaScript-koodia.
+
+2. **Open Debugger**  
+   Avaa selaimeen JavaScript-debuggerin Chrome DevToolsin avulla.
+
+3. **Open React DevTools**  
+   Avaa React DevTools -työkalun React-komponenttipuun tarkastelua varten.
+
+4. **Show Inspector**  
+   Aktivoi työkalun, jolla voi tarkastella ja muokata React Native -komponenttien layoutia ja tyylejä.
+
+5. **Show Inspector**  
+   Mahdollistaa käyttöliittymäelementtien tarkastelun napauttamalla niitä.
+
+6. **Disable Fast Refresh**  
+   Poistaa Fast Refresh -toiminnon käytöstä, jolloin sovellus ei lataudu automaattisesti koodimuutosten yhteydessä.
+
+7. **Configure Bundler**  
+   Tarjoaa asetukset Metro Bundlerin konfigurointiin.
+
+8. **Show Perf Monitor**  
+   Näyttää suorituskykymittarin, kuten FPS- ja CPU-käytön, reaaliajassa.
+
+## Developer Menun mukauttaminen
+
+React Native mahdollistaa omien valintojen lisäämisen Developer Menuun DevSettings-moduulin kautta.
+
+Tuo `DevSettings` moduuli `react-native`-paketista:
+
+```typescript
+import { DevSettings } from 'react-native';

@@ -1,0 +1,350 @@
+{
+  "metadata": {
+    "title": "React Native Suomi | Meetupit, Kehittäjät & Tutoriaalit",
+    "description": "React Native -yhteisö Suomessa. Osallistu Helsingin meetuppeihin, löydä suomalaisia RN-kehittäjiä, opi Helsingin yliopiston MOOC-kurssilta ja lue käytännön tutoriaaleja.",
+    "homeTitle": "React Native Suomi | Rakenna cross-platform-sovelluksia suomalaisen yhteisön kanssa",
+    "homeDescription": "Liity Suomen React Native -yhteisöön. Helsingin meetupit, kehittäjähakemisto, ilmainen Helsingin yliopiston MOOC ja tutoriaaleja RN-sovelluksia toimittavilta kehittäjiltä."
+  },
+  "nav": {
+    "events": "Tapahtumat",
+    "articles": "Artikkelit",
+    "developers": "Kehittäjät",
+    "openMenu": "Avaa valikko",
+    "closeMenu": "Sulje valikko",
+    "siteName": "React Native Suomi",
+    "siteNameShort": "RN Suomi"
+  },
+  "hero": {
+    "badge": "Meetupit Helsingissä. Sisältöä suomeksi ja englanniksi.",
+    "seeEvents": "Katso tulevat tapahtumat",
+    "title": "Rakenna React Native -sovelluksia Suomessa",
+    "description": "Yhteisö kehittäjille, jotka toimittavat cross-platform-sovelluksia Helsingistä Ouluun. Osallistu meetuppeihin, opi Helsingin yliopiston MOOC-kurssilta ja verkostoidu pohjoismaisten RN-kehittäjien kanssa.",
+    "viewEvents": "Osallistu seuraavaan meetuppiin",
+    "learnMore": "Selaa tutoriaaleja"
+  },
+  "home": {
+    "introTitle": "Miksi React Native Suomessa?",
+    "introDescription": "Suomi on ylittänyt painoluokkansa mobiilissa vuosikymmeniä. Nokian perinnöstä tämän päivän kukoistavaan startup-skeneen — suomalaiset kehittäjät ovat toimittaneet mobiilisovelluksia jo kauan. React Native sopii tähän täydellisesti, ja tämä yhteisö yhdistää tekijät.",
+    "exploreTitle": "Kehittäjät, meetupit, tutoriaalit",
+    "exploreSubtitle": "Kaikki mitä tarvitset RN-kehitykseen Suomessa",
+    "events": {
+      "title": "Meetupit",
+      "count": "{count} tapahtumaa tähän mennessä",
+      "description": "Teknisiä puheita suomalaisilta RN-insinööreiltä. Oikeita keskusteluja, ilmaista pizzaa ja aitoa verkostoitumista.",
+      "cta": "Katso tulevat puheet"
+    },
+    "developers": {
+      "title": "Kehittäjähakemisto",
+      "count": "{count} listattua kehittäjää",
+      "description": "Etsitkö tekijää? Tarvitsetko konsulttia? Selaa Suomessa toimivia React Native -osaajia — tai lisää itsesi löydettäväksi.",
+      "cta": "Löydä RN-osaajia"
+    },
+    "articles": {
+      "title": "Tutoriaalit",
+      "count": "{count} opasta & syväsukellusta",
+      "description": "Käytännön tutoriaaleja kehittäjiltä, jotka toimittavat RN-sovelluksia päivittäin. Suorituskyky, animaatiot, native-moduulit — ei täytettä.",
+      "cta": "Aloita lukeminen"
+    },
+    "learn": {
+      "title": "Ilmainen MOOC-kurssi",
+      "subtitle": "Helsingin yliopisto",
+      "description": "Mobile Development MOOC on yksi maailman parhaista ilmaisista React Native -kursseista. Saman tiimin tekemä kuin kuuluisa fullstackopen.com.",
+      "cta": "Suorita kurssi"
+    },
+    "community": {
+      "title": "Toimita RN-sovelluksia kanssamme",
+      "description": "Olitpa oppimassa React Nativea, palkkaamassa kehittäjiä tai vain haluat nörtteillä mobiilista — olet oikeassa paikassa.",
+      "ctaPrimary": "Ilmoittaudu Meetupissa",
+      "ctaSecondary": "Selaa sivustoa"
+    },
+    "faq": {
+      "title": "Usein kysytyt kysymykset",
+      "questions": [
+        {
+          "question": "Miten liityn React Native Helsinki -meetuppeihin?",
+          "answer": "Liity Meetup.com-ryhmäämme osoitteessa meetup.com/react-native-helsinki saadaksesi ilmoituksia tulevista tapahtumista. Tapahtumat ovat ilmaisia ja avoimia kaikille React Nativesta kiinnostuneille."
+        },
+        {
+          "question": "Onko Helsingin yliopiston React Native -kurssi ilmainen?",
+          "answer": "Kyllä! Helsingin yliopiston Mobile Development MOOC on täysin ilmainen. Sen on rakentanut sama tiimi kuin fullstackopen.com:in, ja se kattaa React Nativen perusteista edistyneisiin aiheisiin."
+        },
+        {
+          "question": "Miten lisään itseni kehittäjähakemistoon?",
+          "answer": "Lähetä pull request GitHubissa lisätäksesi profiilisi. Sinun tulee lisätä JSON-merkintä tiedostoon src/data/developers.json, joka sisältää nimesi, osaamisesi, saatavuutesi ja some-linkkisi."
+        },
+        {
+          "question": "Voinko sponsoroida React Native Helsinki -tapahtumia?",
+          "answer": "Kyllä! Etsimme aina sponsoreita auttamaan tilavuokrissa, ruoassa ja juomissa. Sponsorit saavat näkyvyyttä suomalaisessa React Native -yhteisössä. Ota yhteyttä GitHubin tai Meetupin kautta."
+        }
+      ]
+    }
+  },
+  "footer": {
+    "siteName": "React Native Suomi",
+    "tagline": "React Native -kehittäjien yhteisökeskus Suomessa",
+    "builtBy": "Tekijä:"
+  },
+  "articles": {
+    "pageTitle": "Opi React Native | Ilmaiset tutoriaalit, MOOC-kurssi & oppaat",
+    "pageDescription": "Opi React Native ilmaisella Helsingin yliopiston MOOC-kurssilla ja suomalaisten kehittäjien käytännön tutoriaaleilla. Suorituskyky, animaatiot, native-moduulit.",
+    "header": "Opi & Kehity",
+    "title": "Opi React Native Suomessa",
+    "description": "Olitpa täysin uusi mobiilisovelluskehityksessä tai haluat syventää React Native -osaamistasi, tämä sivu kokoaa parhaat oppimisresurssit ja yhteisön tuottaman sisällön Suomessa.",
+    "startCourse": "Aloita Helsingin MOOC-kurssi",
+    "moocTitle": "Helsingin yliopiston Mobile Development MOOC",
+    "moocDescription": "Helsingin yliopiston Mobile Development MOOC on yksi vahvimmista johdatuksista React Nativeen maailmassa. Se kattaa modernin JavaScriptin, keskeiset mobiilikonseptit ja käytännön sovelluskehityksen.",
+    "startTheCourse": "Aloita kurssi",
+    "communityArticles": "Yhteisön artikkelit",
+    "communityDescription": "Suomalaisen React Native -yhteisön kirjoittamia artikkeleita — tutoriaaleista ja syväsukelluksista tapaustutkimuksiin ja projektikuvauksiin.",
+    "heroAlt": "React Native -artikkelit ja oppimisresurssit"
+  },
+  "developers": {
+    "pageTitle": "Palkkaa React Native -kehittäjiä Suomesta | Kehittäjähakemisto",
+    "pageDescription": "Löydä ja palkkaa React Native -kehittäjiä, konsultteja ja insinöörejä Suomesta. Selaa hakemistoa tai lisää profiilisi löydettäväksi.",
+    "title": "React Native -kehittäjähakemisto",
+    "description": "Suomen React Native -osaajien päälista. Olitpa palkkaamassa projektiin tai etsimässä seuraavaa mahdollisuuttasi — täällä suomalaiset RN-kehittäjät tulevat löydetyiksi.",
+    "addYourself": "Listaudu",
+    "addDescription": "Oletko React Native -kehittäjä Suomessa? Lisää profiilisi saadaksesi näkyvyyttä rekrytoijille, verkostoituaksesi yhteisön kanssa ja esitelläksesi osaamistasi.",
+    "viewOnGithub": "Lisää profiilisi GitHubissa",
+    "heroAlt": "React Native -kehittäjät Suomessa",
+    "forHiring": "Rekrytoijille",
+    "forHiringDescription": "Haluatko rakentaa tai kasvattaa React Native -tiimiä Suomessa? Selaa profiileja alla tai ota yhteyttä sponsorointimahdollisuuksista.",
+    "howToAdd": "Näin lisäät profiilisi",
+    "howToAddDescription": "Lisääminen vie 5 minuuttia. Näin teet sen:",
+    "steps": [
+      {
+        "title": "Forkkaa repositorio",
+        "description": "Mene osoitteeseen github.com/React-Native-Finland/react-native.fi ja klikkaa 'Fork' luodaksesi oman kopion."
+      },
+      {
+        "title": "Lisää profiilisi",
+        "description": "Lisää tietosi src/data/developers.json-tiedostoon alla olevan mallin mukaisesti."
+      },
+      {
+        "title": "Lisää kuvasi",
+        "description": "Laita kasvokuvasi public/images/-kansioon (neliö, vähintään 400x400px)."
+      },
+      {
+        "title": "Avaa pull request",
+        "description": "Lähetä muutoksesi ja tarkistamme ja yhdistämme ne muutaman päivän sisällä."
+      }
+    ],
+    "templateTitle": "Profiilimalli",
+    "templateDescription": "Kopioi tämä malli ja täytä tietosi:",
+    "startPR": "Avaa GitHub aloittaaksesi"
+  },
+  "events": {
+    "pageTitle": "React Native Helsinki Meetupit & Tapahtumat | React Native Suomi",
+    "pageDescription": "Osallistu React Native Helsinki -meetuppeihin — teknisiä puheita, työpajoja ja verkostoitumista suomalaisten mobiilinkehittäjien kanssa. Ilmaisia tapahtumia ja aitoa yhteisöä.",
+    "title": "Tapahtumat",
+    "description": "Osallistu React Native Helsinki -tapaamisiin, tapaa kehittäjiä, kuuntele teknisiä puheita ja ole osa suomalaista React Native -yhteisöä.",
+    "upcoming": "Tulevat tapahtumat",
+    "past": "Menneet tapahtumat",
+    "upcomingBadge": "Tulossa",
+    "talks": "{count, plural, one {# puhe} other {# puhetta}}",
+    "neverMiss": "Älä jää paitsi tapahtumista",
+    "neverMissDescription": "Liity Meetup.com:iin saadaksesi ilmoituksia tulevista React Native Helsinki -tapahtumista ja varaa paikkasi.",
+    "joinMeetup": "Liity Meetup.com:issa",
+    "heroAlt": "React Native Helsinki -tapahtumat"
+  },
+  "article": {
+    "by": "Kirjoittanut",
+    "originallyPublished": "Tämä artikkeli julkaistiin alun perin osoitteessa"
+  },
+  "social": {
+    "x": "X",
+    "linkedin": "LinkedIn",
+    "github": "GitHub",
+    "website": "Verkkosivu"
+  },
+  "common": {
+    "readMore": "Lue lisää",
+    "viewAll": "Katso kaikki",
+    "loading": "Ladataan...",
+    "error": "Jotain meni pieleen",
+    "notFound": "Ei löytynyt"
+  },
+  "images": {
+    "eventsAlt": "React Native Helsinki -tapahtumat",
+    "developersAlt": "React Native -kehittäjät Suomessa",
+    "articlesAlt": "React Native -artikkelit",
+    "learnAlt": "Opi React Native"
+  },
+  "sponsors": {
+    "pageTitle": "Sponsoroi React Native Helsinki | Tavoita suomalaiset mobiilinkehittäjät",
+    "pageDescription": "Sponsoroi React Native Helsinki -meetuppeja ja tavoita suomalainen mobiilinkehitysyhteisö. Saa brändisi lahjakkaiden React Native -kehittäjien eteen.",
+    "title": "Sponsoroi React Native Helsinki",
+    "subtitle": "Saa brändisi Suomen React Native -yhteisön eteen",
+    "description": "React Native Helsinki on Pohjoismaiden suurin React Native -meetup. Tapahtumiemme sponsorointi tuo yrityksellesi näkyvyyttä lahjakkaiden mobiilinkehittäjien, potentiaalisten palkattavien ja cross-platform-sovelluksia rakentavien päättäjien keskuudessa.",
+    "whySponsor": "Miksi sponsoroida?",
+    "benefits": [
+      {
+        "title": "Tavoita pätevät kehittäjät",
+        "description": "Yleisömme on 100% React Native -kehittäjiä — ei kohinaa, vain ihmiset jotka rakentavat mobiilisovelluksia Suomessa."
+      },
+      {
+        "title": "Rekrytointiputki",
+        "description": "Haluatko kasvattaa tiimiäsi? Tapahtumien sponsorointi vie sinut kehittäjien eteen, jotka voivat olla seuraava palkkaamasi."
+      },
+      {
+        "title": "Bränditietoisuus",
+        "description": "Logonäkyvyys tapahtumasivuilla, maininnat meetupeissa ja viestinnässämme."
+      },
+      {
+        "title": "Yhteisön goodwill",
+        "description": "Yhteisön tukeminen rakentaa aitoja suhteita ja asemoi sinut yrityksenä, joka antaa takaisin."
+      }
+    ],
+    "whatYouGet": "Mitä sponsorit saavat",
+    "packages": [
+      {
+        "name": "Tapahtumasponsori",
+        "description": "Sponsoroi yksittäinen meetup-tapahtuma",
+        "includes": [
+          "Logo tapahtumasivulla",
+          "2 minuutin esittely tapahtumassa",
+          "Some-maininta",
+          "Tapahtuman jälkeinen kiitos"
+        ]
+      },
+      {
+        "name": "Tilansponsori",
+        "description": "Isännöi meetup toimistollasi",
+        "includes": [
+          "Kaikki tapahtumasponsori-edut",
+          "Tilasi tapahtumapaikkana",
+          "Laajempi yritysesittely",
+          "Verkostoitumismahdollisuus osallistujien kanssa"
+        ]
+      }
+    ],
+    "cta": "Kiinnostaako sponsorointi?",
+    "ctaDescription": "Ota yhteyttä keskustellaksesi sponsorointimahdollisuuksista. Olemme joustavia ja mielellämme räätälöimme paketin tavoitteisiisi sopivaksi.",
+    "contactButton": "Ota yhteyttä GitHubissa",
+    "contactEmail": "Tai lähetä meille sähköpostia"
+  },
+  "testimonials": {
+    "title": "Mitä yhteisö sanoo",
+    "placeholder": "Keräämme palautetta yhteisöltämme. Tarkista kohta palautteet kehittäjiltä, jotka ovat osallistuneet meetupeihimme ja käyttäneet resurssejamme.",
+    "joinCommunity": "Liity yhteisöön",
+    "contribute": "Jaa kokemuksesi",
+    "contributeDescription": "Oletko osallistunut meetuppiin? Ovatko tutoriaalimme auttaneet? Haluaisimme kuulla sinusta.",
+    "howToContribute": "Näin jätät palautteen",
+    "howToContributeDescription": "Se vie vain minuutin:",
+    "contributeSteps": [
+      {
+        "title": "Avaa GitHub-keskustelu",
+        "description": "Siirry repomme Discussions-välilehdelle ja luo uusi viesti."
+      },
+      {
+        "title": "Jaa kokemuksesi",
+        "description": "Kerro kokemuksestasi React Native Helsingin kanssa — meetupit, artikkelit tai yhteisö."
+      },
+      {
+        "title": "Lisää tietosi",
+        "description": "Lisää nimesi, roolisi, yritys (valinnainen) ja kuva halutessasi."
+      }
+    ],
+    "submitButton": "Jaa palautteesi",
+    "orEmail": "Tai lähetä sähköpostia osoitteeseen"
+  },
+  "consulting": {
+    "pageTitle": "React Native -konsultointi ja -kehityksen ulkoistus Suomessa",
+    "pageDescription": "Palkkaa React Native -konsultteja ja kehitystiimejä Suomesta. Mobiilisovellusten kehitys, React Native -migraatio, suorituskyvyn optimointi ja jatkuva tuki suomalaisilta kehittäjiltä.",
+    "keywords": "React Native konsultointi, React Native ulkoistus, React Native kehitys Suomi, React Native kehittäjä, ulkoistaminen React Native kehitys, mobiilisovelluskehitys Suomi, React Native konsultti",
+    "title": "React Native -konsultointi ja kehityksen ulkoistus",
+    "subtitle": "Löydä kokeneita React Native -konsultteja ja kehitystiimejä Suomesta. Uusista sovelluksista migraatioprojekteihin — oikea osaaminen mobiiliprojektiisi.",
+    "ctaBrowse": "Selaa kehittäjiä",
+    "ctaContact": "Ota yhteyttä",
+    "servicesTitle": "Mitä suomalaiset RN-konsultit tarjoavat",
+    "servicesSubtitle": "Suomalaiset React Native -kehittäjät työskentelevät startupeissa, toimistoissa ja yritysasiakkaiden kanssa.",
+    "services": [
+      {
+        "title": "Uuden sovelluksen kehitys",
+        "description": "Rakenna cross-platform iOS- ja Android-sovelluksia alusta alkaen React Nativella ja Expolla. Suomalaiset kehittäjät tuovat syvää kokemusta tuotantoon vietyjen sovellusten tekemisestä."
+      },
+      {
+        "title": "Migraatio React Nativeen",
+        "description": "Siirrä olemassa oleva natiivi iOS- tai Android-sovelluksesi React Nativeen. Saat yhden koodipohjan ilman suorituskyvyn tai natiivin tuntuman uhraamista."
+      },
+      {
+        "title": "Suorituskyvyn optimointi",
+        "description": "Korjaa hitaat renderöinnit, pienennä bundle-kokoa, poista nykiminen. Suomalaiset RN-asiantuntijat profiloivat sovelluksesi ja toteuttavat mitattavia parannuksia."
+      },
+      {
+        "title": "Koodikatselmus ja arkkitehtuuri",
+        "description": "Hanki asiantuntijan arvio React Native -koodipohjaasi. Arkkitehtuurikatselmukset, parhaiden käytäntöjen auditointi ja konkreettiset suositukset."
+      }
+    ],
+    "whyTitle": "Miksi ulkoistaa React Native -kehitys Suomeen?",
+    "whySubtitle": "Suomella on vahva perinne mobiilisovelluskehityksessä Nokian ajoista tämän päivän kukoistavaan tech-skeneen.",
+    "why": [
+      {
+        "title": "Syvä mobiiliperintö",
+        "description": "Suomalaiset kehittäjät ovat rakentaneet mobiilisovelluksia jo ennen älypuhelimia. Tämä kokemus näkyy parempina React Native -arkkitehtuuripäätöksinä."
+      },
+      {
+        "title": "Eurooppa-ystävällinen aikavyöhyke",
+        "description": "GMT+2/+3 aikavyöhyke tekee Suomesta ihanteellisen eurooppalaisille asiakkaille. Myös aamupäivän päällekkäisyys USA:n itärannikon kanssa."
+      },
+      {
+        "title": "Erinomainen englannin taito",
+        "description": "Suomi on jatkuvasti parhaiden ei-natiivien englanninkielisten maiden joukossa. Kommunikaatio ei ole koskaan este."
+      }
+    ],
+    "developersTitle": "Selaa React Native -kehittäjiä",
+    "developersSubtitle": "Hakemistossamme on {count}+ React Native -kehittäjää Suomesta. Suodata osaamisen, saatavuuden ja erikoistumisen mukaan.",
+    "faqTitle": "Usein kysytyt kysymykset",
+    "faq": [
+      {
+        "question": "Miten palkkaan React Native -konsultin Suomesta?",
+        "answer": "Selaa kehittäjähakemistoamme löytääksesi React Native -osaajia Suomesta. Jokainen profiili sisältää osaamisen, saatavuuden ja yhteystiedot. Voit ottaa suoraan yhteyttä tai julkaista GitHub-keskusteluissamme."
+      },
+      {
+        "question": "Mitä React Native -konsultointi maksaa Suomessa?",
+        "answer": "React Native -konsulttien hinnat Suomessa ovat tyypillisesti 80-150 €/tunti kokemuksesta ja projektin laajuudesta riippuen. Tiimitoimeksiannoilla ja pidemmillä projekteilla voi olla erilainen hinnoittelu."
+      },
+      {
+        "question": "Voivatko suomalaiset React Native -kehittäjät työskennellä etänä?",
+        "answer": "Kyllä. Useimmat React Native -konsultit Suomessa työskentelevät etänä ja ovat kokeneita hajautettujen tiimien kanssa. Suomen aikavyöhyke (GMT+2/+3) sopii hyvin eurooppalaisille ja USA:n itärannikon asiakkaille."
+      },
+      {
+        "question": "Pitäisikö valita React Native vai natiivikehitys?",
+        "answer": "React Native on ihanteellinen kun tarvitset sovelluksen sekä iOS- että Android-alustalle yhdellä tiimillä. Sitä käyttävät Meta, Microsoft, Shopify ja tuhannet tuotantosovellukset. Kehittäjämme voivat auttaa arvioimaan sopiiko React Native juuri sinun käyttötapaukseesi."
+      }
+    ],
+    "ctaTitle": "Valmis rakentamaan?",
+    "ctaDescription": "Löydä oikea React Native -osaaminen projektiisi. Selaa kehittäjähakemistoamme tai ota yhteyttä keskustellaksesi tarpeistasi."
+  },
+  "jobs": {
+    "pageTitle": "React Native -työpaikat Suomessa | Löydä RN-kehittäjäpositioita",
+    "pageDescription": "Löydä React Native -kehittäjätyöpaikkoja Suomesta. Selaa avoimia positioita suomalaisista yrityksistä tai julkaise työpaikkailmoitus tavoittaaksesi RN-yhteisön.",
+    "title": "React Native -työpaikat Suomessa",
+    "subtitle": "Avoimia positioita yrityksiltä, jotka palkkaavat RN-kehittäjiä",
+    "description": "Etsitkö seuraavaa React Native -roolia Suomessa? Tämä sivu listaa avoimia positioita suomalaisista yrityksistä. Rakennamme tätä ominaisuutta — palaa pian tai liity Meetup-ryhmäämme verkostoituaksesi suoraan palkkaavien yritysten kanssa.",
+    "comingSoon": "Tulossa pian",
+    "comingSoonDescription": "Rakennamme työpaikkataululua. Sillä välin:",
+    "alternatives": [
+      {
+        "title": "Selaa kehittäjähakemistoa",
+        "description": "Yritykset ottavat usein suoraan yhteyttä listattuihin kehittäjiin",
+        "cta": "Katso kehittäjät",
+        "href": "/developers"
+      },
+      {
+        "title": "Osallistu meetuppeihin",
+        "description": "Monet rekrytointikeskustelut tapahtuvat tapahtumisamme",
+        "cta": "Katso tapahtumat",
+        "href": "/events"
+      },
+      {
+        "title": "Julkaise työpaikka (Yritykset)",
+        "description": "Haluatko listata position? Avaa GitHub-keskustelu",
+        "cta": "Ota yhteyttä",
+        "href": "https://github.com/React-Native-Finland/react-native.fi/discussions"
+      }
+    ],
+    "notify": "Saa ilmoitus",
+    "notifyDescription": "Liity Meetup-ryhmään pysyäksesi ajan tasalla työpaikkataulun julkaisusta ja kuullaksesi tapahtumissa jaetuista mahdollisuuksista."
+  }
+}

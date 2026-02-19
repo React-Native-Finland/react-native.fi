@@ -1,0 +1,30 @@
+[
+  {
+    "name": "React Native Helsinki",
+    "location": "Helsinki, Finland",
+    "description": "Finland's React Native community. Monthly meetups with technical talks, networking, and free pizza.",
+    "url": "https://meetup.com/react-native-helsinki",
+    "frequency": "Monthly"
+  },
+  {
+    "name": "React Native London",
+    "location": "London, UK",
+    "description": "One of the largest React Native meetups in Europe. Regular events with talks from UK and international speakers.",
+    "url": "https://meetup.com/react-native-london",
+    "frequency": "Monthly"
+  },
+  {
+    "name": "React Native NYC",
+    "location": "New York, USA",
+    "description": "The New York React Native community. Talks, workshops, and networking in Manhattan.",
+    "url": "https://meetup.com/react-native-nyc",
+    "frequency": "Monthly"
+  },
+  {
+    "name": "React Native Berlin",
+    "location": "Berlin, Germany",
+    "description": "Germany's active React Native community with regular meetups and workshops.",
+    "url": "https://meetup.com/react-native-berlin",
+    "frequency": "Monthly"
+  }
+]

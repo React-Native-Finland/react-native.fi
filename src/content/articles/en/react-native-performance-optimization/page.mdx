@@ -1,0 +1,370 @@
+import { ArticleLayout } from '@/components/ArticleLayout';
+import { ArticleJsonLd } from '@/components/ArticleJsonLd';
+
+export const article = {
+  author: 'React Native Finland',
+  date: '2025-01-21',
+  title: 'React Native Performance Optimization: A Practical Guide',
+  description:
+    'Learn how to optimize your React Native app for better performance. Covers re-renders, memoization, list optimization, image handling, and profiling tools.',
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  openGraph: {
+    publishedTime: article.date,
+    modifiedTime: article.updated || article.date,
+    authors: [article.author],
+    title: article.title,
+    description: article.description,
+    siteName: 'React Native Finland',
+    locale: 'en_US',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: article.title,
+    description: article.description,
+  },
+  authors: [{ name: article.author }],
+};
+
+export default (props) => (
+  <>
+    <ArticleJsonLd article={article} />
+    <ArticleLayout article={article} {...props} />
+  </>
+);
+
+Performance is often the difference between an app that feels native and one that feels like a web view. React Native gives you a lot out of the box, but there are specific patterns and anti-patterns that can make or break your app's responsiveness. This guide covers practical techniques for optimizing React Native apps.
+
+## Understanding the Architecture
+
+Before optimizing, it's worth understanding how React Native works. Your JavaScript code runs on a separate thread from the native UI. Communication between these threads happens over a bridge (or with the new architecture, through JSI). This means that heavy JavaScript work can block your app, and too much communication between JS and native can cause jank.
+
+The new architecture with Fabric and TurboModules reduces this overhead, but the fundamental principle remains: keep your JS thread free for UI updates.
+
+## Preventing Unnecessary Re-renders
+
+The most common performance issue in React Native apps is unnecessary re-renders. Every time a component re-renders, React has to diff the virtual DOM and potentially update the native views.
+
+### Use React.memo for Pure Components
+
+Wrap functional components that receive the same props frequently:
+
+```tsx
+const ListItem = React.memo(({ title, onPress }: Props) => {
+  return (
+    <Pressable onPress={onPress}>
+      <Text>{title}</Text>
+    </Pressable>
+  );
+});
+```
+
+But be careful — `React.memo` only does a shallow comparison. If you pass new object or function references on every render, it won't help.
+
+### Stabilize Callbacks with useCallback
+
+```tsx
+// Bad - creates a new function every render
+<ListItem onPress={() => handlePress(item.id)} />
+
+// Good - stable reference
+const handleItemPress = useCallback((id: string) => {
+  // handle press
+}, []);
+
+<ListItem onPress={() => handleItemPress(item.id)} />
+
+// Even better - pass id as prop and handle in child
+<ListItem id={item.id} onPress={handleItemPress} />
+```
+
+### Memoize Expensive Computations
+
+```tsx
+const sortedItems = useMemo(() => {
+  return items.sort((a, b) => a.name.localeCompare(b.name));
+}, [items]);
+```
+
+### Use the React DevTools Profiler
+
+Enable the profiler in React DevTools to see exactly which components are re-rendering and why. Look for components that re-render when their props haven't actually changed.
+
+## List Optimization
+
+Lists are often the biggest source of performance problems. A poorly optimized list can bring even powerful devices to their knees.
+
+### Use FlashList Instead of FlatList
+
+Shopify's FlashList is significantly faster than the built-in FlatList:
+
+```tsx
+import { FlashList } from '@shopify/flash-list';
+
+<FlashList
+  data={items}
+  renderItem={renderItem}
+  estimatedItemSize={80}
+/>
+```
+
+The key is providing an accurate `estimatedItemSize`. Measure your actual item heights and use that value.
+
+### Optimize renderItem
+
+Your `renderItem` function runs for every visible item. Keep it lean:
+
+```tsx
+// Bad - creates objects and functions inside renderItem
+const renderItem = ({ item }) => (
+  <View style={{ padding: 16, backgroundColor: '#fff' }}>
+    <Text onPress={() => navigate(item.id)}>{item.title}</Text>
+  </View>
+);
+
+// Good - styles and handlers defined outside
+const styles = StyleSheet.create({
+  container: { padding: 16, backgroundColor: '#fff' },
+});
+
+const renderItem = useCallback(({ item }) => (
+  <ListItem item={item} onPress={handlePress} />
+), [handlePress]);
+```
+
+### Use getItemType for Heterogeneous Lists
+
+If your list has different item types, tell FlashList about them:
+
+```tsx
+<FlashList
+  data={items}
+  renderItem={renderItem}
+  getItemType={(item) => item.type}
+  estimatedItemSize={80}
+/>
+```
+
+### Avoid Anonymous Functions in Lists
+
+```tsx
+// Bad
+{items.map((item) => (
+  <Pressable key={item.id} onPress={() => selectItem(item.id)}>
+    <Text>{item.name}</Text>
+  </Pressable>
+))}
+
+// Good - use a component
+{items.map((item) => (
+  <SelectableItem key={item.id} item={item} onSelect={selectItem} />
+))}
+```
+
+## Image Optimization
+
+Images are often the heaviest assets in your app. Optimizing them can dramatically improve performance.
+
+### Use expo-image or FastImage
+
+The built-in Image component doesn't cache aggressively. Use a better alternative:
+
+```tsx
+import { Image } from 'expo-image';
+
+<Image
+  source={{ uri: imageUrl }}
+  style={styles.image}
+  contentFit="cover"
+  transition={200}
+/>
+```
+
+### Resize Images Server-Side
+
+Don't load a 4000x3000 image for a 100x100 thumbnail. Use image CDNs like Cloudinary, Imgix, or your own resizing service:
+
+```tsx
+const getOptimizedUrl = (url: string, width: number) => {
+  return `${url}?w=${width}&q=80&fm=webp`;
+};
+
+<Image source={{ uri: getOptimizedUrl(imageUrl, 200) }} />
+```
+
+### Use Placeholder and Progressive Loading
+
+```tsx
+<Image
+  source={{ uri: imageUrl }}
+  placeholder={blurhash}
+  contentFit="cover"
+  transition={300}
+/>
+```
+
+## JavaScript Thread Optimization
+
+Heavy computations on the JS thread will block your UI. Here's how to avoid that.
+
+### Move Work Off the Main Thread
+
+Use `InteractionManager` to defer non-critical work:
+
+```tsx
+InteractionManager.runAfterInteractions(() => {
+  // This runs after animations complete
+  processHeavyData();
+});
+```
+
+For truly heavy work, consider using a library like react-native-worklets or running code in a web worker.
+
+### Batch State Updates
+
+React 18's automatic batching helps, but you can still optimize:
+
+```tsx
+// Instead of multiple setState calls
+setLoading(true);
+setData(newData);
+setError(null);
+
+// Use a reducer or single state object
+dispatch({ type: 'FETCH_SUCCESS', payload: newData });
+```
+
+### Lazy Load Screens and Components
+
+Don't load everything upfront:
+
+```tsx
+const HeavyScreen = React.lazy(() => import('./HeavyScreen'));
+
+// In your navigator
+<Stack.Screen
+  name="Heavy"
+  getComponent={() => require('./HeavyScreen').default}
+/>
+```
+
+## Animation Performance
+
+Smooth animations are crucial for a native feel.
+
+### Use Reanimated for Complex Animations
+
+React Native Reanimated runs animations on the UI thread, bypassing the JS thread entirely:
+
+```tsx
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withSpring,
+} from 'react-native-reanimated';
+
+const offset = useSharedValue(0);
+
+const animatedStyle = useAnimatedStyle(() => ({
+  transform: [{ translateX: offset.value }],
+}));
+
+// Trigger animation
+offset.value = withSpring(100);
+```
+
+### Avoid Animating Layout Properties
+
+Animating `width`, `height`, or `flexbox` properties forces layout recalculation. Prefer `transform` and `opacity`:
+
+```tsx
+// Bad - triggers layout
+useAnimatedStyle(() => ({
+  width: width.value,
+}));
+
+// Good - uses transform
+useAnimatedStyle(() => ({
+  transform: [{ scaleX: scale.value }],
+}));
+```
+
+## Profiling and Measuring
+
+You can't optimize what you can't measure.
+
+### Use Flipper
+
+Flipper provides detailed performance insights, network inspection, and React DevTools integration. Essential for debugging performance issues.
+
+### Enable Performance Monitor
+
+In development, shake your device and enable "Show Perf Monitor". Watch for:
+- JS thread FPS drops (should stay at 60)
+- UI thread FPS drops
+- RAM usage spikes
+
+### Profile with Hermes
+
+If you're using Hermes (you should be), you can generate CPU profiles:
+
+```bash
+npx react-native profile-hermes
+```
+
+This creates a Chrome-compatible profile you can analyze in Chrome DevTools.
+
+### Measure Component Render Time
+
+```tsx
+const ProfiledComponent = () => {
+  useEffect(() => {
+    const start = performance.now();
+    return () => {
+      console.log(`Render took ${performance.now() - start}ms`);
+    };
+  });
+
+  return <ExpensiveComponent />;
+};
+```
+
+## Quick Wins Checklist
+
+Here's a checklist of quick optimizations you can apply:
+
+- [ ] Enable Hermes engine
+- [ ] Use FlashList instead of FlatList
+- [ ] Add `React.memo` to list items
+- [ ] Use `useCallback` for event handlers
+- [ ] Optimize images with expo-image or FastImage
+- [ ] Remove console.log statements in production
+- [ ] Enable RAM bundles for faster startup
+- [ ] Use the new architecture if your dependencies support it
+
+## Common Anti-Patterns
+
+Avoid these common mistakes:
+
+1. **Inline styles** - Use StyleSheet.create for static styles
+2. **Anonymous functions in render** - Define handlers outside render
+3. **Large component trees** - Split into smaller, memoized components
+4. **Unoptimized images** - Resize and cache appropriately
+5. **Synchronous storage** - Use async storage operations
+6. **Too many state updates** - Batch updates where possible
+
+## Recap
+
+Performance optimization in React Native comes down to a few key principles:
+
+- Minimize unnecessary re-renders with memoization
+- Keep the JS thread free for UI updates
+- Use optimized components (FlashList, expo-image)
+- Run animations on the UI thread with Reanimated
+- Profile regularly to catch regressions
+
+Start with the profiler to identify actual bottlenecks rather than optimizing blindly. Often, fixing one or two key issues can transform your app's performance.

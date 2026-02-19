@@ -1,0 +1,263 @@
+import { ArticleLayout } from '@/components/ArticleLayout';
+import { ArticleJsonLd } from '@/components/ArticleJsonLd';
+
+export const article = {
+  author: 'React Native Finland',
+  date: '2025-01-21',
+  title: 'Getting Started with React Native in Finland',
+  description:
+    'Your complete guide to starting React Native development in Finland. Learn about the community, resources, meetups, and how to connect with Finnish RN developers.',
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  openGraph: {
+    publishedTime: article.date,
+    modifiedTime: article.updated || article.date,
+    authors: [article.author],
+    title: article.title,
+    description: article.description,
+    siteName: 'React Native Finland',
+    locale: 'en_US',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: article.title,
+    description: article.description,
+  },
+  authors: [{ name: article.author }],
+};
+
+export default (props) => (
+  <>
+    <ArticleJsonLd article={article} />
+    <ArticleLayout article={article} {...props} />
+  </>
+);
+
+Finland has a strong mobile development heritage — from Nokia's early days to today's thriving startup ecosystem. React Native fits perfectly into this landscape, and the Finnish community is active and welcoming. This guide will help you get started with React Native development in Finland, whether you're a complete beginner or an experienced developer new to the country.
+
+## Why React Native?
+
+React Native lets you build native mobile apps using JavaScript and React. Write once, run on both iOS and Android. But unlike hybrid approaches, React Native renders actual native components, giving you the performance and feel of a truly native app.
+
+For Finnish companies, this means:
+- **Faster development** — One codebase instead of two
+- **Easier hiring** — JavaScript developers are abundant
+- **Lower costs** — Less code to maintain
+- **Native performance** — No compromise on user experience
+
+## Learning Resources
+
+### University of Helsinki MOOC
+
+The best free React Native course available is right here in Finland. The [Mobile Development MOOC](https://studies.helsinki.fi/courses/cu/hy-CU-142439323-2021-08-01) from the University of Helsinki is created by the same team behind the famous Full Stack Open course.
+
+The course covers:
+- React Native fundamentals
+- State management
+- Navigation
+- Backend integration
+- Testing
+- App store deployment
+
+It's completely free, self-paced, and you can get university credits for completing it.
+
+### Official Documentation
+
+The [React Native documentation](https://reactnative.dev/) has improved dramatically and is now an excellent resource. Start with the "Getting Started" guide and work through the fundamentals.
+
+### Expo Documentation
+
+If you're using Expo (recommended for beginners), the [Expo docs](https://docs.expo.dev/) are comprehensive and well-maintained.
+
+## Setting Up Your Development Environment
+
+### The Easy Way: Expo
+
+For most developers, especially beginners, Expo is the way to go:
+
+```bash
+npx create-expo-app@latest my-app
+cd my-app
+npx expo start
+```
+
+Expo handles the complex native build tooling and gives you a great development experience out of the box. You can even test on your physical device without Xcode or Android Studio.
+
+### The Full Control Way: React Native CLI
+
+If you need custom native modules or more control:
+
+```bash
+npx @react-native-community/cli@latest init MyApp
+```
+
+You'll need:
+- **For iOS**: macOS with Xcode installed
+- **For Android**: Android Studio with SDK and emulator
+
+The React Native docs have detailed setup instructions for both platforms.
+
+## Finnish React Native Community
+
+### React Native Helsinki Meetups
+
+Join [React Native Helsinki on Meetup](https://meetup.com/react-native-helsinki) for regular events. We host talks, workshops, and networking events in the Helsinki area. It's the best way to meet other React Native developers in Finland and learn from their experiences.
+
+Events typically feature:
+- Technical talks from Finnish RN developers
+- Company case studies
+- Networking with free food and drinks
+- Job opportunities
+
+### Online Communities
+
+Connect with Finnish developers online:
+- **Finland's developer Slack communities** — Several have React Native channels
+- **Twitter/X** — Follow Finnish RN developers and join the conversation
+- **LinkedIn** — Connect with the professional community
+
+### Developer Directory
+
+Check out our [Developer Directory](/developers) to find React Native developers in Finland. You can also add yourself to get discovered by companies looking for talent.
+
+## Finnish Companies Using React Native
+
+React Native is widely adopted in Finland. Companies ranging from startups to enterprises use it for their mobile apps. Some examples include:
+
+- **Wolt** — The popular food delivery app
+- **Smartly.io** — Digital advertising platform
+- **Various fintech startups** — Banking and payment apps
+- **Healthcare apps** — Patient portals and health tracking
+- **Media companies** — News and entertainment apps
+
+Many of these companies are active in the community and speak at meetups about their experiences.
+
+## Your First React Native App
+
+Let's build a simple app to get you started. We'll create a basic counter app with Expo:
+
+```bash
+npx create-expo-app@latest my-first-app --template blank-typescript
+cd my-first-app
+```
+
+Open `App.tsx` and replace the contents:
+
+```tsx
+import { useState } from 'react';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
+
+export default function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>My First RN App</Text>
+      <Text style={styles.count}>{count}</Text>
+      <Pressable
+        style={styles.button}
+        onPress={() => setCount(count + 1)}
+      >
+        <Text style={styles.buttonText}>Increment</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  count: {
+    fontSize: 48,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: '#007AFF',
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 8,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: '600',
+  },
+});
+```
+
+Run it:
+
+```bash
+npx expo start
+```
+
+Scan the QR code with the Expo Go app on your phone, and you'll see your first React Native app running!
+
+## Essential Tools and Libraries
+
+Here are the libraries you'll likely need for any serious app:
+
+### Navigation
+
+```bash
+npx expo install @react-navigation/native @react-navigation/native-stack
+npx expo install react-native-screens react-native-safe-area-context
+```
+
+### State Management
+
+For simple apps, React's built-in useState and useContext are sufficient. For complex apps:
+- **Zustand** — Simple and lightweight
+- **TanStack Query** — For server state
+- **Redux Toolkit** — If you need the full Redux experience
+
+### UI Components
+
+- **Tamagui** — Cross-platform UI kit
+- **NativeWind** — Tailwind CSS for React Native
+- **React Native Paper** — Material Design components
+
+### Forms
+
+```bash
+npm install react-hook-form zod
+```
+
+## Next Steps
+
+Once you've got the basics down:
+
+1. **Build something real** — The best way to learn is by building
+2. **Join the meetups** — Network and learn from experienced developers
+3. **Contribute to open source** — Many RN libraries welcome contributions
+4. **Read the tutorials** — Check out our [articles](/articles) for more guides
+5. **Get listed** — Add yourself to our [developer directory](/developers)
+
+## Getting Help
+
+When you get stuck:
+
+1. **Read the error message** — React Native error messages are usually helpful
+2. **Search GitHub issues** — Someone's probably encountered the same problem
+3. **Ask on Stack Overflow** — Use the `react-native` tag
+4. **Join the community** — Ask at meetups or in online communities
+
+## Welcome to the Community
+
+Finland's React Native community is small but active. We're always happy to welcome new developers, whether you're Finnish or international. Join us at a meetup, introduce yourself online, and start building!
+
+Tervetuloa — Welcome!

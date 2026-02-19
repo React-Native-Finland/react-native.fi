@@ -1,0 +1,266 @@
+import { ArticleLayout } from '@/components/ArticleLayout';
+import { ArticleJsonLd } from '@/components/ArticleJsonLd';
+import Image from 'next/image';
+
+export const article = {
+  author: 'Perttu Lähteenlahti',
+  authorTagline: 'Developer Advocate at RevenueCat',
+  authorSlug: 'perttu-lahteenlahti',
+  canonical: 'https://perttu.dev/articles/flatlists-with-react-query',
+  date: '2025-11-21',
+  title: 'Best practices for React Query with FlatList',
+  description:
+    'A look at how to combine React Query with FlatList, FlashList, and LegendList for smooth, stable list UIs. Best practices for handling loading states, skeletons, and safe areas.',
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: {
+    canonical: 'https://perttu.dev/articles/flatlists-with-react-query',
+  },
+  openGraph: {
+    publishedTime: article.date,
+    modifiedTime: article.updated || article.date,
+    authors: [article.author],
+    title: article.title,
+    description: article.description,
+    url: 'https://perttu.dev/articles/flatlists-with-react-query',
+    siteName: 'React Native Finland',
+    locale: 'en_US',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: article.title,
+    description: article.description,
+  },
+  authors: [{ name: article.author }],
+};
+
+export default (props) => (
+  <>
+    <ArticleJsonLd article={article} />
+    <ArticleLayout article={article} {...props} />
+  </>
+);
+
+React query pairs incredibly well with `FlatList` (and `FlashList`, and `LegendList`, if you prefer to use those). You get fast, predictable data fetching combined with efficient virtualized rendering. The challenge is keeping the UI stable while handling loading, empty states, refetches, skeletons, and safe area adjustments. Unfortunately LLMs seems to be always giving worst possible options for handling all of these.
+
+## Avoid conditionally replacing the entire screen
+
+A common bad patterns is to conditionally replace the entire screen based on the query state. For example, rendering a loading spinner during the initial fetch, then rendering an empty state if no data exists, and only rendering the list once real items arrive. This creates three separate component trees for the same screen and forces React to constantly mount and unmount the scroll container. The result is flickering, layout shifts, and scroll position resets.
+
+A better approach is to always render the list component and use `ListEmptyComponent` to show whatever should appear when the list has no rows. This keeps the list mounted from the moment the screen appears and makes transitions between states much smoother.
+
+Here's an example of what to avoid:
+
+```tsx
+if (isLoading) {
+  return <LoadingSpinner />;
+}
+
+if (!data?.length) {
+  return <EmptyState />;
+}
+
+return <FlatList data={data} renderItem={renderItem} />;
+```
+
+And here's the correct approach:
+
+```tsx
+const { data, isLoading, isError } = useQuery({
+  queryKey: ['items'],
+  queryFn: fetchItems,
+});
+
+return (
+  <FlatList
+    data={data ?? []}
+    renderItem={renderItem}
+    ListEmptyComponent={<EmptyState isLoading={isLoading} isError={isError} />}
+  />
+);
+```
+
+This is better because if data is undefined, the list will render the `EmptyState` component, but the actual list element won't be unmounted when data is gone. This pattern works for `FlatList`, `FlashList`, and `LegendList` because all three support an equivalent empty state component. You can use the the same `EmptyState` component to display both loading data, error states, and the actual empty state. This component is also a prime place to put a retry button.
+
+## List should be the single scroll container for the screen
+
+Another important rule is that the list should be the single scroll container for the screen. That means header content, filters, and summary sections should live inside `ListHeaderComponent`, not above the list in a parent view. When they're above they don't scroll so don't do it (unless that's the behavior you want). Don't nest a `FlatList` inside a `ScrollView` either.
+
+Example of the broken pattern:
+
+```tsx
+return (
+  <View style={{ flex: 1 }}>
+    <Header />
+    <Filters />
+    <FlatList data={items} renderItem={renderItem} />
+  </View>
+);
+```
+
+Instead make use of the `ListHeaderComponent` to render everything you want to show above the scroll container, but that still needs to scroll. Similarly use the `ListFooterComponent` for everything that should go under the list elements. Keep in mind that these elements will be rendered always, even if the data array is empty, so make use that your `ListEmptyComponent`
+
+Correct version:
+
+```tsx
+const ListHeader = () => (
+  <>
+    <Header />
+    <Filters />
+    <Summary />
+  </>
+);
+
+<FlashList
+  data={items}
+  renderItem={renderItem}
+  ListHeaderComponent={<ListHeader />}
+/>;
+```
+
+## FlatList should be the top level component of the screen
+
+`FlatList` should also be the top level component of the screen. I've seen a lot of people wrap htis list in a parent container such as a `View` with flex set to one. Same goes for AI assisted coding with LLMS pushing the same element. `ScrollViews` have props for styling the containers so you don't need any other views around the list component itself.
+
+Problematic example:
+
+```tsx
+<View style={{ flex: 1 }}>
+  <FlatList data={items} renderItem={renderItem} />
+</View>
+```
+
+Correct approach:
+
+```tsx
+<FlatList
+  data={items}
+  renderItem={renderItem}
+  contentInsetAdjustmentBehavior='automatic'
+/>
+```
+
+By setting `contentInsetAdjustmentBehavior` to automatic when the list is the root component, the system applies correct safe area spacing at the top and bottom. This ensures consistent behavior across devices and navigation setups without extra layout hacks.
+
+React query has different states such as `isLoading`, `isRefetching`, `isError`, and `success`. None of these should cause you to remove or replace the list. Instead, integrate them into the list itself. `isLoading` and empty states should be represented through `ListEmptyComponent`. `isRefetching` should trigger a subtle inline indicator, such as a pull to refresh spinner or a small header badge, rather than replacing the visible content.
+
+Skeleton placeholders make the loading experience feel even more immediate. Instead of a blank screen or large spinner, create a small set of placeholder rows and pass them to the list whenever the initial load has not completed. The list will render items instantly and the user will see the structure of the content even if the actual data is not available to use yet.
+
+Skeleton placeholder array:
+
+```tsx
+const SKELETON_ITEMS = Array.from({ length: 10 }).map((_, index) => ({
+  id: `skeleton-${index}`,
+  isSkeleton: true,
+}));
+```
+
+Using skeletons during initial load:
+
+```tsx
+const items = isLoading && !data ? SKELETON_ITEMS : (data ?? []);
+```
+
+Then in `renderItem`:
+
+```tsx
+const renderItem = ({ item }) => {
+  if (item.isSkeleton) {
+    return <MySkeletonItem />;
+  }
+
+  return <MyItem item={item} />;
+};
+```
+
+## Co-locate component and skeleton component
+
+The final key practice is to co-locate skeleton item components with their real counterparts. The skeleton layout should mirror the real layout exactly, including containers, spacing, and alignment. Only the content should differ. If the two components drift apart in your codebase, layout inconsistencies will appear.
+
+Example of paired components that share structure:
+
+```tsx
+const MyItemLayout = ({ left, title, subtitle }) => (
+  <View style={styles.container}>
+    {left}
+    <View style={styles.textContainer}>
+      {title}
+      {subtitle}
+    </View>
+  </View>
+);
+
+const MyItem = ({ item }) => (
+  <MyItemLayout
+    left={<Avatar uri={item.avatarUrl} />}
+    title={<Text style={styles.title}>{item.title}</Text>}
+    subtitle={<Text style={styles.subtitle}>{item.subtitle}</Text>}
+  />
+);
+
+const MySkeletonItem = () => (
+  <MyItemLayout
+    left={<SkeletonCircle size={40} />}
+    title={<SkeletonLine width='60%' />}
+    subtitle={<SkeletonLine width='40%' />}
+  />
+);
+```
+
+I find it easier to reason over skeleton layouts when they are located in the same component as the component they are "skeletoning".
+
+Here's a complete example of everything put together using `FlatList`, although the same structure works for `FlashList` and `LegendList`.
+
+```tsx
+const SKELETON_ITEMS = Array.from({ length: 8 }).map((_, index) => ({
+  id: `skeleton-${index}`,
+  isSkeleton: true,
+}));
+
+export const ItemsScreen = () => {
+  const { data, isLoading, isError, isFetching, refetch } = useQuery({
+    queryKey: ['items'],
+    queryFn: fetchItems,
+  });
+
+  const items = isLoading && !data ? SKELETON_ITEMS : (data ?? []);
+
+  const renderItem = ({ item }) =>
+    item.isSkeleton ? <MySkeletonItem /> : <MyItem item={item} />;
+
+  return (
+    <FlashList
+      data={items}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id}
+      estimatedItemSize={80}
+      contentInsetAdjustmentBehavior='automatic'
+      ListHeaderComponent={
+        <ListHeader isFetching={isFetching} onRefresh={refetch} />
+      }
+      ListEmptyComponent={
+        <EmptyState isLoading={isLoading} isError={isError} onRetry={refetch} />
+      }
+      onRefresh={refetch}
+      refreshing={isFetching && !isLoading}
+    />
+  );
+};
+```
+
+## Recap
+
+Recapping:
+
+- Always keep the list mounted and show empty or loading states inside `ListEmptyComponent`.
+- Put all header related UI inside `ListHeaderComponent` so everything scrolls together.
+- Make `FlatList` or `FlashList` the top level component on the screen.
+- Always set `contentInsetAdjustmentBehavior` to automatic on the list when it is the root.
+- Use skeleton placeholder items when data has not arrived yet.
+- Co-locate skeleton and real list item layouts so they always stay aligned.
+
+Following these gives you consistent behavior, when using `FlatList`, `FlashList`, or `LegendList`.

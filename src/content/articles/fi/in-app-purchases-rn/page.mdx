@@ -1,0 +1,375 @@
+import { ArticleLayout } from '@/components/ArticleLayout';
+import { ArticleJsonLd } from '@/components/ArticleJsonLd';
+import Image from 'next/image';
+import appstore from './appstore.png';
+import consumable from './consumable.png';
+import cover from './cover.jpeg';
+import paywallGif from './paywall.gif';
+import paywallPng from './paywall.png';
+import promotions from './promotions.png';
+import readerStatus from './reader_status.png';
+import revenuecat from './revenuecat.png';
+import subscription from './subscription.png';
+import upsell from './upsell.png';
+
+export const article = {
+  author: 'Perttu Lähteenlahti',
+  authorTagline: 'Developer Advocate at RevenueCat',
+  authorSlug: 'perttu-lahteenlahti',
+  canonical: 'https://perttu.dev/articles/in-app-purchases-rn',
+  date: '2024-12-31',
+  title: 'Making money with your React Native app',
+  description:
+    'Comprehensive look at in-app purchases and how to add them to your React Native app. Covers different types of in-app purchases, how to set them up in your app, and the psychology of good in-app purchase experiences. Technology used: React Native, RevenueCat, App Store Connect.',
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: {
+    canonical: 'https://perttu.dev/articles/in-app-purchases-rn',
+  },
+  openGraph: {
+    publishedTime: article.date,
+    modifiedTime: article.updated || article.date,
+    authors: [article.author],
+    title: article.title,
+    description: article.description,
+    url: 'https://perttu.dev/articles/in-app-purchases-rn',
+    siteName: 'React Native Finland',
+    locale: 'en_US',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: article.title,
+    description: article.description,
+  },
+  authors: [{ name: article.author }],
+};
+
+export default (props) => (
+  <>
+    <ArticleJsonLd article={article} />
+    <ArticleLayout article={article} {...props} />
+  </>
+);
+
+<Image
+  src={cover}
+  alt='Cover image for Making Money with Your React Native App'
+/>
+
+This article is based on the talk I gave at the first [React Native London conference in 2024](https://www.reactnativelondon.co.uk/) about app monetization and in-app purchases. While selling your app on platforms like MicroAcquire or setting a price tag in the Play Store/App Store are valid strategies, the former isn’t very repeatable, and the latter feels somewhat outdated. In-app purchases have become the modern way to monetize apps. This article covers what you need to know about in-app purchases, how to set them up in your React Native app, and insights from psychology and service design on creating a great in-app purchase experience.
+
+### Brief history of in-app purchases
+
+Apple and Google introduced competing app stores toward the end of the 2010s. Initially, app stores followed a model similar to traditional software sales: users could try a free, limited version of an app, and if they liked it, they could purchase the full version and own it outright. This was the standard way software was sold. However, the shift toward continuous revenue streams eventually took hold, driven by the push for recurring income from customers. Perhaps influenced by this trend, Apple and Google both introduced their own in-app purchase frameworks, changing how apps are monetized.
+
+Today we have in-app purchases for all major platforms and they are most used solution for monetising apps. There are also multiple different types of in-app purchases. Let’s go over them and then talk which one works for your app the best.
+
+### Consumables
+
+Consumables as the name entails are project that you purchase in the app and consume after purchasing. For example coin packs in mobile games, which you comsume and then use to purchase in-game items, or so called token of gratitude purchases such as sponsoring the developer by “buying them a coffee”. In both cases the in-app purchase flow makes it clear that your money is to purchase something that is one time and ephemeral.
+
+Mobile games are the best use case of consumables, as purchasing things is directly tied to the continued experience of playing the game, for example when your in-app purchases allow you to purchase potions to continue playing. Of course you could do something similar with limited use apps, if you have an app that allows user to create AI generated images, then every generation request could be handled as a consumable in-app purchase.
+
+<Image src={consumable} alt='Example of a consumable in-app purchase' />
+
+### Non-consumables
+
+Second type of in-app purchase is the non-consumable, which after purchasing stays with the users and never expires. If users uninstall the app, and later install it again, they can recover the non-consumable purchase as well. There are few ways which you can use non-consumables to monetize your app:
+
+- Upgrading from lite version of the app to full version. This way there is no need for a separate light version of the app in the app stores.
+- Unlocking an individual feature of the app, such as dark mode. This is similar to the gratitude purchase that consumables offer, as dark mode for example is not a feature user can’t live without (unlike developers would have you believe).
+- Mobile games also use non-consumable purchases to unlock for example clothing for the player character. Alternative to this is to create an in-game currency that is a consumable purchase which is then used to purchase clothing.
+
+Non-consumables used to be a very common approach to providing limited/full-version unlock approach to apps. However the last type of in-app purchases, subscriptions, have mostly taken over this approach so let’s talk about those next.
+
+### Subscriptions
+
+The last and most ubiquous in-app purchase type is subscriptions. In-app purchases provide both recurring subscriptions, that are billed once a month for example; but also non-recurring once, where your subscription is on only for the mentioned timeframe and does not get automatically billed again.
+
+The point of subscriptions is of course to generate continuous revenue, and there a few reasons for this:
+
+- Almost everything nowadays is connected to a server, and servers cost money. You have to somehow recoup the monthly server costs and subscriptions is a lot easier way to do that than trying to estimate a fixed price and then making users buy the app for that price.
+- Software is no longer just the app, but quite often there’s a underlying service layer providing e.g. customer support.
+- Software moved from singular releases to continuous development. New features and bug fixes and released periodically.
+- Getting payed for your work. Whether you are a solo developer or part of a big company, monthly revenue is also what turns into your monthly salary (well, one can dream)
+
+<Image src={subscription} alt='Example of a subscriptions in Noice app' />
+
+For these reason subscriptions have become so ubiquous. However building good subscription is not easy and a lot users are still rather subscriptions avoidant. It is not uncommon for example to come across following type of reviews in app stores:
+
+> “App solved my problem but requires a subscription to use the service more than 5 times. One star”
+
+Because of how easy and likely it is for users to shy away from your app because it has subscriptions, creating great subscription experiences becomes crucial for making money with your app.
+
+### Understanding commissions
+
+In-app purchases are just digital payments in mobile app context. However, the you we can’t just slap a Stripe payments into your app to monetize your services and content. Apple and Google both whant their pound of flesh in the form of a commission.
+
+The ina-app purchase commission used to be 30% for both App Store and Play store, with both programs offering a reduced 15% commission fee for the first one million in revenue if you enrolled in the small business programs. Going beyond that, and you’ll start paying the original 30% commission. This applies to all in-app purchases, but subscriptions have an additional term to them that makes longer running subscriptions more profitable: both Apple and Google take a reduced 15% commissions that user has been subscribing for more than a year.
+
+To calculate how much money you get when a user pays 10 euros, you have to first deduct the value added tax of your market, and then deduct the commission based on the store and program you’re in. In case of Finland this is 25.5% VAT, which means you’re left with:
+
+- Deduct VAT (25.5%): €10 × (1–0.255) = **€7.45**
+- Deduct Apple’s commission:
+- If 15%: €7.45 × (1–0.15) = **€6.33**
+- If 30%: €7.45 × (1–0.30) = **€5.22**
+
+So you’re left with **€6.33 (15%)** or **€5.22 (30%)**.
+
+However, if you’re in a European country, thanks to the new terms of the Digital Markets Act, you can opt-in for Apple’s new reduced commission rate of 17% for all apps, and 10% commission for businesses in small business programs. On top of this, if you’re using Apple’s in-app purchase system, then you need to add 3% on top of either of these to get the full commission. However, if your app downloads exceed over 1 million, you get an extra “Apple’s core technology” fee of 0.5 euros per every download per year. If you’re doing business in Europe you have some choice, but most likely it’s the easiest to get started with the traditional fee model.
+
+### Reader app status - circumventing the commission
+
+There is no way to circumvent Apple and Google’s commissions if you’re selling digital services or monetizing your content through your app. Of course if you’re selling physical goods, such as food deliveries, then the in-app purchase rules don’t apply to you.
+
+Alternatively you can also not sell anything in your app, but handle the sales through your own website, using for example Stripe. This is how Kindle and Spotify get around Apple’s limitations. To do the same you have to apply a separate reader app status. To get accepted requires putting your app to be behind a login, and users can only consume already purchased content in the app. All payments need to be done through a separate channel and there are some limitations on how you can direct the user to our own site to do it. Directly linking them into payment process for example will not work, but you can for example say:
+
+“Go to the website to purchase subscription”
+
+<Image src={readerStatus} alt='How Spotify does reader app status' />
+
+## In-app purchases in React Native
+
+Since React Native has been around 8 years already, there’s quite a lot of options for in-app purchase for it. For example
+
+- [**react-native-iap**](https://github.com/hyochan/react-native-iap) which has been around for sometime. A good choice for consumable purchases but slightly complicated for subscriptions which usually require server side events to manage the subscriptions well.  
+  _2.9k stars in GitHub_
+- [**react-native-chargebee**](https://github.com/chargebee/chargebee-react-native), a good choice if you’re in a situation where your payment infra already exists in Chargebee. From personal experience, the integration seems more like an afterthought for Chargebee, and its documentation is very confusing, with setting up being needlessly complex.  
+  _8 stars in GitHub_
+- [**react-native-purchases**](https://github.com/RevenueCat/react-native-purchases), the iap package by RevenueCat. It’s solid, documentation is good, there’s extra stuff like paywalls, and you offer integrations with Stripe for example.  
+  _804 stars in GitHub_
+
+Both Chargebee and RevenueCat offerings are what you would call hosted options, meaning the package is not enough by itself, but instead you will be using their payment infra to manage payements and receipts. In the case of RevenueCat, it’s free to get started with but once you make over 2.5k dollars you start paying 1% commissions on all tracked revenue.
+
+In most cases you want to go with this kind of an approach. Running your own server to manage in-app purchases receipt validation for example is quite the hassle. I recently worked in one project where we had to wire our own consumable purchases to the custom backend and to be honest, I would take almost anything over working with Apple’s in-app server APIs.
+
+### **Setting up RevenueCat and App Store and Playstore**
+
+In order for things to work correctly we need to do some configuration in RevenueCat and App Store / Play Store. Way things works is that Play Store and App Store need to have products in them that we then connect to RevenueCat. This is easier to explain by example so start navigate to your App Store connect account and first create this subscription group
+
+After creating the subscription group we need to add two subscriptions into it, and then add the translations. We don’t need so submit anything yet but it necessary to get into a stage that says “Ready to submit”.
+
+<Image
+  src={appstore}
+  alt='Example of how to create a subscription group in App Store Connect'
+/>
+
+You should end up with something similar to this once. Missing metadata means that you still have to fill in things, although the subscriptions should already show up in sandboxtesting.
+
+Next step is to configure these in RevenueCat. You can do this manually or you can configure your App Store keys into RevenueCat and allow RevenueCat to import your products from App Store. Before we get into all that it’s important to note that RevenueCat offers quite a lot more configuration options for in-app purchases than Play Store and App Store, and they also use custom concepts for it. Let’s look at few of the key ones before continuing with the configuration:
+
+**Entitlements —** put simply this is the level of access user is entitled to. Your app could have multiple levels of entitlements that unlock different levels of features for example. In terms of real world examples, Netflix offers different subscriptions, which are similar to entitlements: basic one with 720p resolution and only one device, and family one with 4k and multiple devices.
+
+**Products** are what RevenueCat calls the subscriptions and other in-app purchases you’ve set up in App Store connect and Play Store console. Products should match the subscriptions we’ve set up earlier.
+
+**Offerings** allows us to map together different products and show them together. RevenueCat’s paywall functionality for example makes use of the offerings
+
+**Paywall** is a method for limiting access to content, and RevenueCat offers a built-in functionality to create these and configure them remotely without any code.
+
+Now that you understand these concepts you should understand the next steps for configuring our in-app purchases in RevenueCat dashboard. Due to having a monthly and yearly subscription for our app in App Store connect, we need to create two corresponding product, one entitlement that is connected to those products called _Pro subscription_, and one offering which will have both of those products. Once that is done, navigate to the _**Paywalls**_ section of the tool and create our first paywall with the one offering we made.
+
+<Image src={revenuecat} alt='Example products in RevenueCat' />
+
+You should now have the fundamentals building blocks for showing two subscription options in our React Native app. You can go ahead and customize the paywall to your needs. Once you ready, continue to next section which goes over the react-native-purchases configuration.
+
+<Image src={paywallPng} alt='Example of the paywall editor in RevenueCat' />
+
+### Adding and configuring react-native-purchases
+
+React-native-purchases provides a lot of functionality out of the box without having to write a lot of code. You probably already have a project in which you’re going to configure your in-app purchases, but in case you do not, you can clone the repository below which contains the basic setup and the code examples we are going to go through next
+
+**Example project: [plahteenlahti/buystuff](https://github.com/plahteenlahti/buystuff)**
+
+Everything begins with installing the necessary packages, `react-native-purchases` and `react-native-purchases-ui`. The latter will become more important later on when we start to work with the paywalls.
+
+After installing all the necessary packages, we need to initialize the `react-native-purchases` module when mounting our app:
+
+```tsx
+import { useEffect } from 'react';
+import { Platform } from 'react-native';
+import Purchases from 'react-native-purchases';
+
+useEffect(() => {
+  // Enable dev logging, you can remove this line
+  Purchases.setLogLevel(Purchases.LOG_LEVEL.DEBUG);
+
+  // Initialize the module using Platform.select
+  Purchases.configure({
+    apiKey: Platform.select({
+      ios: 'your_ios_api_key',
+      android: 'your_android_api_key',
+    }),
+  });
+}, []);
+```
+
+It’s important to notice that `apiKey` is a single field but our Android and iOS apps have different key. Using `Platform.select` we can easily get around this. The API key is a public key so we don’t have to worry about the key getting bundled without our app.
+
+With this done, we are ready to start restricting user access to the app and presenting paywalls.
+
+### Before purchase — Displaying a paywall
+
+We are going to talk about the best possible way to structure you in-app purchase flow, which usually doesn’t start with instantly showing a paywall. However to keep the examples clear, let’s put aside for now and instead focus on the code implementation and not the UX.
+
+As mentioned, paywalls are a way of restricting user’s acces to certain content or functionality in your app. Let’s say for example that user is trying to download a wallpaper app, and they press on the wallpaper they are intersted in seeing in full screen. Instead of opening in full screen, they are taken to a new screen which tells them to subscribe for 2.99€ a month. A prime example of a paywall. With RevenueCat, achieving similar functionality is very easy:
+
+```tsx
+import RevenueCatUI from 'react-native-purchases-ui';
+
+export default function App() {
+  const [showPaywall, setShowPaywall] = useState(false);
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.container}>
+        <StatusBar style='auto' />
+        {images.map((imageUrl, index) => (
+          <TouchableOpacity
+            key={index}
+            style={styles.imageContainer}
+            onPress={() => setShowPaywall(true)}
+          >
+            <Image
+              source={{ uri: imageUrl }}
+              style={styles.image}
+              resizeMode='cover'
+            />
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+
+      <Modal
+        presentationStyle='pageSheet'
+        visible={showPaywall}
+        animationType='slide'
+        onRequestClose={() => setShowPaywall(false)}
+      >
+        <RevenueCatUI.Paywall
+          style={{ flex: 1 }}
+          onDismiss={() => setShowPaywall(false)}
+          options={{ displayCloseButton: true }}
+        />
+      </Modal>
+    </SafeAreaView>
+  );
+}
+```
+
+In the code above I want you to pay attention to few things. First, in order to show the RevenueCat paywall you need the react-native-purchases-ui package that was installed ealier. Second is how I’ve structured the actual paywall. Whether to show the paywall or not is dependant on the showPayWall state. Later on we will tie this to react-native-purchases methods for checking user’s entitlements, but this simple approach is enough for now.
+
+I wanted to display the paywall inside a modal that jumps on top whatever is on the screen and wrapped it in React Native’s modal component. In a more complex app you could make the paywall part of the navigation stack, which opens up more possibilities for displaying for it.
+
+<Image src={paywallGif} alt='Paywall in action after code changes' />
+
+Once you’ve implemeted this part of the code, you should see the paywall you configured in RevenueCat. If nothing is showing up it’s time to check your configurations and the debug log for potential errors. Try also making changes to your paywall in RevenueCat’s dashboard and you should see them reflected on the app after a refresh. To test purchases you need to run the app on a real device and configure a sandbox testing account for that, see [Apple’s up to date guide on how to do that here](https://developer.apple.com/help/app-store-connect/test-in-app-purchases/create-a-sandbox-apple-account/)
+
+### After purchase — Checking user’s entitlements
+
+Now that we have our basic purchasing flow set up using the RevenueCat’s paywall functionality, it’s time to check user’s subscription status i.e. are they entitled to the content they are trying to access. In revenuecat this is done by calling the await Purchases.getCustomerInfo() and checking if the users active entitlements contain the entitlement that is required to access that content. CustomerInfo is catched by RevenueCat so it’s safe to call in multiple times, therefore the easiest way to implement entitlement checking feature is to create a custom hook:
+
+```tsx
+import { useState, useEffect } from 'react';
+import Purchases from 'react-native-purchases';
+
+export const useAppContentAccess = () => {
+  const [hasAccess, setHasAccess] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const checkCustomerEntitlement = async () => {
+      try {
+        setLoading(true);
+        const customerInfo = await Purchases.getCustomerInfo();
+
+        // Replace 'pro_access' with the actual entitlement ID you set in RevenueCat
+        const entitlementActive =
+          customerInfo?.entitlements?.active?.['pro_access'];
+
+        setHasAccess(!!entitlementActive); // User has access if entitlement is active
+      } catch (error) {
+        console.error('Error checking customer entitlement:', error);
+        setHasAccess(false); // Default to no access on error
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkCustomerEntitlement();
+  }, []);
+
+  return { hasAccess, loading };
+};
+```
+
+You can use this hook in all parts of the app that require checking the user’s access level to that subscription content like this:
+
+```tsx
+import React from 'react';
+import { View, Text, ActivityIndicator } from 'react-native';
+import useAppContentAccess from './hooks/useAppContentAccess';
+
+const App = () => {
+  const { hasAccess, loading } = useAppContentAccess();
+
+  if (loading) {
+    return <ActivityIndicator />;
+  }
+
+  return (
+    <View>
+      {hasAccess ? (
+        <Text>Welcome to the premium content!</Text>
+      ) : (
+        <Text>Please subscribe to access this content.</Text>
+      )}
+    </View>
+  );
+};
+
+export default App;
+```
+
+You now have all the fundamentals building blocks for building in-app purchase flows in your React Native app. Let’s next look at the fundamentals behind good in-app purcase flows and a little bit of user psychology.
+
+## Psychology of good in-app purchase experiences
+
+<Image src={promotions} alt='Apple promoting subscriptions in App Store' />
+
+### Getting user to buy
+
+In app purchases are not the main use case of your app, you should not be spending time on building them, they bring no value to the users and I don’t think I’ve ever heard anyone say “I love building in-app purchases”. So sure, you can build your in-app purchases on anything you want, build your custom stuff for it if you feel, but keep in mind that no user is ever going to give you money or 5 star rating because your in-app purchase screen was artisanally made.
+
+What you should spend your time instead is thinking of how to build the best in-app purchase flow. What I mean by that is thinking about the user goals and actions that lead them to first discover how your app solves their problems, and then commit to paying it to you. We should start by first thinking about what is the user problem our app is focused on solving for the user. That is after all why we’ve built the app originally. That functionality should of course be very visible in all the App Store and Play store listings so so that users download the app in the first place. Of course it should also be so that main functionality is the easiest one to find from to find from both the store’s marketing as well as when the user opens your app the first time.
+
+Once we have the problem clearly in mind it’s time to think about how we show that our app has that exact functionality that they are looking for. For this we have few options:
+
+- Can we allow the users to use functionality in the app and get results and then limit it. For example, in our wallpaper app we could maybe allow the users to download one wallpaper for free
+- Can we give the users a free trial of the full app? For example let’s say that when they subscribe for a month they get 1 week free during which they can cancel the subscription
+- Give something for free, a little bit more for some amount of money, and then give full access to everything for money. A ladder-esque approach where user becomes a more engaged customer as a function of feature amount
+
+### Life cycle of in-app purchases
+
+Depending what you’re selling in your app, the customer journey is always different. One time purchases and continuous subscriptions pose different challenges for the customer journey. For time sake I’m only going to use subscriptions as an example of how to map your customer journey:
+
+- User discovers app
+- User discovers the value promise of the subscription
+- User decides to commit to buying subscription
+- User decides to increase spending in the app
+- User churns, ends subscription
+
+Of course in an optimal world the user never churns out, but in real life people run out of money, their priorities change, or your app stops being valuable. Only the last one is something you directly improve. For the other parts you can only provide a stellar experience, so the problems you’re trying to solve becomes how to support users in all parts of the customer journey:
+
+- Highlight new value of the app
+- Offer free trials
+- Offer discounts on longer subscription
+- Highlight how old purchase is pro-rated
+
+<Image src={upsell} alt='Upselling in Duolingo' />
+
+## Summary
+
+You’ve made it to the end, to recap you should now have a pretty good understanding of in-app purchase on different platforms, the options for doing that in React Native, example of in-app purchases using Revenucat and react-native-purchases, and the user psychology of a good in-app purchase experience. With these you should be able to create a basic in-app purchase flow that converts users to paying users. If you’re interested in learning more I suggest looking at RevenueCat’s developer documentation which contains a lot good information and technical aspects of in-app purchases.

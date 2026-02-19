@@ -1,0 +1,120 @@
+import { ArticleLayout } from '@/components/ArticleLayout';
+import { ArticleJsonLd } from '@/components/ArticleJsonLd';
+import Image from 'next/image';
+import { Keyboard } from '@/components/Keyboard';
+import MenuImage from './developer-menu.png';
+
+export const article = {
+  author: 'Perttu Lähteenlahti',
+  authorTagline: 'Developer Advocate at RevenueCat',
+  authorSlug: 'perttu-lahteenlahti',
+  canonical:
+    'https://perttu.dev/articles/adding-custom-options-to-react-native-developer-menu',
+  date: '2023-12-02',
+  title: 'Adding custom options to React Native developer menu',
+  description:
+    'Customize the React Native Developer menu to your needs using the built in addMenuItem function.',
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  alternates: {
+    canonical:
+      'https://perttu.dev/articles/adding-custom-options-to-react-native-developer-menu',
+  },
+  openGraph: {
+    publishedTime: article.date,
+    modifiedTime: article.updated || article.date,
+    authors: [article.author],
+    title: article.title,
+    description: article.description,
+    url: 'https://perttu.dev/articles/adding-custom-options-to-react-native-developer-menu',
+    siteName: 'React Native Finland',
+    locale: 'en_US',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: article.title,
+    description: article.description,
+  },
+  authors: [{ name: article.author }],
+};
+
+export default (props) => (
+  <>
+    <ArticleJsonLd article={article} />
+    <ArticleLayout article={article} {...props} />
+  </>
+);
+
+TLDR: You can customize the Developer Menu in React Native with your custom actions. If you're already familiar with the Developer Menu, [click here to jump to section about customizing the menu](#customizing-the-developer-menu)
+
+## What is The Developer Menu
+
+When running a development version of a React Native app, you can access a special Developer Menu by either shaking your device (if you're running the app on the device instead of simular) or by using the following keyboard shortcuts:
+
+- iOS <Keyboard>Cmd ⌘</Keyboard> + <Keyboard>D</Keyboard>
+- Android <Keyboard>Cmd ⌘</Keyboard> + <Keyboard>M</Keyboard>
+
+Doing either of these commands or shaking the device (by device I mean your phone, don't shake your laptop) should reveal menu that looks like this:
+
+<Image src={MenuImage} alt='React Native Developer menu' />
+
+Here's a what all of these items in the list do
+
+1.  **Reload**\
+    Refreshes the application by loading the latest JavaScript code bundled by the Metro Bundler.
+
+2.  **Open Debugger** \
+    Opens a new browser tab for debugging JavaScript code using Chrome's developer tools.
+
+3.  **Open React DevTools**\
+    Opens React DevTools for debugging the app's React component hierarchy.
+
+4.  **Show Inspector**\
+    Opens an inspection tool for examining and modifying the layout and style of React Native components.
+
+5.  **Show Inspector**\
+    Allows inspection of UI elements by tapping on them to see detailed information.
+
+6.  **Disable Fast Refresh**\
+    Disables the Fast Refresh feature, which automatically reloads the app upon saving code changes.
+
+7.  **Configure Bundler**\
+    Provides options to configure the Metro Bundler used in the React Native app.
+
+8.  **Show Perf Monitor**\
+    Displays a performance monitor with real-time stats like FPS and CPU usage.
+
+## Customizing The Developer Menu
+
+You can also add your own items to the Developer menu. React Native comes bundled with The DevSettings module which exposes methods for customizing the options in the menu.
+
+Import `DevSettings` from `react-native`:
+
+```typescript
+import { DevSettings } from 'react-native';
+```
+
+Call the static `addMenuItem()` in the part of the code you want. It takes two required parameters, `title` string and `handler` function. The title is used also as a key, so it needs to be unique for every item you add:
+
+```typescript
+DevSettings.addMenuItem('My custom action 1', () => {
+  console.log('Custom action pressed');
+});
+DevSettings.addMenuItem('My custom action 2', () => {
+  console.log('Custom action pressed');
+});
+```
+
+You can add as many items as you want into the Developer Menu as the list is scrollable. I personally like to wrap the `addMenuItem()` calls inside `__DEV__` check so that they only work in dev mode (the developer menu is not included in production builds in any case so this is in a way just for readability, say for example if a person not familiar with React Native is wondering where this code goes.):
+
+```typescript
+if (__DEV__) {
+  DevSettings.addMenuItem('My custom action 1', () => {
+    console.log('Custom action pressed');
+  });
+}
+```

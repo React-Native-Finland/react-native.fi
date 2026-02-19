@@ -1,0 +1,247 @@
+import { ArticleLayout } from '@/components/ArticleLayout';
+import { ArticleJsonLd } from '@/components/ArticleJsonLd';
+
+export const article = {
+  author: 'React Native Finland',
+  date: '2025-01-21',
+  title: 'Expo vs Bare React Native: Which Should You Choose?',
+  description:
+    'A comprehensive comparison of Expo and bare React Native. Learn when to use each approach, the trade-offs involved, and how to make the right choice for your project.',
+};
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+  openGraph: {
+    publishedTime: article.date,
+    modifiedTime: article.updated || article.date,
+    authors: [article.author],
+    title: article.title,
+    description: article.description,
+    siteName: 'React Native Finland',
+    locale: 'en_US',
+    type: 'article',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: article.title,
+    description: article.description,
+  },
+  authors: [{ name: article.author }],
+};
+
+export default (props) => (
+  <>
+    <ArticleJsonLd article={article} />
+    <ArticleLayout article={article} {...props} />
+  </>
+);
+
+One of the first decisions you'll make when starting a React Native project is whether to use Expo or go with bare React Native. This choice affects your development workflow, what native features you can access, and how you build and deploy your app. Let's break down both approaches so you can make an informed decision.
+
+## What is Expo?
+
+Expo is a platform built on top of React Native that provides:
+
+- **A managed workflow** — No need to touch Xcode or Android Studio for most development
+- **Expo SDK** — A curated set of well-maintained native modules
+- **EAS (Expo Application Services)** — Cloud builds, updates, and app store submissions
+- **Expo Go** — An app for testing during development without building native code
+
+Expo is not a fork of React Native — it's a layer on top that abstracts away much of the native complexity.
+
+## What is Bare React Native?
+
+Bare React Native (using `@react-native-community/cli`) gives you:
+
+- **Full access to native code** — Modify iOS and Android projects directly
+- **Any native library** — Install any React Native library, even those requiring native linking
+- **Complete control** — No abstractions or limitations
+
+You're responsible for maintaining the native projects, but you have complete freedom.
+
+## The Modern Expo: Development Builds
+
+Before diving into the comparison, it's important to understand that Expo has evolved significantly. The old "managed vs ejected" mental model is outdated.
+
+Today, Expo offers **development builds** — custom versions of Expo Go that include any native modules you need. This means you can use Expo's workflow while still having access to custom native code:
+
+```bash
+# Create a development build
+npx expo install expo-dev-client
+npx expo run:ios
+```
+
+This blurs the line between Expo and bare React Native significantly.
+
+## When to Choose Expo
+
+### You're Building a Standard App
+
+If your app uses common features like camera, push notifications, maps, payments, and authentication, Expo's SDK likely has everything you need. The Expo team maintains these modules with high quality and consistent APIs.
+
+```tsx
+import * as Camera from 'expo-camera';
+import * as Notifications from 'expo-notifications';
+import * as Location from 'expo-location';
+```
+
+### You Want Fast Iteration
+
+Expo's development experience is excellent:
+- Hot reloading works reliably
+- No Xcode/Android Studio needed for development
+- Expo Go app for quick testing
+- EAS Update for pushing JS updates instantly
+
+### Your Team Lacks Native Experience
+
+If your team is primarily JavaScript developers, Expo removes the need to understand Xcode, CocoaPods, Gradle, and the native build systems. You can focus on building your app in JavaScript.
+
+### You Want Cloud Builds
+
+EAS Build handles all your native building in the cloud:
+
+```bash
+eas build --platform all
+```
+
+No need to maintain macOS build machines or worry about native build environment consistency across your team.
+
+### You're a Solo Developer or Small Team
+
+The productivity gains from Expo are significant when you don't have dedicated native developers. You can ship faster with less infrastructure overhead.
+
+## When to Choose Bare React Native
+
+### You Need Specific Native Libraries
+
+Some libraries require custom native code that isn't compatible with Expo:
+- Bluetooth LE with specific configurations
+- Custom video processing
+- Proprietary SDKs with native dependencies
+- Heavily customized native UI components
+
+### You Have Existing Native Code
+
+If you're adding React Native to an existing native app (brownfield), bare React Native integrates more easily.
+
+### You Need Fine-Grained Control
+
+Sometimes you need to:
+- Customize the native build process
+- Use specific native library versions
+- Implement complex native modules
+- Integrate with specific CI/CD pipelines
+
+### Your Company Has Native Expertise
+
+If you have iOS and Android developers who are comfortable with native code, bare React Native lets them contribute effectively.
+
+### You're Building a Complex Enterprise App
+
+Large enterprise apps often have requirements that push the boundaries of what Expo supports — custom authentication flows, MDM integration, or specific security requirements.
+
+## Feature Comparison
+
+| Feature | Expo | Bare RN |
+|---------|------|---------|
+| Setup time | Minutes | Hours |
+| Native code access | Via dev builds | Direct |
+| Build complexity | Low (EAS) | High |
+| Update mechanism | EAS Update | Manual |
+| Debugging | Excellent | Good |
+| Bundle size | Slightly larger | Minimal |
+| Library compatibility | Most | All |
+| Native customization | Limited | Full |
+| Team requirements | JS only | JS + Native |
+
+## The Hybrid Approach
+
+The modern answer is often: **start with Expo, eject if needed**.
+
+Expo's `expo prebuild` command generates the native iOS and Android projects:
+
+```bash
+npx expo prebuild
+```
+
+This gives you Expo's tooling with bare React Native's flexibility. You can:
+- Use Expo SDK modules
+- Add any custom native code
+- Still use EAS for builds and updates
+- Maintain full control when needed
+
+Many teams use this hybrid approach:
+1. Start with Expo managed workflow
+2. Create development builds when needed
+3. Use `expo prebuild` for full native access if required
+
+## Real-World Decision Framework
+
+Ask yourself these questions:
+
+**1. Do you need custom native modules not in Expo SDK?**
+- Yes → Consider bare RN or Expo with dev builds
+- No → Expo managed
+
+**2. Does your team have native development experience?**
+- Yes → Either approach works
+- No → Expo is safer
+
+**3. How important is development speed?**
+- Critical → Expo
+- Can invest time → Either
+
+**4. Do you have complex CI/CD requirements?**
+- Yes → Bare RN gives more control
+- No → EAS handles it well
+
+**5. Is this a new app or brownfield?**
+- New → Either approach works
+- Brownfield → Bare RN is easier
+
+## Migration Paths
+
+### From Expo to Bare
+
+If you start with Expo and need to eject:
+
+```bash
+npx expo prebuild
+```
+
+This generates native projects you can customize. Your Expo SDK modules continue to work.
+
+### From Bare to Expo
+
+Migrating from bare to Expo is possible but more involved:
+
+1. Install Expo packages
+2. Update native projects or use prebuild
+3. Migrate to Expo SDK modules gradually
+
+The Expo team provides migration guides for this process.
+
+## Our Recommendation
+
+For most projects, especially in 2025, **start with Expo**. Here's why:
+
+1. **Lower barrier to entry** — Get productive immediately
+2. **Excellent developer experience** — Fast iteration and debugging
+3. **EAS services** — Builds, updates, and submissions handled
+4. **Escape hatch exists** — Prebuild and dev builds give you flexibility
+5. **Community momentum** — Most new libraries support Expo
+
+The exceptions are:
+- Brownfield apps (adding RN to existing native apps)
+- Apps requiring very specific native SDKs
+- Teams with strong native expertise who prefer direct control
+
+## Conclusion
+
+The Expo vs bare React Native debate is less relevant than it used to be. Modern Expo with development builds and prebuild gives you most of the benefits of both approaches.
+
+Start with Expo for the productivity gains. If you hit limitations, you can always prebuild and drop down to native code. The reverse migration is much harder.
+
+For Finnish developers and companies, Expo is especially attractive — it lets small teams move fast without dedicated native developers, which is valuable in Finland's competitive talent market.
