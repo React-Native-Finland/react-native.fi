@@ -697,7 +697,16 @@ export default async function ConferencesPage({ params }: Props) {
               <p className='mt-6 text-lg leading-8 text-white/70'>
                 Finland&apos;s React Native community meets monthly in Helsinki.
                 Free events, great talks, and the best mobile developers in the
-                Nordics.
+                Nordics. Missing a conference?{' '}
+                <a
+                  href='https://github.com/React-Native-Finland/react-native.fi/blob/main/CONTRIBUTING.md'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='underline hover:text-white'
+                >
+                  Add it on GitHub
+                </a>
+                .
               </p>
               <div className='mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row'>
                 <a
