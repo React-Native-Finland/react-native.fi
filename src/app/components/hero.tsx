@@ -11,9 +11,9 @@ export const Hero = () => {
     <section className='relative min-h-[100svh] overflow-hidden bg-[rgb(var(--navy-950))]'>
       {/* Animated gradient background */}
       <div className='absolute inset-0'>
-        {/* Primary gradient orb */}
+        {/* Primary gradient orb — enhanced with Display P3 on supported screens */}
         <div
-          className='absolute -left-1/4 -top-1/4 h-[800px] w-[800px] rounded-full opacity-30 blur-[120px]'
+          className='hero-orb-primary absolute -left-1/4 -top-1/4 h-[800px] w-[800px] rounded-full opacity-30 blur-[120px]'
           style={{
             background:
               'radial-gradient(circle, rgb(var(--finnish-blue)) 0%, transparent 70%)',
@@ -21,7 +21,7 @@ export const Hero = () => {
         />
         {/* Secondary gradient orb */}
         <div
-          className='absolute -bottom-1/4 -right-1/4 h-[600px] w-[600px] rounded-full opacity-20 blur-[100px]'
+          className='hero-orb-frost absolute -bottom-1/4 -right-1/4 h-[600px] w-[600px] rounded-full opacity-20 blur-[100px]'
           style={{
             background:
               'radial-gradient(circle, rgb(var(--accent-frost)) 0%, transparent 70%)',
@@ -29,7 +29,7 @@ export const Hero = () => {
         />
         {/* Accent orb */}
         <div
-          className='absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-10 blur-[80px]'
+          className='hero-orb-aurora absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-10 blur-[80px]'
           style={{
             background:
               'radial-gradient(circle, rgb(var(--accent-aurora)) 0%, transparent 70%)',
@@ -80,7 +80,7 @@ export const Hero = () => {
           {/* Main headline */}
           <h1 className='mb-6 text-5xl font-bold leading-[0.9] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl fade-in-up'>
             <span className='block'>React Native</span>
-            <span className='mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-[rgb(var(--finnish-blue-light))] via-[rgb(var(--accent-frost))] to-[rgb(var(--accent-aurora))]'>
+            <span className='hero-headline-gradient mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-[rgb(var(--finnish-blue-light))] via-[rgb(var(--accent-frost))] to-[rgb(var(--accent-aurora))]'>
               Finland
             </span>
           </h1>
