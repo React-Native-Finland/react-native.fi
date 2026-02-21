@@ -16,10 +16,10 @@
   --nordic-900: 12 74 110;
   --nordic-950: 8 47 73;
 
-  /* Finnish Blue - Primary accent (deeper, more saturated) */
-  --finnish-blue: 0 82 204;
-  --finnish-blue-light: 59 130 246;
-  --finnish-blue-dark: 30 64 175;
+  /* Finnish Blue - Primary accent (#002F6C) */
+  --finnish-blue: 0 47 108;
+  --finnish-blue-light: 26 95 170;
+  --finnish-blue-dark: 0 30 71;
 
   /* Deep navy - for sophisticated dark sections */
   --navy-900: 15 23 42;
@@ -48,9 +48,9 @@
   --accent-frost: 34 211 238;
 
   /* Wide-gamut Display P3 accent colors (used via @supports) */
-  --p3-finnish-blue: color(display-p3 0 0.3 0.82);
-  --p3-finnish-blue-light: color(display-p3 0.22 0.5 0.98);
-  --p3-finnish-blue-dark: color(display-p3 0.1 0.24 0.72);
+  --p3-finnish-blue: color(display-p3 0 0.17 0.44);
+  --p3-finnish-blue-light: color(display-p3 0.1 0.37 0.67);
+  --p3-finnish-blue-dark: color(display-p3 0 0.11 0.28);
   --p3-accent-aurora: color(display-p3 0.52 0.3 1);
   --p3-accent-midnight: color(display-p3 0.36 0.36 0.98);
   --p3-accent-frost: color(display-p3 0.05 0.84 0.96);

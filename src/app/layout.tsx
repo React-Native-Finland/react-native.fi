@@ -8,14 +8,6 @@ import { siteConfig } from '@/constant/config';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  icons: {
-    icon: [
-      { url: '/favicon/favicon.ico', sizes: 'any' },
-      { url: '/favicon/icon.svg', type: 'image/svg+xml' },
-    ],
-    shortcut: '/favicon/favicon-16x16.png',
-    apple: '/favicon/apple-touch-icon.png',
-  },
   manifest: `/favicon/site.webmanifest`,
 };
 
