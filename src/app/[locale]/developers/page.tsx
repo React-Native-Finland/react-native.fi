@@ -58,11 +58,11 @@ export default async function DevelopersPage({ params }: Props) {
           </h1>
           <p className='mt-6 text-lg/8 text-gray-600'>{t('description')}</p>
           {/* For Hiring Managers callout */}
-          <div className='mt-8 rounded-lg border border-indigo-200 bg-indigo-50 p-6'>
-            <h2 className='text-base font-semibold text-indigo-900'>
+          <div className='mt-8 rounded-lg border border-[rgb(var(--finnish-blue)/0.2)] bg-[rgb(var(--finnish-blue)/0.05)] p-6'>
+            <h2 className='text-base font-semibold text-[rgb(var(--finnish-blue-dark))]'>
               {t('forHiring')}
             </h2>
-            <p className='mt-2 text-sm text-indigo-700'>
+            <p className='mt-2 text-sm text-[rgb(var(--finnish-blue))]'>
               {t('forHiringDescription')}
             </p>
           </div>
@@ -85,7 +85,7 @@ export default async function DevelopersPage({ params }: Props) {
               <ol className='mt-4 space-y-3'>
                 {[0, 1, 2, 3].map((index) => (
                   <li key={index} className='flex gap-3'>
-                    <span className='flex size-6 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-xs font-medium text-indigo-600'>
+                    <span className='flex size-6 shrink-0 items-center justify-center rounded-full bg-[rgb(var(--finnish-blue)/0.1)] text-xs font-medium text-[rgb(var(--finnish-blue))]'>
                       {index + 1}
                     </span>
                     <div className='text-sm'>
@@ -131,7 +131,7 @@ export default async function DevelopersPage({ params }: Props) {
               href='https://github.com/React-Native-Finland/react-native.fi'
               target='_blank'
               rel='noopener noreferrer'
-              className='mt-6 inline-flex items-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-medium text-white hover:bg-indigo-500'
+              className='mt-6 inline-flex items-center rounded-md bg-[rgb(var(--finnish-blue))] px-4 py-2 text-sm font-medium text-white hover:bg-[rgb(var(--finnish-blue-dark))]'
             >
               {t('startPR')}
               <svg

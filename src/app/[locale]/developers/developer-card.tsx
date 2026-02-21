@@ -13,23 +13,25 @@ export function DeveloperCard({ developer }: { developer: Developer }) {
   return (
     <li>
       <Link href={`/developers/${developer.slug}`} className='group block'>
-        <div className='relative aspect-[1200/630] w-full overflow-hidden rounded-2xl'>
+        <div className='relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-[rgb(var(--mono-100))]'>
           <Image
             alt={developer.name}
-            src={`/developers/${developer.slug}/opengraph-image`}
+            src={developer.imageUrl}
             fill
             sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
             className='object-cover transition-transform duration-300 group-hover:scale-105'
-            placeholder='blur'
-            blurDataURL='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzFhMDAyYiIvPjwvc3ZnPg=='
           />
         </div>
-        <h3 className='mt-6 text-lg/8 font-semibold text-gray-900 group-hover:text-indigo-600'>
+        <h3 className='mt-6 text-lg/8 font-semibold text-[rgb(var(--mono-900))] group-hover:text-[rgb(var(--finnish-blue))]'>
           {developer.name}
         </h3>
-        <p className='text-base/7 text-gray-600'>{developer.role}</p>
+        <p className='text-base/7 text-[rgb(var(--mono-600))]'>
+          {developer.role}
+        </p>
         {developer.location && (
-          <p className='text-sm text-gray-500'>{developer.location}</p>
+          <p className='text-sm text-[rgb(var(--mono-500))]'>
+            {developer.location}
+          </p>
         )}
       </Link>
       <ul role='list' className='mt-6 flex gap-x-6'>
