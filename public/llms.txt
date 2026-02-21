@@ -3,7 +3,7 @@
 > Finland's React Native developer community and learning hub at react-native.fi
 
 ## What We Are
-React Native Finland is the community hub for React Native developers in Finland. We organize free meetups in Helsinki, maintain a developer directory, and provide educational resources including tutorials and links to the University of Helsinki's free MOOC course.
+React Native Finland is the community hub for React Native developers in Finland. We organize free meetups in Helsinki, maintain a developer directory, and provide educational resources including tutorials and guides.
 
 ## Key Offerings
 
@@ -14,7 +14,6 @@ React Native Finland is the community hub for React Native developers in Finland
 - Location: Helsinki, Finland
 
 ### Learning Resources
-- University of Helsinki React Native MOOC (free course)
 - In-depth technical articles and tutorials
 - Best practices for React Native, Expo, and mobile development
 - Guides on performance optimization, animations, and native modules
@@ -47,4 +46,4 @@ React Native Finland is the community hub for React Native developers in Finland
 - Location: Helsinki, Finland
 
 ## Keywords
-React Native Finland, React Native Helsinki, mobile development Finland, Expo Finland, React Native meetups, Finnish developers, mobile app development, cross-platform development, React Native MOOC, University of Helsinki mobile course
+React Native Finland, React Native Helsinki, mobile development Finland, Expo Finland, React Native meetups, Finnish developers, mobile app development, cross-platform development

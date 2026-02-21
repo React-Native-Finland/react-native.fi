@@ -141,7 +141,7 @@ export const Navbar = () => {
 
         {/* Right side - CTA & Language */}
         <div className='hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:gap-x-4'>
-          <LanguageSwitcher />
+          <LanguageSwitcher darkMode={showDarkMode} />
           <a
             href='https://meetup.com/react-native-helsinki'
             target='_blank'

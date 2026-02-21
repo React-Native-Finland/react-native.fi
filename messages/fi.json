@@ -1,9 +1,9 @@
 {
   "metadata": {
     "title": "React Native Suomi | Meetupit, Kehittäjät & Tutoriaalit",
-    "description": "React Native -yhteisö Suomessa. Osallistu Helsingin meetuppeihin, löydä suomalaisia React Native -kehittäjiä, opi Helsingin yliopiston MOOC-kurssilta ja lue käytännön tutoriaaleja.",
+    "description": "React Native -yhteisö Suomessa. Osallistu Helsingin meetuppeihin, löydä suomalaisia React Native -kehittäjiä ja lue käytännön tutoriaaleja.",
     "homeTitle": "React Native Suomi | Rakenna cross-platform-sovelluksia suomalaisen yhteisön kanssa",
-    "homeDescription": "Liity Suomen React Native -yhteisöön. Helsingin meetupit, kehittäjähakemisto, ilmainen Helsingin yliopiston MOOC ja tutoriaaleja React Native -sovelluksia toimittavilta kehittäjiltä."
+    "homeDescription": "Liity Suomen React Native -yhteisöön. Helsingin meetupit, kehittäjähakemisto ja tutoriaaleja React Native -sovelluksia toimittavilta kehittäjiltä."
   },
   "nav": {
     "events": "Tapahtumat",
@@ -19,7 +19,7 @@
     "badge": "Meetupit Helsingissä. Sisältöä suomeksi ja englanniksi.",
     "seeEvents": "Katso tulevat tapahtumat",
     "title": "Rakenna React Native -sovelluksia Suomessa",
-    "description": "Yhteisö kehittäjille, jotka toimittavat cross-platform-sovelluksia Helsingistä Ouluun. Osallistu meetuppeihin, opi Helsingin yliopiston MOOC-kurssilta ja verkostoidu pohjoismaisten React Native -kehittäjien kanssa.",
+    "description": "Yhteisö kehittäjille, jotka toimittavat cross-platform-sovelluksia Helsingistä Ouluun. Osallistu meetuppeihin, lue tutoriaaleja ja verkostoidu pohjoismaisten React Native -kehittäjien kanssa.",
     "country": "Suomessa",
     "location": "Helsinki, Suomi",
     "meetups": "Meetupit & konferenssit",
@@ -51,10 +51,10 @@
       "cta": "Aloita lukeminen"
     },
     "learn": {
-      "title": "Ilmainen MOOC-kurssi",
-      "subtitle": "Helsingin yliopisto",
-      "description": "Mobile Development MOOC on yksi maailman parhaista ilmaisista React Native -kursseista. Saman tiimin tekemä kuin kuuluisa fullstackopen.com.",
-      "cta": "Suorita kurssi"
+      "title": "Tutoriaalit & oppaat",
+      "subtitle": "Opi React Native",
+      "description": "Käytännön tutoriaaleja suomalaiselta React Native -yhteisöltä. Suorituskyky, animaatiot, native-moduulit — oikeita oppaita kehittäjiltä jotka toimittavat sovelluksia.",
+      "cta": "Selaa tutoriaaleja"
     },
     "community": {
       "title": "Rakenna React Native -sovelluksia kanssamme",
@@ -70,8 +70,8 @@
           "answer": "Liity Meetup.com-ryhmäämme osoitteessa meetup.com/react-native-helsinki saadaksesi ilmoituksia tulevista tapahtumista. Tapahtumat ovat ilmaisia ja avoimia kaikille React Nativesta kiinnostuneille."
         },
         {
-          "question": "Onko Helsingin yliopiston React Native -kurssi ilmainen?",
-          "answer": "Kyllä! Helsingin yliopiston Mobile Development MOOC on täysin ilmainen. Sen on rakentanut sama tiimi kuin fullstackopen.com:in, ja se kattaa React Nativen perusteista edistyneisiin aiheisiin."
+          "question": "Mistä voin oppia React Nativea?",
+          "answer": "Tutustu tutoriaaleihimme ja artikkeleihin, jotka suomalaiset React Native -kehittäjät ovat kirjoittaneet. Käsittelemme kaiken aloittamisesta edistyneisiin aiheisiin kuten suorituskyvyn optimointiin ja native-moduuleihin."
         },
         {
           "question": "Miten lisään itseni kehittäjähakemistoon?",
@@ -90,15 +90,12 @@
     "builtBy": "Tekijä:"
   },
   "articles": {
-    "pageTitle": "Opi React Native | Ilmaiset tutoriaalit, MOOC-kurssi & oppaat",
-    "pageDescription": "Opi React Native ilmaisella Helsingin yliopiston MOOC-kurssilla ja suomalaisten kehittäjien käytännön tutoriaaleilla. Suorituskyky, animaatiot, native-moduulit.",
+    "pageTitle": "Opi React Native | Ilmaiset tutoriaalit & oppaat",
+    "pageDescription": "Opi React Native suomalaisten kehittäjien käytännön tutoriaaleilla. Suorituskyky, animaatiot, native-moduulit — oikeita oppaita.",
     "header": "Opi & Kehity",
     "title": "Opi React Native Suomessa",
     "description": "Olitpa täysin uusi mobiilisovelluskehityksessä tai haluat syventää React Native -osaamistasi, tämä sivu kokoaa parhaat oppimisresurssit ja yhteisön tuottaman sisällön Suomessa.",
-    "startCourse": "Aloita Helsingin MOOC-kurssi",
-    "moocTitle": "Helsingin yliopiston Mobile Development MOOC",
-    "moocDescription": "Helsingin yliopiston Mobile Development MOOC on yksi vahvimmista johdatuksista React Nativeen maailmassa. Se kattaa modernin JavaScriptin, keskeiset mobiilikonseptit ja käytännön sovelluskehityksen.",
-    "startTheCourse": "Aloita kurssi",
+    "communityArticlesHeader": "Yhteisön sisältö",
     "communityArticles": "Blogipostaukset",
     "communityDescription": "Suomalaisen React Native -yhteisön kirjoittamia artikkeleita — tutoriaaleista ja syväsukelluksista tapaustutkimuksiin ja projektikuvauksiin.",
     "heroAlt": "React Native -artikkelit ja oppimisresurssit"

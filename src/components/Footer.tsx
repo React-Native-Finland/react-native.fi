@@ -138,12 +138,12 @@ export function Footer() {
               </li>
               <li>
                 <a
-                  href='https://studies.helsinki.fi/kurssit/toteutus/otm-e859336d-9d63-47ac-9906-a7da74cae32d'
+                  href='https://fullstackopen.com/en/part10'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='text-sm text-[rgb(var(--mono-600))] transition-colors hover:text-[rgb(var(--finnish-blue))]'
                 >
-                  MOOC Course
+                  Full Stack Open
                 </a>
               </li>
               <li>
