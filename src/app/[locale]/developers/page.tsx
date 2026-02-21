@@ -84,16 +84,16 @@ export default async function DevelopersPage({ params }: Props) {
 
         {/* Add yourself — bottom of page */}
         <div className='mt-24 border-t border-[rgb(var(--mono-200))] pt-16'>
-          <div className='max-w-2xl'>
-            <h2 className='text-2xl font-semibold text-[rgb(var(--mono-900))]'>
-              {t('addYourself')}
-            </h2>
-            <p className='mt-2 text-sm text-[rgb(var(--mono-600))]'>
-              {t('addDescription')}
-            </p>
+          <h2 className='text-2xl font-semibold text-[rgb(var(--mono-900))]'>
+            {t('addYourself')}
+          </h2>
+          <p className='mt-2 max-w-2xl text-sm text-[rgb(var(--mono-600))]'>
+            {t('addDescription')}
+          </p>
 
-            {/* Step-by-step guide */}
-            <div className='mt-8'>
+          <div className='mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2'>
+            {/* Left: Step-by-step guide */}
+            <div>
               <h3 className='text-sm font-semibold text-[rgb(var(--mono-900))]'>
                 {t('howToAdd')}
               </h3>
@@ -117,17 +117,39 @@ export default async function DevelopersPage({ params }: Props) {
                   </li>
                 ))}
               </ol>
+
+              <a
+                href='https://github.com/React-Native-Finland/react-native.fi'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='mt-6 inline-flex items-center rounded-md bg-[rgb(var(--finnish-blue))] px-4 py-2 text-sm font-medium text-white hover:bg-[rgb(var(--finnish-blue-dark))]'
+              >
+                {t('startPR')}
+                <svg
+                  className='ml-2 size-4'
+                  fill='none'
+                  stroke='currentColor'
+                  viewBox='0 0 24 24'
+                >
+                  <path
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth={2}
+                    d='M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25'
+                  />
+                </svg>
+              </a>
             </div>
 
-            {/* Profile template preview */}
-            <div className='mt-8'>
+            {/* Right: Profile template preview */}
+            <div>
               <h3 className='text-sm font-semibold text-[rgb(var(--mono-900))]'>
                 {t('templateTitle')}
               </h3>
               <p className='mt-1 text-xs text-[rgb(var(--mono-500))]'>
                 {t('templateDescription')}
               </p>
-              <pre className='mt-3 overflow-x-auto rounded-lg bg-[rgb(var(--mono-900))] p-4 text-xs text-[rgb(var(--mono-300))]'>
+              <pre className='mt-3 overflow-x-auto rounded-lg bg-[rgb(var(--mono-900))] p-4 text-xs leading-relaxed text-[rgb(var(--mono-300))]'>
                 {`{
   "slug": "your-name",
   "name": "Your Name",
@@ -144,28 +166,6 @@ export default async function DevelopersPage({ params }: Props) {
 }`}
               </pre>
             </div>
-
-            <a
-              href='https://github.com/React-Native-Finland/react-native.fi'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='mt-6 inline-flex items-center rounded-md bg-[rgb(var(--finnish-blue))] px-4 py-2 text-sm font-medium text-white hover:bg-[rgb(var(--finnish-blue-dark))]'
-            >
-              {t('startPR')}
-              <svg
-                className='ml-2 size-4'
-                fill='none'
-                stroke='currentColor'
-                viewBox='0 0 24 24'
-              >
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25'
-                />
-              </svg>
-            </a>
           </div>
         </div>
       </div>
