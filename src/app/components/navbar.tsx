@@ -2,6 +2,7 @@
 
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 
@@ -52,20 +53,15 @@ export const Navbar = () => {
         <div className='flex lg:flex-1'>
           <Link href='/' className='group -m-1.5 flex items-center gap-3 p-1.5'>
             <span className='sr-only'>{t('siteName')}</span>
-            {/* Logo mark */}
-            <div
-              className={`flex h-9 w-9 items-center justify-center rounded-lg transition-all duration-300 ${
-                showDarkMode
-                  ? 'bg-white/10 group-hover:bg-white/20'
-                  : 'bg-[rgb(var(--finnish-blue))] group-hover:bg-[rgb(var(--finnish-blue-dark))]'
+            <Image
+              src='/icon.png'
+              alt=''
+              width={36}
+              height={36}
+              className={`h-9 w-9 transition-opacity duration-300 ${
+                showDarkMode ? 'brightness-0 invert' : ''
               }`}
-            >
-              <span
-                className={`font-mono text-sm font-bold ${showDarkMode ? 'text-white' : 'text-white'}`}
-              >
-                RN
-              </span>
-            </div>
+            />
             {/* Logo text */}
             <div className='hidden sm:block'>
               <div
@@ -169,11 +165,13 @@ export const Navbar = () => {
               onClick={() => setMobileMenuOpen(false)}
               className='group -m-1.5 flex items-center gap-3 p-1.5'
             >
-              <div className='flex h-9 w-9 items-center justify-center rounded-lg bg-[rgb(var(--finnish-blue))]'>
-                <span className='font-mono text-sm font-bold text-white'>
-                  RN
-                </span>
-              </div>
+              <Image
+                src='/icon.png'
+                alt=''
+                width={36}
+                height={36}
+                className='h-9 w-9'
+              />
               <div>
                 <div className='font-mono text-sm font-bold text-[rgb(var(--mono-900))]'>
                   React Native

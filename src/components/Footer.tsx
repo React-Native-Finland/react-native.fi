@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/navigation';
@@ -18,11 +19,13 @@ export function Footer() {
           {/* Brand column */}
           <div className='lg:col-span-2'>
             <Link href='/' className='group inline-flex items-center gap-3'>
-              <div className='flex h-10 w-10 items-center justify-center rounded-lg bg-[rgb(var(--finnish-blue))] transition-colors group-hover:bg-[rgb(var(--finnish-blue-dark))]'>
-                <span className='font-mono text-sm font-bold text-white'>
-                  RN
-                </span>
-              </div>
+              <Image
+                src='/icon.png'
+                alt=''
+                width={40}
+                height={40}
+                className='h-10 w-10'
+              />
               <div>
                 <div className='font-mono text-base font-bold text-[rgb(var(--mono-900))]'>
                   {t('siteName')}
