@@ -2,6 +2,8 @@ import fs from 'fs';
 import { glob } from 'glob';
 import path from 'path';
 
+import { getDeveloperBySlug } from '@/lib/developers';
+
 import { defaultLocale, Locale } from '@/i18n/config';
 
 export interface Article {
@@ -20,6 +22,24 @@ export interface Article {
   imageUrl?: string;
   locale?: Locale;
   hasTranslation?: boolean;
+}
+
+// Build a rich author object if authorSlug matches a developer
+function resolveAuthor(
+  metadata: Partial<Article> & { authorSlug?: string; authorTagline?: string },
+): Article['author'] {
+  if (metadata.authorSlug) {
+    const dev = getDeveloperBySlug(metadata.authorSlug);
+    if (dev) {
+      return {
+        name: dev.name,
+        role: metadata.authorTagline || dev.role,
+        href: `/developers/${dev.slug}`,
+        imageUrl: dev.imageUrl,
+      };
+    }
+  }
+  return metadata.author || '';
 }
 
 // Content directory for localized articles
@@ -79,7 +99,12 @@ export async function getArticleBySlug(
     title: metadata.title || 'Untitled',
     date: metadata.date || new Date().toISOString(),
     description: metadata.description || '',
-    author: metadata.author || '',
+    author: resolveAuthor(
+      metadata as Partial<Article> & {
+        authorSlug?: string;
+        authorTagline?: string;
+      },
+    ),
     imageUrl: `/${locale}/articles/${slug}/opengraph-image`,
     locale: usedLocale,
     hasTranslation: hasTranslation(slug, locale),
@@ -115,7 +140,12 @@ export async function getAllArticles(
         title: metadata.title || 'Untitled',
         date: metadata.date || new Date().toISOString(),
         description: metadata.description || '',
-        author: metadata.author || '',
+        author: resolveAuthor(
+          metadata as Partial<Article> & {
+            authorSlug?: string;
+            authorTagline?: string;
+          },
+        ),
         imageUrl: `/${locale}/articles/${slug}/opengraph-image`,
         locale,
         hasTranslation: true,

@@ -16,10 +16,10 @@
   --nordic-900: 12 74 110;
   --nordic-950: 8 47 73;
 
-  /* Finnish Blue - Primary accent (deeper, more saturated) */
-  --finnish-blue: 0 82 204;
-  --finnish-blue-light: 59 130 246;
-  --finnish-blue-dark: 30 64 175;
+  /* Finnish Blue - Primary accent (#002F6C) */
+  --finnish-blue: 0 47 108;
+  --finnish-blue-light: 26 95 170;
+  --finnish-blue-dark: 0 30 71;
 
   /* Deep navy - for sophisticated dark sections */
   --navy-900: 15 23 42;
@@ -46,6 +46,14 @@
   --accent-aurora: 139 92 246;
   --accent-midnight: 99 102 241;
   --accent-frost: 34 211 238;
+
+  /* Wide-gamut Display P3 accent colors (used via @supports) */
+  --p3-finnish-blue: color(display-p3 0 0.17 0.44);
+  --p3-finnish-blue-light: color(display-p3 0.1 0.37 0.67);
+  --p3-finnish-blue-dark: color(display-p3 0 0.11 0.28);
+  --p3-accent-aurora: color(display-p3 0.52 0.3 1);
+  --p3-accent-midnight: color(display-p3 0.36 0.36 0.98);
+  --p3-accent-frost: color(display-p3 0.05 0.84 0.96);
 
   /* Semantic tokens */
   --background: var(--snow);
@@ -748,5 +756,137 @@
       black 90%,
       transparent
     );
+  }
+}
+
+/* =========================================
+   Display P3 Wide-Gamut Color Enhancements
+   =========================================
+   Progressive enhancement for P3-capable displays
+   (iPhones, MacBooks, modern Android flagships).
+   Falls back gracefully to sRGB on other screens. */
+
+@supports (color: color(display-p3 0 0 1)) {
+  /* Text gradient — hero "Finland" and section headings */
+  .text-gradient {
+    background-image: linear-gradient(
+      135deg,
+      var(--p3-finnish-blue) 0%,
+      var(--p3-accent-midnight) 50%,
+      var(--p3-accent-aurora) 100%
+    );
+  }
+
+  /* Primary button gradient */
+  .btn-primary {
+    background: linear-gradient(
+      135deg,
+      var(--p3-finnish-blue) 0%,
+      var(--p3-finnish-blue-dark) 100%
+    );
+  }
+
+  /* Glow effects */
+  .glow-blue {
+    box-shadow:
+      0 0 20px color(display-p3 0 0.3 0.82 / 0.35),
+      0 0 60px color(display-p3 0 0.3 0.82 / 0.12);
+  }
+
+  .glow-frost {
+    box-shadow:
+      0 0 20px color(display-p3 0.05 0.84 0.96 / 0.35),
+      0 0 60px color(display-p3 0.05 0.84 0.96 / 0.12);
+  }
+
+  /* Border gradient */
+  .border-gradient::before {
+    background: linear-gradient(
+      135deg,
+      var(--p3-finnish-blue),
+      var(--p3-accent-frost)
+    );
+  }
+
+  /* Animated underline */
+  .animated-underline {
+    background-image:
+      linear-gradient(transparent, transparent),
+      linear-gradient(to right, var(--p3-finnish-blue), var(--p3-accent-frost));
+  }
+
+  /* Selection highlight */
+  ::selection {
+    background-color: color(display-p3 0 0.3 0.82 / 0.15);
+    color: var(--p3-finnish-blue);
+  }
+
+  /* Focus ring */
+  *:focus-visible {
+    --tw-ring-color: var(--p3-finnish-blue);
+  }
+
+  /* Eyebrow accent text */
+  .eyebrow {
+    color: var(--p3-finnish-blue);
+  }
+
+  /* Tag primary variant */
+  .tag-primary {
+    background-color: color(display-p3 0 0.3 0.82 / 0.1);
+    color: var(--p3-finnish-blue);
+    border-color: color(display-p3 0 0.3 0.82 / 0.2);
+  }
+
+  /* Dark card hover glow */
+  .card-dark:hover {
+    border-color: var(--p3-finnish-blue);
+    box-shadow: 0 0 30px color(display-p3 0 0.3 0.82 / 0.18);
+  }
+
+  /* Pulse glow animation */
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 20px color(display-p3 0 0.3 0.82 / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px color(display-p3 0 0.3 0.82 / 0.5);
+    }
+  }
+
+  /* Hero gradient orbs — more vivid on P3 displays */
+  .hero-orb-primary {
+    background: radial-gradient(
+      circle,
+      var(--p3-finnish-blue) 0%,
+      transparent 70%
+    ) !important;
+  }
+
+  .hero-orb-frost {
+    background: radial-gradient(
+      circle,
+      var(--p3-accent-frost) 0%,
+      transparent 70%
+    ) !important;
+  }
+
+  .hero-orb-aurora {
+    background: radial-gradient(
+      circle,
+      var(--p3-accent-aurora) 0%,
+      transparent 70%
+    ) !important;
+  }
+
+  /* Hero headline gradient — "Finland" text */
+  .hero-headline-gradient {
+    background-image: linear-gradient(
+      to right,
+      var(--p3-finnish-blue-light),
+      var(--p3-accent-frost),
+      var(--p3-accent-aurora)
+    ) !important;
   }
 }

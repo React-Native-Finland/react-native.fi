@@ -70,7 +70,7 @@ export default async function DeveloperPage({ params }: Props) {
   ].filter(Boolean) as string[];
 
   const developerUrl = `${siteConfig.url}/${locale}/developers/${slug}`;
-  const ogImageUrl = `${siteConfig.url}/developers/${slug}/opengraph-image`;
+  const ogImageUrl = `${siteConfig.url}/${locale}/developers/${slug}/opengraph-image`;
 
   return (
     <>
@@ -87,33 +87,48 @@ export default async function DeveloperPage({ params }: Props) {
       <div className='bg-white py-24 sm:py-32'>
         <div className='mx-auto max-w-7xl px-6 lg:px-8'>
           <div className='mx-auto max-w-4xl'>
-            {/* OG Hero Image */}
-            <div className='relative aspect-[1200/630] w-full overflow-hidden rounded-2xl mb-12'>
-              <Image
-                alt={developer.name}
-                src={`/developers/${slug}/opengraph-image`}
-                fill
-                sizes='(max-width: 768px) 100vw, 896px'
-                className='object-cover'
-                placeholder='blur'
-                blurDataURL='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSI2MzAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iIzFhMDAyYiIvPjwvc3ZnPg=='
-                priority
-              />
+            {/* Developer Profile Header */}
+            <div className='flex items-start gap-6 sm:gap-8'>
+              {/* Photo */}
+              <div className='relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-[rgb(var(--mono-100))] sm:h-28 sm:w-28'>
+                <Image
+                  alt={developer.name}
+                  src={developer.imageUrl}
+                  fill
+                  sizes='112px'
+                  className='object-cover'
+                  priority
+                />
+              </div>
+
+              {/* Info */}
+              <div>
+                <h1 className='text-3xl font-bold tracking-tight text-[rgb(var(--mono-900))] sm:text-4xl'>
+                  {developer.name}
+                </h1>
+                <p className='mt-2 text-lg text-[rgb(var(--mono-600))]'>
+                  {developer.role}
+                </p>
+                {developer.location && (
+                  <p className='mt-1 text-sm text-[rgb(var(--mono-500))]'>
+                    {developer.location}
+                  </p>
+                )}
+                <p className='mt-6 text-base leading-7 text-[rgb(var(--mono-600))]'>
+                  {developer.bio}
+                </p>
+              </div>
             </div>
 
-            {/* Developer Profile */}
-            <div className='flex flex-col items-center text-center'>
-              <p className='text-base text-gray-600 max-w-2xl'>
-                {developer.bio}
-              </p>
-
+            {/* Details */}
+            <div className='mt-12 flex flex-col items-center text-center'>
               {/* Expertise */}
               {developer.expertise && developer.expertise.length > 0 && (
                 <div className='mt-6 flex flex-wrap justify-center gap-2'>
                   {developer.expertise.map((skill) => (
                     <span
                       key={skill}
-                      className='inline-flex items-center rounded-full bg-indigo-50 px-3 py-1 text-sm font-medium text-indigo-700'
+                      className='inline-flex items-center rounded-full bg-[rgb(var(--finnish-blue)/0.08)] px-3 py-1 text-sm font-medium text-[rgb(var(--finnish-blue))]'
                     >
                       {skill}
                     </span>
@@ -223,7 +238,7 @@ export default async function DeveloperPage({ params }: Props) {
             <div className='mt-16 pt-8 border-t border-gray-200'>
               <Link
                 href='/developers'
-                className='text-sm font-medium text-indigo-600 hover:text-indigo-500'
+                className='text-sm font-medium text-[rgb(var(--finnish-blue))] hover:text-[rgb(var(--finnish-blue-dark))]'
               >
                 ←{' '}
                 {locale === 'fi'

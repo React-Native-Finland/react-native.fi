@@ -66,7 +66,7 @@ export default async function EventPage({ params }: Props) {
   const startDateTime = `${event.date}T${event.startTime}:00`;
   const endDateTime = `${event.date}T${event.endTime}:00`;
   const eventUrl = `${siteConfig.url}/${locale}/events/${slug}`;
-  const ogImageUrl = `${siteConfig.url}/events/${slug}/opengraph-image`;
+  const ogImageUrl = `${siteConfig.url}/${locale}/events/${slug}/opengraph-image`;
 
   return (
     <>

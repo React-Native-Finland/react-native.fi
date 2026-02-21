@@ -1,9 +1,9 @@
 {
   "metadata": {
     "title": "React Native Suomi | Meetupit, Kehittäjät & Tutoriaalit",
-    "description": "React Native -yhteisö Suomessa. Osallistu Helsingin meetuppeihin, löydä suomalaisia RN-kehittäjiä, opi Helsingin yliopiston MOOC-kurssilta ja lue käytännön tutoriaaleja.",
+    "description": "React Native -yhteisö Suomessa. Osallistu Helsingin meetuppeihin, löydä suomalaisia React Native -kehittäjiä ja lue käytännön tutoriaaleja.",
     "homeTitle": "React Native Suomi | Rakenna cross-platform-sovelluksia suomalaisen yhteisön kanssa",
-    "homeDescription": "Liity Suomen React Native -yhteisöön. Helsingin meetupit, kehittäjähakemisto, ilmainen Helsingin yliopiston MOOC ja tutoriaaleja RN-sovelluksia toimittavilta kehittäjiltä."
+    "homeDescription": "Liity Suomen React Native -yhteisöön. Helsingin meetupit, kehittäjähakemisto ja tutoriaaleja React Native -sovelluksia toimittavilta kehittäjiltä."
   },
   "nav": {
     "events": "Tapahtumat",
@@ -12,13 +12,18 @@
     "openMenu": "Avaa valikko",
     "closeMenu": "Sulje valikko",
     "siteName": "React Native Suomi",
-    "siteNameShort": "RN Suomi"
+    "siteNameShort": "React Native Suomi",
+    "country": "Suomi"
   },
   "hero": {
     "badge": "Meetupit Helsingissä. Sisältöä suomeksi ja englanniksi.",
     "seeEvents": "Katso tulevat tapahtumat",
     "title": "Rakenna React Native -sovelluksia Suomessa",
-    "description": "Yhteisö kehittäjille, jotka toimittavat cross-platform-sovelluksia Helsingistä Ouluun. Osallistu meetuppeihin, opi Helsingin yliopiston MOOC-kurssilta ja verkostoidu pohjoismaisten RN-kehittäjien kanssa.",
+    "description": "Yhteisö kehittäjille, jotka toimittavat cross-platform-sovelluksia Helsingistä Ouluun. Osallistu meetuppeihin, lue tutoriaaleja ja verkostoidu pohjoismaisten React Native -kehittäjien kanssa.",
+    "country": "Suomessa",
+    "location": "Helsinki, Suomi",
+    "meetups": "Meetupit & konferenssit",
+    "openSource": "Avoin lähdekoodi",
     "viewEvents": "Osallistu seuraavaan meetuppiin",
     "learnMore": "Selaa tutoriaaleja"
   },
@@ -26,33 +31,33 @@
     "introTitle": "Miksi React Native Suomessa?",
     "introDescription": "Suomi on ylittänyt painoluokkansa mobiilissa vuosikymmeniä. Nokian perinnöstä tämän päivän kukoistavaan startup-skeneen — suomalaiset kehittäjät ovat toimittaneet mobiilisovelluksia jo kauan. React Native sopii tähän täydellisesti, ja tämä yhteisö yhdistää tekijät.",
     "exploreTitle": "Kehittäjät, meetupit, tutoriaalit",
-    "exploreSubtitle": "Kaikki mitä tarvitset RN-kehitykseen Suomessa",
+    "exploreSubtitle": "Kaikki mitä tarvitset React Native -kehitykseen Suomessa",
     "events": {
       "title": "Meetupit",
       "count": "{count} tapahtumaa tähän mennessä",
-      "description": "Teknisiä puheita suomalaisilta RN-insinööreiltä. Oikeita keskusteluja, ilmaista pizzaa ja aitoa verkostoitumista.",
-      "cta": "Katso tulevat puheet"
+      "description": "Teknisiä puheita suomalaisilta React Native -insinööreiltä. Oikeita keskusteluja, ilmaista pizzaa ja aitoa verkostoitumista.",
+      "cta": "Selaa tapahtumia"
     },
     "developers": {
       "title": "Kehittäjähakemisto",
       "count": "{count} listattua kehittäjää",
       "description": "Etsitkö tekijää? Tarvitsetko konsulttia? Selaa Suomessa toimivia React Native -osaajia — tai lisää itsesi löydettäväksi.",
-      "cta": "Löydä RN-osaajia"
+      "cta": "Selaa osaajia"
     },
     "articles": {
       "title": "Tutoriaalit",
       "count": "{count} opasta & syväsukellusta",
-      "description": "Käytännön tutoriaaleja kehittäjiltä, jotka toimittavat RN-sovelluksia päivittäin. Suorituskyky, animaatiot, native-moduulit — ei täytettä.",
+      "description": "Käytännön tutoriaaleja kehittäjiltä, jotka toimittavat React Native -sovelluksia päivittäin. Suorituskyky, animaatiot, native-moduulit — ei täytettä.",
       "cta": "Aloita lukeminen"
     },
     "learn": {
-      "title": "Ilmainen MOOC-kurssi",
-      "subtitle": "Helsingin yliopisto",
-      "description": "Mobile Development MOOC on yksi maailman parhaista ilmaisista React Native -kursseista. Saman tiimin tekemä kuin kuuluisa fullstackopen.com.",
-      "cta": "Suorita kurssi"
+      "title": "Tutoriaalit & oppaat",
+      "subtitle": "Opi React Native",
+      "description": "Käytännön tutoriaaleja suomalaiselta React Native -yhteisöltä. Suorituskyky, animaatiot, native-moduulit — oikeita oppaita kehittäjiltä jotka toimittavat sovelluksia.",
+      "cta": "Selaa tutoriaaleja"
     },
     "community": {
-      "title": "Toimita RN-sovelluksia kanssamme",
+      "title": "Rakenna React Native -sovelluksia kanssamme",
       "description": "Olitpa oppimassa React Nativea, palkkaamassa kehittäjiä tai vain haluat nörtteillä mobiilista — olet oikeassa paikassa.",
       "ctaPrimary": "Ilmoittaudu Meetupissa",
       "ctaSecondary": "Selaa sivustoa"
@@ -65,8 +70,8 @@
           "answer": "Liity Meetup.com-ryhmäämme osoitteessa meetup.com/react-native-helsinki saadaksesi ilmoituksia tulevista tapahtumista. Tapahtumat ovat ilmaisia ja avoimia kaikille React Nativesta kiinnostuneille."
         },
         {
-          "question": "Onko Helsingin yliopiston React Native -kurssi ilmainen?",
-          "answer": "Kyllä! Helsingin yliopiston Mobile Development MOOC on täysin ilmainen. Sen on rakentanut sama tiimi kuin fullstackopen.com:in, ja se kattaa React Nativen perusteista edistyneisiin aiheisiin."
+          "question": "Mistä voin oppia React Nativea?",
+          "answer": "Tutustu tutoriaaleihimme ja artikkeleihin, jotka suomalaiset React Native -kehittäjät ovat kirjoittaneet. Käsittelemme kaiken aloittamisesta edistyneisiin aiheisiin kuten suorituskyvyn optimointiin ja native-moduuleihin."
         },
         {
           "question": "Miten lisään itseni kehittäjähakemistoon?",
@@ -81,20 +86,17 @@
   },
   "footer": {
     "siteName": "React Native Suomi",
-    "tagline": "React Native -kehittäjien yhteisökeskus Suomessa",
+    "tagline": "React Native -kehittäjien yhteisö Suomessa",
     "builtBy": "Tekijä:"
   },
   "articles": {
-    "pageTitle": "Opi React Native | Ilmaiset tutoriaalit, MOOC-kurssi & oppaat",
-    "pageDescription": "Opi React Native ilmaisella Helsingin yliopiston MOOC-kurssilla ja suomalaisten kehittäjien käytännön tutoriaaleilla. Suorituskyky, animaatiot, native-moduulit.",
+    "pageTitle": "Opi React Native | Ilmaiset tutoriaalit & oppaat",
+    "pageDescription": "Opi React Native suomalaisten kehittäjien käytännön tutoriaaleilla. Suorituskyky, animaatiot, native-moduulit — oikeita oppaita.",
     "header": "Opi & Kehity",
     "title": "Opi React Native Suomessa",
     "description": "Olitpa täysin uusi mobiilisovelluskehityksessä tai haluat syventää React Native -osaamistasi, tämä sivu kokoaa parhaat oppimisresurssit ja yhteisön tuottaman sisällön Suomessa.",
-    "startCourse": "Aloita Helsingin MOOC-kurssi",
-    "moocTitle": "Helsingin yliopiston Mobile Development MOOC",
-    "moocDescription": "Helsingin yliopiston Mobile Development MOOC on yksi vahvimmista johdatuksista React Nativeen maailmassa. Se kattaa modernin JavaScriptin, keskeiset mobiilikonseptit ja käytännön sovelluskehityksen.",
-    "startTheCourse": "Aloita kurssi",
-    "communityArticles": "Yhteisön artikkelit",
+    "communityArticlesHeader": "Yhteisön sisältö",
+    "communityArticles": "Blogipostaukset",
     "communityDescription": "Suomalaisen React Native -yhteisön kirjoittamia artikkeleita — tutoriaaleista ja syväsukelluksista tapaustutkimuksiin ja projektikuvauksiin.",
     "heroAlt": "React Native -artikkelit ja oppimisresurssit"
   },
@@ -102,7 +104,7 @@
     "pageTitle": "Palkkaa React Native -kehittäjiä Suomesta | Kehittäjähakemisto",
     "pageDescription": "Löydä ja palkkaa React Native -kehittäjiä, konsultteja ja insinöörejä Suomesta. Selaa hakemistoa tai lisää profiilisi löydettäväksi.",
     "title": "React Native -kehittäjähakemisto",
-    "description": "Suomen React Native -osaajien päälista. Olitpa palkkaamassa projektiin tai etsimässä seuraavaa mahdollisuuttasi — täällä suomalaiset RN-kehittäjät tulevat löydetyiksi.",
+    "description": "Suomen React Native -osaajien päälista. Olitpa palkkaamassa projektiin tai etsimässä seuraavaa mahdollisuuttasi — täällä suomalaiset React Native -kehittäjät tulevat löydetyiksi.",
     "addYourself": "Listaudu",
     "addDescription": "Oletko React Native -kehittäjä Suomessa? Lisää profiilisi saadaksesi näkyvyyttä rekrytoijille, verkostoituaksesi yhteisön kanssa ja esitelläksesi osaamistasi.",
     "viewOnGithub": "Lisää profiilisi GitHubissa",
@@ -256,7 +258,7 @@
     "subtitle": "Löydä kokeneita React Native -konsultteja ja kehitystiimejä Suomesta. Uusista sovelluksista migraatioprojekteihin — oikea osaaminen mobiiliprojektiisi.",
     "ctaBrowse": "Selaa kehittäjiä",
     "ctaContact": "Ota yhteyttä",
-    "servicesTitle": "Mitä suomalaiset RN-konsultit tarjoavat",
+    "servicesTitle": "Mitä suomalaiset React Native -konsultit tarjoavat",
     "servicesSubtitle": "Suomalaiset React Native -kehittäjät työskentelevät startupeissa, toimistoissa ja yritysasiakkaiden kanssa.",
     "services": [
       {
@@ -269,7 +271,7 @@
       },
       {
         "title": "Suorituskyvyn optimointi",
-        "description": "Korjaa hitaat renderöinnit, pienennä bundle-kokoa, poista nykiminen. Suomalaiset RN-asiantuntijat profiloivat sovelluksesi ja toteuttavat mitattavia parannuksia."
+        "description": "Korjaa hitaat renderöinnit, pienennä bundle-kokoa, poista nykiminen. Suomalaiset React Native -asiantuntijat profiloivat sovelluksesi ja toteuttavat mitattavia parannuksia."
       },
       {
         "title": "Koodikatselmus ja arkkitehtuuri",
@@ -317,10 +319,10 @@
     "ctaDescription": "Löydä oikea React Native -osaaminen projektiisi. Selaa kehittäjähakemistoamme tai ota yhteyttä keskustellaksesi tarpeistasi."
   },
   "jobs": {
-    "pageTitle": "React Native -työpaikat Suomessa | Löydä RN-kehittäjäpositioita",
-    "pageDescription": "Löydä React Native -kehittäjätyöpaikkoja Suomesta. Selaa avoimia positioita suomalaisista yrityksistä tai julkaise työpaikkailmoitus tavoittaaksesi RN-yhteisön.",
+    "pageTitle": "React Native -työpaikat Suomessa | Löydä React Native -kehittäjäpositioita",
+    "pageDescription": "Löydä React Native -kehittäjätyöpaikkoja Suomesta. Selaa avoimia positioita suomalaisista yrityksistä tai julkaise työpaikkailmoitus tavoittaaksesi React Native -yhteisön.",
     "title": "React Native -työpaikat Suomessa",
-    "subtitle": "Avoimia positioita yrityksiltä, jotka palkkaavat RN-kehittäjiä",
+    "subtitle": "Avoimia positioita yrityksiltä, jotka palkkaavat React Native -kehittäjiä",
     "description": "Etsitkö seuraavaa React Native -roolia Suomessa? Tämä sivu listaa avoimia positioita suomalaisista yrityksistä. Rakennamme tätä ominaisuutta — palaa pian tai liity Meetup-ryhmäämme verkostoituaksesi suoraan palkkaavien yritysten kanssa.",
     "comingSoon": "Tulossa pian",
     "comingSoonDescription": "Rakennamme työpaikkataululua. Sillä välin:",

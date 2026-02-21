@@ -60,45 +60,6 @@ export default async function LearnAndArticlesPage({ params }: Props) {
             {t('title')}
           </h1>
           <p className='mt-6 text-lg/8 text-gray-600'>{t('description')}</p>
-          <div className='mt-8'>
-            <a
-              href='https://studies.helsinki.fi/kurssit/toteutus/otm-e859336d-9d63-47ac-9906-a7da74cae32d'
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-base/7 font-semibold text-indigo-600 hover:text-indigo-500'
-            >
-              {t('startCourse')} <span aria-hidden='true'>&rarr;</span>
-            </a>
-          </div>
-        </div>
-
-        {/* MOOC Info Card */}
-        <div className='mt-16 rounded-2xl bg-gray-50 p-8 sm:p-12'>
-          <h2 className='text-xl font-semibold text-gray-900'>
-            {t('moocTitle')}
-          </h2>
-          <p className='mt-4 text-base text-gray-600'>{t('moocDescription')}</p>
-          <a
-            href='https://studies.helsinki.fi/kurssit/toteutus/otm-e859336d-9d63-47ac-9906-a7da74cae32d'
-            target='_blank'
-            rel='noopener noreferrer'
-            className='mt-6 inline-flex items-center rounded-md bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
-          >
-            {t('startTheCourse')}
-            <svg
-              className='ml-2 size-4'
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={2}
-                d='M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25'
-              />
-            </svg>
-          </a>
         </div>
 
         {/* Articles section */}

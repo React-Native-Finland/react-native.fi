@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       template: `%s | ${t('title')}`,
     },
     keywords:
-      'React Native Finland, React Native Helsinki, React Native meetups Helsinki, React Native developers Finland, learn React Native Finland, React Native community Finland, mobile development Finland, React Native courses Finland, React Native MOOC',
+      'React Native Finland, React Native Helsinki, React Native meetups Helsinki, React Native developers Finland, learn React Native Finland, React Native community Finland, mobile development Finland, React Native tutorials Finland',
     authors: [
       {
         name: 'Perttu Lähteenlahti',

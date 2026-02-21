@@ -199,7 +199,7 @@ export default async function HomePage({ params }: Props) {
             <div className='flex flex-col items-start justify-between gap-8 md:flex-row md:items-center'>
               <div className='max-w-2xl'>
                 <span className='mb-3 inline-block rounded-full bg-white/20 px-3 py-1 font-mono text-xs font-semibold text-white'>
-                  Free Course
+                  {t('learn.title')}
                 </span>
                 <h3 className='mb-3 text-2xl font-bold text-white md:text-3xl'>
                   {t('learn.subtitle')}

@@ -10,8 +10,3 @@ export const localeNames: Record<Locale, string> = {
   en: 'English',
   fi: 'Suomi',
 };
-
-export const localeFlags: Record<Locale, string> = {
-  en: '🇬🇧',
-  fi: '🇫🇮',
-};
