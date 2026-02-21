@@ -25,7 +25,7 @@ export function Footer() {
               </div>
               <div>
                 <div className='font-mono text-base font-bold text-[rgb(var(--mono-900))]'>
-                  React Native Finland
+                  {t('siteName')}
                 </div>
                 <div className='font-mono text-xs text-[rgb(var(--mono-500))]'>
                   {t('tagline')}
@@ -171,7 +171,7 @@ export function Footer() {
         <div className='mt-12 border-t border-[rgb(var(--mono-200))] pt-8'>
           <div className='flex flex-col items-center justify-between gap-4 sm:flex-row'>
             <p className='text-sm text-[rgb(var(--mono-500))]'>
-              &copy; {currentYear} React Native Finland. {t('builtBy')}{' '}
+              &copy; {currentYear} {t('siteName')}. {t('builtBy')}{' '}
               <a
                 href='https://perttu.dev'
                 rel='author'

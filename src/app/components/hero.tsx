@@ -81,7 +81,7 @@ export const Hero = () => {
           <h1 className='mb-6 text-5xl font-bold leading-[0.9] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl fade-in-up'>
             <span className='block'>React Native</span>
             <span className='hero-headline-gradient mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-[rgb(var(--finnish-blue-light))] via-[rgb(var(--accent-frost))] to-[rgb(var(--accent-aurora))]'>
-              Finland
+              {t('country')}
             </span>
           </h1>
 
@@ -139,19 +139,19 @@ export const Hero = () => {
         >
           <div className='text-center'>
             <div className='text-xs font-medium uppercase tracking-wider text-white/50'>
-              Helsinki, Finland
+              {t('location')}
             </div>
           </div>
           <div className='h-8 w-px bg-white/10' />
           <div className='text-center'>
             <div className='text-xs font-medium uppercase tracking-wider text-white/50'>
-              Meetups & Conferences
+              {t('meetups')}
             </div>
           </div>
           <div className='h-8 w-px bg-white/10' />
           <div className='text-center'>
             <div className='text-xs font-medium uppercase tracking-wider text-white/50'>
-              Open Source
+              {t('openSource')}
             </div>
           </div>
         </div>

@@ -82,7 +82,7 @@ export const Navbar = () => {
                     : 'text-[rgb(var(--finnish-blue))]'
                 }`}
               >
-                Finland
+                {t('country')}
               </div>
             </div>
           </Link>
@@ -179,7 +179,7 @@ export const Navbar = () => {
                   React Native
                 </div>
                 <div className='font-mono text-xs font-medium text-[rgb(var(--finnish-blue))]'>
-                  Finland
+                  {t('country')}
                 </div>
               </div>
             </Link>

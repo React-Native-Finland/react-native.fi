@@ -12,13 +12,18 @@
     "openMenu": "Open main menu",
     "closeMenu": "Close menu",
     "siteName": "React Native Finland",
-    "siteNameShort": "RN Finland"
+    "siteNameShort": "RN Finland",
+    "country": "Finland"
   },
   "hero": {
     "badge": "Meetups in Helsinki. Content in English & Finnish.",
     "seeEvents": "See upcoming events",
     "title": "Build React Native apps in Finland",
     "description": "The community for developers shipping cross-platform apps from Helsinki to Oulu. Join meetups, learn from the University of Helsinki MOOC, and connect with the devs building RN in the Nordics.",
+    "country": "Finland",
+    "location": "Helsinki, Finland",
+    "meetups": "Meetups & Conferences",
+    "openSource": "Open Source",
     "viewEvents": "Join the Next Meetup",
     "learnMore": "Browse tutorials"
   },

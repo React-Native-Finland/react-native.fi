@@ -2,19 +2,14 @@ import { ImageResponse } from 'next/og';
 
 import { getEventBySlug } from '@/lib/events';
 
-import { Locale, locales } from '@/i18n/config';
+import { Locale } from '@/i18n/config';
 
-export const runtime = 'edge';
 export const alt = 'Event';
 export const contentType = 'image/png';
 
 type Props = {
   params: Promise<{ slug: string; locale: Locale }>;
 };
-
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
 
 // Deterministic hash from a string to generate consistent colors per event
 function hashString(str: string): number {
@@ -29,22 +24,14 @@ function hashString(str: string): number {
 // Generate mesh gradient colors from an event date string
 function getMeshColors(dateStr: string) {
   const h = hashString(dateStr);
-
-  // Base hue derived from the date — each event gets a different region of the color wheel
   const baseHue = h % 360;
 
-  // Four gradient stops with hue variation for a rich mesh effect
-  const hues = [
+  return [
     baseHue,
-    (baseHue + 40) % 360,
+    (baseHue + 45) % 360,
     (baseHue + 160) % 360,
-    (baseHue + 220) % 360,
+    (baseHue + 230) % 360,
   ];
-
-  return hues.map(
-    (hue, i) =>
-      `hsl(${hue}, ${65 + i * 5}%, ${i < 2 ? 45 + i * 10 : 30 + i * 5}%)`,
-  );
 }
 
 export default async function Image({ params }: Props) {
@@ -59,7 +46,7 @@ export default async function Image({ params }: Props) {
         .join(' ');
 
   const dateStr = event?.date || slug;
-  const colors = getMeshColors(dateStr);
+  const hues = getMeshColors(dateStr);
 
   const formattedDate = event
     ? new Date(event.date).toLocaleDateString('en-US', {
@@ -81,6 +68,16 @@ export default async function Image({ params }: Props) {
     'https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.ttf',
   ).then((res) => res.arrayBuffer());
 
+  // Build a smooth mesh gradient using layered radial-gradients
+  // Satori supports radial-gradient natively (no filter:blur needed)
+  const meshBackground = [
+    `radial-gradient(ellipse 80% 80% at 15% 20%, hsl(${hues[0]}, 70%, 45%) 0%, transparent 60%)`,
+    `radial-gradient(ellipse 70% 70% at 85% 25%, hsl(${hues[1]}, 65%, 50%) 0%, transparent 55%)`,
+    `radial-gradient(ellipse 75% 80% at 40% 85%, hsl(${hues[2]}, 60%, 35%) 0%, transparent 55%)`,
+    `radial-gradient(ellipse 60% 60% at 80% 75%, hsl(${hues[3]}, 55%, 40%) 0%, transparent 50%)`,
+    `linear-gradient(135deg, hsl(${hues[0]}, 40%, 12%) 0%, hsl(${hues[2]}, 30%, 8%) 100%)`,
+  ].join(', ');
+
   return new ImageResponse(
     <div
       style={{
@@ -91,64 +88,10 @@ export default async function Image({ params }: Props) {
         fontFamily: 'Inter',
         position: 'relative',
         overflow: 'hidden',
-        background: '#0a0a1a',
+        background: meshBackground,
       }}
     >
-      {/* Mesh gradient orbs */}
-      <div
-        style={{
-          position: 'absolute',
-          top: '-20%',
-          left: '-10%',
-          width: '70%',
-          height: '80%',
-          borderRadius: '50%',
-          background: colors[0],
-          filter: 'blur(80px)',
-          opacity: 0.6,
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          top: '10%',
-          right: '-15%',
-          width: '60%',
-          height: '70%',
-          borderRadius: '50%',
-          background: colors[1],
-          filter: 'blur(90px)',
-          opacity: 0.5,
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '-25%',
-          left: '20%',
-          width: '65%',
-          height: '75%',
-          borderRadius: '50%',
-          background: colors[2],
-          filter: 'blur(100px)',
-          opacity: 0.5,
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          bottom: '5%',
-          right: '10%',
-          width: '45%',
-          height: '55%',
-          borderRadius: '50%',
-          background: colors[3],
-          filter: 'blur(70px)',
-          opacity: 0.4,
-        }}
-      />
-
-      {/* Subtle noise/grid overlay */}
+      {/* Subtle grid overlay */}
       <div
         style={{
           position: 'absolute',

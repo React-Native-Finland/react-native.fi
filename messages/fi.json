@@ -12,13 +12,18 @@
     "openMenu": "Avaa valikko",
     "closeMenu": "Sulje valikko",
     "siteName": "React Native Suomi",
-    "siteNameShort": "RN Suomi"
+    "siteNameShort": "RN Suomi",
+    "country": "Suomi"
   },
   "hero": {
     "badge": "Meetupit Helsingissä. Sisältöä suomeksi ja englanniksi.",
     "seeEvents": "Katso tulevat tapahtumat",
     "title": "Rakenna React Native -sovelluksia Suomessa",
     "description": "Yhteisö kehittäjille, jotka toimittavat cross-platform-sovelluksia Helsingistä Ouluun. Osallistu meetuppeihin, opi Helsingin yliopiston MOOC-kurssilta ja verkostoidu pohjoismaisten RN-kehittäjien kanssa.",
+    "country": "Suomi",
+    "location": "Helsinki, Suomi",
+    "meetups": "Meetupit & konferenssit",
+    "openSource": "Avoin lähdekoodi",
     "viewEvents": "Osallistu seuraavaan meetuppiin",
     "learnMore": "Selaa tutoriaaleja"
   },
@@ -81,7 +86,7 @@
   },
   "footer": {
     "siteName": "React Native Suomi",
-    "tagline": "React Native -kehittäjien yhteisökeskus Suomessa",
+    "tagline": "React Native -kehittäjien yhteisö Suomessa",
     "builtBy": "Tekijä:"
   },
   "articles": {
