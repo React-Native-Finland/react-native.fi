@@ -57,9 +57,9 @@
       "cta": "Take the course"
     },
     "community": {
-      "title": "Ship RN apps with us",
+      "title": "Become part of React Native Finland",
       "description": "Whether you're learning React Native, hiring developers, or just want to geek out about mobile — you're in the right place.",
-      "ctaPrimary": "RSVP on Meetup",
+      "ctaPrimary": "Find next meetup",
       "ctaSecondary": "Browse the site"
     },
     "faq": {
@@ -99,7 +99,7 @@
     "moocTitle": "University of Helsinki Mobile Development MOOC",
     "moocDescription": "The Mobile Development MOOC from the University of Helsinki is one of the strongest introductions to React Native anywhere in the world. It covers modern JavaScript, key mobile concepts, and hands-on app development.",
     "startTheCourse": "Start the course",
-    "communityArticles": "Community Articles",
+    "communityArticles": "Articles",
     "communityDescription": "Articles written by the Finnish React Native community — from tutorials and deep dives to case studies and project write-ups.",
     "heroAlt": "React Native Articles and Learning Resources"
   },
