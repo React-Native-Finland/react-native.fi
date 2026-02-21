@@ -12,27 +12,32 @@ export function DeveloperCard({ developer }: { developer: Developer }) {
 
   return (
     <li>
-      <Link href={`/developers/${developer.slug}`} className='group block'>
-        <div className='relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-[rgb(var(--mono-100))]'>
+      <Link
+        href={`/developers/${developer.slug}`}
+        className='group flex items-start gap-4'
+      >
+        <div className='relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-[rgb(var(--mono-100))]'>
           <Image
             alt={developer.name}
             src={developer.imageUrl}
             fill
-            sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
+            sizes='64px'
             className='object-cover transition-transform duration-300 group-hover:scale-105'
           />
         </div>
-        <h3 className='mt-6 text-lg/8 font-semibold text-[rgb(var(--mono-900))] group-hover:text-[rgb(var(--finnish-blue))]'>
-          {developer.name}
-        </h3>
-        <p className='text-base/7 text-[rgb(var(--mono-600))]'>
-          {developer.role}
-        </p>
-        {developer.location && (
-          <p className='text-sm text-[rgb(var(--mono-500))]'>
-            {developer.location}
+        <div>
+          <h3 className='text-base font-semibold text-[rgb(var(--mono-900))] group-hover:text-[rgb(var(--finnish-blue))]'>
+            {developer.name}
+          </h3>
+          <p className='text-sm text-[rgb(var(--mono-600))]'>
+            {developer.role}
           </p>
-        )}
+          {developer.location && (
+            <p className='text-xs text-[rgb(var(--mono-500))]'>
+              {developer.location}
+            </p>
+          )}
+        </div>
       </Link>
       <ul role='list' className='mt-6 flex gap-x-6'>
         {developer.xUrl && (

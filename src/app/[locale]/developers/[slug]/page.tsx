@@ -88,21 +88,21 @@ export default async function DeveloperPage({ params }: Props) {
         <div className='mx-auto max-w-7xl px-6 lg:px-8'>
           <div className='mx-auto max-w-4xl'>
             {/* Developer Profile Header */}
-            <div className='flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:gap-12'>
+            <div className='flex items-start gap-6 sm:gap-8'>
               {/* Photo */}
-              <div className='relative h-48 w-48 shrink-0 overflow-hidden rounded-2xl bg-[rgb(var(--mono-100))] sm:h-56 sm:w-56'>
+              <div className='relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-[rgb(var(--mono-100))] sm:h-28 sm:w-28'>
                 <Image
                   alt={developer.name}
                   src={developer.imageUrl}
                   fill
-                  sizes='224px'
+                  sizes='112px'
                   className='object-cover'
                   priority
                 />
               </div>
 
               {/* Info */}
-              <div className='text-center sm:text-left'>
+              <div>
                 <h1 className='text-3xl font-bold tracking-tight text-[rgb(var(--mono-900))] sm:text-4xl'>
                   {developer.name}
                 </h1>

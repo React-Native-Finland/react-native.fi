@@ -152,7 +152,7 @@ export default async function DevelopersPage({ params }: Props) {
         </div>
         <ul
           role='list'
-          className='mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-20 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:gap-x-8 xl:col-span-2'
+          className='mx-auto grid max-w-2xl grid-cols-1 gap-6 lg:mx-0 lg:max-w-none xl:col-span-2'
         >
           {developers.map((developer) => (
             <DeveloperCard key={developer.slug} developer={developer} />
