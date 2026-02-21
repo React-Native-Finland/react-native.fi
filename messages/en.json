@@ -1,9 +1,9 @@
 {
   "metadata": {
     "title": "React Native Finland | Meetups, Developers & Tutorials",
-    "description": "The React Native community in Finland. Join Helsinki meetups, hire Finnish RN developers, learn from the University of Helsinki MOOC, and read practical tutorials.",
+    "description": "The React Native community in Finland. Join Helsinki meetups, hire Finnish React Native developers, and read practical tutorials.",
     "homeTitle": "React Native Finland | Build Cross-Platform Apps with the Finnish Community",
-    "homeDescription": "Join the React Native community in Finland. Helsinki meetups, developer directory, free University of Helsinki MOOC, and tutorials from devs shipping RN apps."
+    "homeDescription": "Join the React Native community in Finland. Helsinki meetups, developer directory, and tutorials from devs shipping React Native apps."
   },
   "nav": {
     "events": "Events",
@@ -12,14 +12,14 @@
     "openMenu": "Open main menu",
     "closeMenu": "Close menu",
     "siteName": "React Native Finland",
-    "siteNameShort": "RN Finland",
+    "siteNameShort": "React Native Finland",
     "country": "Finland"
   },
   "hero": {
     "badge": "Meetups in Helsinki. Content in English & Finnish.",
     "seeEvents": "See upcoming events",
     "title": "Build React Native apps in Finland",
-    "description": "The community for developers shipping cross-platform apps from Helsinki to Oulu. Join meetups, learn from the University of Helsinki MOOC, and connect with the devs building RN in the Nordics.",
+    "description": "The community for developers shipping cross-platform apps from Helsinki to Oulu. Join meetups, read tutorials, and connect with the devs building React Native in the Nordics.",
     "country": "Finland",
     "location": "Helsinki, Finland",
     "meetups": "Meetups & Conferences",
@@ -31,30 +31,30 @@
     "introTitle": "Why React Native in Finland?",
     "introDescription": "Finland punches above its weight in mobile. From Nokia's legacy to today's thriving startup scene, Finnish developers have been shipping mobile apps for decades. React Native fits right in — and this community connects the people making it happen.",
     "exploreTitle": "Developers, meetups, tutorials",
-    "exploreSubtitle": "Everything you need to build with RN in Finland",
+    "exploreSubtitle": "Everything you need to build with React Native in Finland",
     "events": {
       "title": "Meetups",
       "count": "{count} events so far",
-      "description": "Technical talks from Finnish RN engineers. Real conversations, free pizza, and actual networking (not the awkward kind).",
-      "cta": "See upcoming talks"
+      "description": "Technical talks from Finnish React Native engineers. Real conversations, free pizza, and actual networking (not the awkward kind).",
+      "cta": "See upcoming meetups"
     },
     "developers": {
       "title": "Developer Directory",
       "count": "{count} listed developers",
       "description": "Looking to hire? Need a consultant? Browse vetted React Native specialists based in Finland — or add yourself to get discovered.",
-      "cta": "Find RN talent"
+      "cta": "Find React Native talent"
     },
     "articles": {
       "title": "Tutorials",
       "count": "{count} guides & deep-dives",
-      "description": "Practical tutorials from devs who ship RN apps daily. Performance, animations, native modules — no fluff.",
+      "description": "Practical tutorials from devs who ship React Native apps daily. Performance, animations, native modules — no fluff.",
       "cta": "Start reading"
     },
     "learn": {
-      "title": "Free MOOC Course",
-      "subtitle": "University of Helsinki",
-      "description": "The Mobile Development MOOC is one of the best free React Native courses in the world. Built by the same team behind the famous fullstackopen.com.",
-      "cta": "Take the course"
+      "title": "Tutorials & Guides",
+      "subtitle": "Learn React Native",
+      "description": "Practical tutorials from the Finnish React Native community. Performance, animations, native modules — real-world guides from devs who ship.",
+      "cta": "Browse tutorials"
     },
     "community": {
       "title": "Become part of React Native Finland",
@@ -70,8 +70,8 @@
           "answer": "Join our Meetup.com group at meetup.com/react-native-helsinki to get notified about upcoming events and RSVP. Events are free and open to everyone interested in React Native."
         },
         {
-          "question": "Is the University of Helsinki React Native course free?",
-          "answer": "Yes! The Mobile Development MOOC from the University of Helsinki is completely free. It's built by the same team behind fullstackopen.com and covers React Native from basics to advanced topics."
+          "question": "Where can I learn React Native?",
+          "answer": "Check out our tutorials and articles written by Finnish React Native developers. We cover everything from getting started to advanced topics like performance optimization and native modules."
         },
         {
           "question": "How can I add myself to the developer directory?",
@@ -90,15 +90,12 @@
     "builtBy": "Built by"
   },
   "articles": {
-    "pageTitle": "Learn React Native | Free Tutorials, MOOC Course & Guides",
-    "pageDescription": "Learn React Native with the free University of Helsinki MOOC and practical tutorials from Finnish developers. Performance, animations, native modules — real-world guides.",
+    "pageTitle": "Learn React Native | Free Tutorials & Guides",
+    "pageDescription": "Learn React Native with practical tutorials from Finnish developers. Performance, animations, native modules — real-world guides.",
     "header": "Learn & Grow",
     "title": "Learn React Native in Finland",
     "description": "Whether you're completely new to mobile development or looking to deepen your React Native expertise, this page brings together the best learning resources and community-written content available in Finland.",
-    "startCourse": "Start the Helsinki MOOC course",
-    "moocTitle": "University of Helsinki Mobile Development MOOC",
-    "moocDescription": "The Mobile Development MOOC from the University of Helsinki is one of the strongest introductions to React Native anywhere in the world. It covers modern JavaScript, key mobile concepts, and hands-on app development.",
-    "startTheCourse": "Start the course",
+    "communityArticlesHeader": "Community Content",
     "communityArticles": "Articles",
     "communityDescription": "Articles written by the Finnish React Native community — from tutorials and deep dives to case studies and project write-ups.",
     "heroAlt": "React Native Articles and Learning Resources"
@@ -107,7 +104,7 @@
     "pageTitle": "Hire React Native Developers in Finland | Developer Directory",
     "pageDescription": "Find and hire React Native developers, consultants, and engineers based in Finland. Browse the directory or add your profile to get discovered by hiring managers.",
     "title": "React Native Developer Directory",
-    "description": "The go-to list for finding React Native talent in Finland. Whether you're hiring for a project or looking for your next opportunity — this is where Finnish RN developers get discovered.",
+    "description": "The go-to list for finding React Native talent in Finland. Whether you're hiring for a project or looking for your next opportunity — this is where Finnish React Native developers get discovered.",
     "addYourself": "Get Listed",
     "addDescription": "Are you a React Native developer in Finland? Add your profile to get visibility with hiring managers, connect with the community, and showcase your expertise.",
     "viewOnGithub": "Add your profile on GitHub",
@@ -261,7 +258,7 @@
     "subtitle": "Connect with experienced React Native consultants and development teams based in Finland. From greenfield apps to migration projects, find the right expertise for your mobile project.",
     "ctaBrowse": "Browse Developers",
     "ctaContact": "Get in Touch",
-    "servicesTitle": "What Finnish RN Consultants Offer",
+    "servicesTitle": "What Finnish React Native Consultants Offer",
     "servicesSubtitle": "React Native developers in Finland work across startups, agencies, and enterprise clients. Here's what you can expect.",
     "services": [
       {
@@ -274,7 +271,7 @@
       },
       {
         "title": "Performance Optimization",
-        "description": "Fix slow renders, reduce bundle size, eliminate jank. Finnish RN specialists will profile your app and implement measurable improvements."
+        "description": "Fix slow renders, reduce bundle size, eliminate jank. Finnish React Native specialists will profile your app and implement measurable improvements."
       },
       {
         "title": "Code Review & Architecture",
@@ -322,10 +319,10 @@
     "ctaDescription": "Find the right React Native expertise for your project. Browse our developer directory or reach out to discuss your needs."
   },
   "jobs": {
-    "pageTitle": "React Native Jobs in Finland | Find RN Developer Positions",
-    "pageDescription": "Find React Native developer jobs in Finland. Browse open positions from Finnish companies hiring mobile developers, or post your job to reach the RN community.",
+    "pageTitle": "React Native Jobs in Finland | Find React Native Developer Positions",
+    "pageDescription": "Find React Native developer jobs in Finland. Browse open positions from Finnish companies hiring mobile developers, or post your job to reach the React Native community.",
     "title": "React Native Jobs in Finland",
-    "subtitle": "Open positions from companies hiring RN developers",
+    "subtitle": "Open positions from companies hiring React Native developers",
     "description": "Looking for your next React Native role in Finland? This page will list open positions from Finnish companies. We're building this feature — check back soon or join our Meetup to network directly with hiring companies.",
     "comingSoon": "Coming Soon",
     "comingSoonDescription": "We're building the jobs board. In the meantime:",
