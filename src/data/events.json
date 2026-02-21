@@ -1,5 +1,38 @@
 [
   {
+    "slug": "react-native-helsinki-fourth-edition-january-2025",
+    "title": "React Native Helsinki: Fourth Edition",
+    "date": "2025-01-14",
+    "startTime": "16:30",
+    "endTime": "19:00",
+    "timezone": "EET",
+    "venue": {
+      "name": "Reaktor",
+      "address": "Yliopistonkatu 4",
+      "city": "Helsinki"
+    },
+    "host": "Mehrad M.",
+    "description": "The fourth React Native Helsinki meetup, featuring two talks and a panel discussion. Join us to connect with fellow developers and enthusiasts, learn from real-world experience, and be a part of shaping this growing local community.",
+    "talks": [
+      {
+        "title": "What's Coming in Expo in 2026",
+        "description": "Join us to learn what the Expo team has in plans for the coming year.",
+        "level": "All levels",
+        "speaker": {
+          "name": "Tomasz Czajęcki"
+        }
+      },
+      {
+        "title": "Debugging React Native at Scale",
+        "description": "When you have millions of users, everything that can possibly break, will break. What do you do next?",
+        "level": "Intermediate",
+        "speaker": {
+          "name": "Samuel Newman"
+        }
+      }
+    ]
+  },
+  {
     "slug": "react-native-helsinki-december-2024",
     "title": "React Native Helsinki Meetup",
     "date": "2024-12-12",

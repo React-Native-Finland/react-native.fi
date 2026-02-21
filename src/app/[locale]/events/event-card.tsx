@@ -35,7 +35,7 @@ export function EventCard({
       {/* OG Image */}
       <div className='relative aspect-[1200/630] overflow-hidden'>
         <Image
-          src={`/events/${event.slug}/opengraph-image`}
+          src={`/${locale}/events/${event.slug}/opengraph-image`}
           alt={event.title}
           fill
           sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
