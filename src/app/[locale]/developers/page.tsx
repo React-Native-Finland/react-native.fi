@@ -62,16 +62,6 @@ export default async function DevelopersPage({ params }: Props) {
           </p>
         </div>
 
-        {/* For Hiring Managers */}
-        <div className='mt-8 max-w-2xl rounded-lg border border-[rgb(var(--finnish-blue)/0.2)] bg-[rgb(var(--finnish-blue)/0.05)] p-6'>
-          <h2 className='text-base font-semibold text-[rgb(var(--finnish-blue-dark))]'>
-            {t('forHiring')}
-          </h2>
-          <p className='mt-2 text-sm text-[rgb(var(--finnish-blue))]'>
-            {t('forHiringDescription')}
-          </p>
-        </div>
-
         {/* Developer list */}
         <ul
           role='list'
