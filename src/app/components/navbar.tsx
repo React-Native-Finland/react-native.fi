@@ -53,15 +53,21 @@ export const Navbar = () => {
         <div className='flex lg:flex-1'>
           <Link href='/' className='group -m-1.5 flex items-center gap-3 p-1.5'>
             <span className='sr-only'>{t('siteName')}</span>
-            <Image
-              src='/icon.png'
-              alt=''
-              width={36}
-              height={36}
-              className={`h-9 w-9 transition-opacity duration-300 ${
-                showDarkMode ? 'brightness-0 invert' : ''
+            <div
+              className={`flex h-9 w-9 items-center justify-center rounded-lg transition-all duration-300 ${
+                showDarkMode ? 'bg-white/15 backdrop-blur-sm' : ''
               }`}
-            />
+            >
+              <Image
+                src='/icon.png'
+                alt=''
+                width={28}
+                height={28}
+                className={`h-7 w-7 transition-all duration-300 ${
+                  showDarkMode ? 'brightness-0 invert' : ''
+                }`}
+              />
+            </div>
             {/* Logo text */}
             <div className='hidden sm:block'>
               <div
