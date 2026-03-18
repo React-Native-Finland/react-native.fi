@@ -136,18 +136,23 @@
     "startPR": "Open GitHub to start"
   },
   "events": {
-    "pageTitle": "React Native Helsinki Meetups & Events | React Native Finland",
-    "pageDescription": "Join React Native Helsinki meetups — technical talks, workshops, and networking with Finnish mobile developers. Free events, great speakers, real community.",
+    "pageTitle": "React Native Events | Conferences, Meetups & Community",
+    "pageDescription": "React Native conferences, meetup groups worldwide, and Helsinki community events. Find your next React Native event.",
     "title": "Events",
-    "description": "Join React Native Helsinki meetups to connect with developers, hear technical talks, and be part of the Finnish React Native community.",
-    "upcoming": "Upcoming Events",
+    "description": "Conferences, meetup groups, and community events for React Native developers.",
+    "conferencesTitle": "Conferences",
+    "conferencesDescription": "The major React Native conferences around the world.",
+    "conferencesViewAll": "Full conference guide with CFP deadlines",
+    "meetupsTitle": "Meetup Groups",
+    "meetupsDescription": "Local React Native communities that meet regularly. Can't make a conference? Start here.",
+    "helsinkiTitle": "React Native Helsinki",
+    "helsinkiDescription": "Our local meetup in Helsinki — technical talks, networking, and free pizza. Run by Perttu and the community.",
+    "helsinkiJoin": "Join on Meetup.com",
+    "upcoming": "Upcoming",
     "past": "Past Events",
     "upcomingBadge": "Upcoming",
     "talks": "{count, plural, one {# talk} other {# talks}}",
-    "neverMiss": "Never Miss an Event",
-    "neverMissDescription": "Join us on Meetup.com to get notified about upcoming React Native Helsinki events and RSVP to secure your spot.",
-    "joinMeetup": "Join on Meetup.com",
-    "heroAlt": "React Native Helsinki Events"
+    "heroAlt": "React Native Events"
   },
   "article": {
     "by": "By",
@@ -317,6 +322,22 @@
     ],
     "ctaTitle": "Ready to Build?",
     "ctaDescription": "Find the right React Native expertise for your project. Browse our developer directory or reach out to discuss your needs."
+  },
+  "newsletter": {
+    "bannerTitle": "React Native Recap",
+    "bannerDescription": "Every two weeks, Perttu Lähteenlahti breaks down what's new in React Native — one practical tutorial, the best links he found, and honest takes on the ecosystem. Written for developers who ship cross-platform apps and want to stay sharp.",
+    "bannerByline": "By Perttu Lähteenlahti, Developer Advocate at RevenueCat",
+    "bannerCta": "Get the next issue",
+    "inlineTitle": "Get the next article straight to your inbox",
+    "inlineDescription": "React Native Recap — Perttu's biweekly newsletter with tutorials, curated links, and what's worth paying attention to in the ecosystem.",
+    "placeholder": "you@company.com",
+    "subscribe": "Subscribe to Recap",
+    "subscribing": "Subscribing...",
+    "successTitle": "You're in.",
+    "successMessage": "Check your inbox for a welcome email. The next Recap lands within two weeks.",
+    "privacy": "Free, every two weeks. Unsubscribe in one click.",
+    "footerTitle": "React Native Recap",
+    "footerDescription": "Perttu's biweekly newsletter — tutorials, links, and ecosystem takes."
   },
   "jobs": {
     "pageTitle": "React Native Jobs in Finland | Find React Native Developer Positions",

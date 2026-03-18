@@ -136,18 +136,23 @@
     "startPR": "Avaa GitHub aloittaaksesi"
   },
   "events": {
-    "pageTitle": "React Native Helsinki Meetupit & Tapahtumat | React Native Suomi",
-    "pageDescription": "Osallistu React Native Helsinki -meetuppeihin — teknisiä puheita, työpajoja ja verkostoitumista suomalaisten mobiilinkehittäjien kanssa. Ilmaisia tapahtumia ja aitoa yhteisöä.",
+    "pageTitle": "React Native -tapahtumat | Konferenssit, meetupit ja yhteisö",
+    "pageDescription": "React Native -konferenssit, meetup-ryhmät maailmalla ja Helsingin yhteisötapahtumat. Löydä seuraava React Native -tapahtumasi.",
     "title": "Tapahtumat",
-    "description": "Osallistu React Native Helsinki -tapaamisiin, tapaa kehittäjiä, kuuntele teknisiä puheita ja ole osa suomalaista React Native -yhteisöä.",
-    "upcoming": "Tulevat tapahtumat",
+    "description": "Konferensseja, meetup-ryhmiä ja yhteisötapahtumia React Native -kehittäjille.",
+    "conferencesTitle": "Konferenssit",
+    "conferencesDescription": "React Nativen suurimmat konferenssit ympäri maailmaa.",
+    "conferencesViewAll": "Koko konferenssiopas CFP-deadlineilla",
+    "meetupsTitle": "Meetup-ryhmät",
+    "meetupsDescription": "Paikallisia React Native -yhteisöjä, jotka kokoontuvat säännöllisesti. Etkö pääse konferenssiin? Aloita tästä.",
+    "helsinkiTitle": "React Native Helsinki",
+    "helsinkiDescription": "Paikallinen meetuppimme Helsingissä — teknisiä puheita, verkostoitumista ja ilmaista pizzaa. Pertun ja yhteisön ylläpitämä.",
+    "helsinkiJoin": "Liity Meetup.com:issa",
+    "upcoming": "Tulossa",
     "past": "Menneet tapahtumat",
     "upcomingBadge": "Tulossa",
     "talks": "{count, plural, one {# puhe} other {# puhetta}}",
-    "neverMiss": "Älä jää paitsi tapahtumista",
-    "neverMissDescription": "Liity Meetup.com:iin saadaksesi ilmoituksia tulevista React Native Helsinki -tapahtumista ja varaa paikkasi.",
-    "joinMeetup": "Liity Meetup.com:issa",
-    "heroAlt": "React Native Helsinki -tapahtumat"
+    "heroAlt": "React Native -tapahtumat"
   },
   "article": {
     "by": "Kirjoittanut",
@@ -317,6 +322,22 @@
     ],
     "ctaTitle": "Valmis rakentamaan?",
     "ctaDescription": "Löydä oikea React Native -osaaminen projektiisi. Selaa kehittäjähakemistoamme tai ota yhteyttä keskustellaksesi tarpeistasi."
+  },
+  "newsletter": {
+    "bannerTitle": "React Native Recap",
+    "bannerDescription": "Joka toinen viikko Perttu Lähteenlahti purkaa React Nativen uutuudet — yksi käytännön tutoriaali, parhaat linkit ja rehelliset näkemykset ekosysteemistä. Kirjoitettu kehittäjille, jotka toimittavat cross-platform-sovelluksia ja haluavat pysyä terävänä.",
+    "bannerByline": "Kirjoittaja: Perttu Lähteenlahti, Developer Advocate, RevenueCat",
+    "bannerCta": "Tilaa seuraava numero",
+    "inlineTitle": "Saat seuraavan artikkelin suoraan sähköpostiisi",
+    "inlineDescription": "React Native Recap — Pertun uutiskirje joka toinen viikko. Tutoriaaleja, kurattuja linkkejä ja mitä ekosysteemissä kannattaa seurata.",
+    "placeholder": "sinä@yritys.fi",
+    "subscribe": "Tilaa Recap",
+    "subscribing": "Tilataan...",
+    "successTitle": "Olet mukana.",
+    "successMessage": "Tarkista sähköpostisi — tervetuloviesti on matkalla. Seuraava Recap saapuu kahden viikon sisällä.",
+    "privacy": "Ilmainen, joka toinen viikko. Peru yhdellä klikkauksella.",
+    "footerTitle": "React Native Recap",
+    "footerDescription": "Pertun uutiskirje joka toinen viikko — tutoriaaleja, linkkejä ja ekosysteeminäkemyksiä."
   },
   "jobs": {
     "pageTitle": "React Native -työpaikat Suomessa | Löydä React Native -kehittäjäpositioita",

@@ -9,7 +9,8 @@
     "tags": ["React Native", "Expo", "Europe"],
     "recurring": "Annual (May)",
     "cfpStatus": "Closes February 28, 2026",
-    "cfpUrl": "https://appjs.co"
+    "cfpUrl": "https://appjs.co",
+    "ogImage": "/images/conferences/app-js-conf.png"
   },
   {
     "name": "React Summit",
@@ -21,7 +22,8 @@
     "tags": ["React", "React Native", "Netherlands"],
     "recurring": "Annual (June)",
     "cfpStatus": "Closes March 2, 2026",
-    "cfpUrl": "https://reactsummit.com"
+    "cfpUrl": "https://reactsummit.com",
+    "ogImage": "/images/conferences/react-summit.png"
   },
   {
     "name": "Chain React",
@@ -33,7 +35,8 @@
     "tags": ["React Native", "USA", "Workshops"],
     "recurring": "Annual (July)",
     "cfpStatus": "TBA",
-    "cfpUrl": "https://chainreactconf.com"
+    "cfpUrl": "https://chainreactconf.com",
+    "ogImage": "/images/conferences/chain-react.jpg"
   },
   {
     "name": "React Universe Conf",
@@ -45,7 +48,8 @@
     "tags": ["React Native", "React", "Europe"],
     "recurring": "Annual (September)",
     "cfpStatus": "Opens Spring 2026",
-    "cfpUrl": "https://www.reactuniverseconf.com"
+    "cfpUrl": "https://www.reactuniverseconf.com",
+    "ogImage": "/images/conferences/react-universe-conf.png"
   },
   {
     "name": "React Native Connection",
@@ -57,7 +61,8 @@
     "tags": ["React Native", "France", "One Day"],
     "recurring": "Annual (September)",
     "cfpStatus": "Coming soon",
-    "cfpUrl": "https://reactnativeconnection.io"
+    "cfpUrl": "https://reactnativeconnection.io",
+    "ogImage": "/images/conferences/react-native-connection.png"
   },
   {
     "name": "React Native London Conf",
@@ -69,6 +74,7 @@
     "tags": ["React Native", "UK", "Workshops"],
     "recurring": "Annual (November)",
     "cfpStatus": "TBA",
-    "cfpUrl": "https://www.reactnativelondon.co.uk"
+    "cfpUrl": "https://www.reactnativelondon.co.uk",
+    "ogImage": "/images/london.jpg"
   }
 ]

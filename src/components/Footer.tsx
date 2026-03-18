@@ -3,11 +3,14 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
+import { NewsletterSignup } from '@/components/NewsletterSignup';
+
 import { Link } from '@/i18n/navigation';
 
 export function Footer() {
   const t = useTranslations('footer');
   const tNav = useTranslations('nav');
+  const tNewsletter = useTranslations('newsletter');
 
   const currentYear = new Date().getFullYear();
 
@@ -167,6 +170,19 @@ export function Footer() {
                 </a>
               </li>
             </ul>
+          </div>
+        </div>
+
+        {/* Newsletter */}
+        <div className='mt-12 border-t border-[rgb(var(--mono-200))] pt-8'>
+          <div className='max-w-md'>
+            <p className='font-mono text-xs font-semibold uppercase tracking-wider text-[rgb(var(--mono-900))]'>
+              {tNewsletter('footerTitle')}
+            </p>
+            <p className='mt-2 mb-4 text-sm text-[rgb(var(--mono-600))]'>
+              {tNewsletter('footerDescription')}
+            </p>
+            <NewsletterSignup variant='minimal' />
           </div>
         </div>
 

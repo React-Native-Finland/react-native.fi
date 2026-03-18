@@ -2,15 +2,22 @@ import fs from 'fs';
 import { glob } from 'glob';
 import path from 'path';
 
+import { ArticleTag } from '@/lib/article-tags';
 import { getDeveloperBySlug } from '@/lib/developers';
 
 import { defaultLocale, Locale } from '@/i18n/config';
+
+export type { ArticleTag } from '@/lib/article-tags';
+export { articleTagLabels } from '@/lib/article-tags';
 
 export interface Article {
   slug: string;
   title: string;
   date: string;
+  updatedAt?: string;
   description: string;
+  tags?: ArticleTag[];
+  readingTime?: number;
   author:
     | string
     | {
@@ -40,6 +47,18 @@ function resolveAuthor(
     }
   }
   return metadata.author || '';
+}
+
+// Calculate reading time from MDX content (words per minute)
+function calculateReadingTime(content: string): number {
+  const text = content
+    .replace(/```[\s\S]*?```/g, '') // remove code blocks
+    .replace(/<[^>]+>/g, '') // remove HTML tags
+    .replace(/^import\s+.*$/gm, '') // remove imports
+    .replace(/^export\s+.*$/gm, '') // remove exports
+    .replace(/[#*_\[\]()]/g, ''); // remove markdown syntax
+  const words = text.split(/\s+/).filter((w) => w.length > 0).length;
+  return Math.max(1, Math.ceil(words / 200));
 }
 
 // Content directory for localized articles
@@ -98,7 +117,12 @@ export async function getArticleBySlug(
     slug,
     title: metadata.title || 'Untitled',
     date: metadata.date || new Date().toISOString(),
+    updatedAt: (metadata as Record<string, string>).updatedAt,
     description: metadata.description || '',
+    tags: (metadata as Record<string, unknown>).tags as
+      | ArticleTag[]
+      | undefined,
+    readingTime: calculateReadingTime(fileContents),
     author: resolveAuthor(
       metadata as Partial<Article> & {
         authorSlug?: string;
@@ -139,7 +163,12 @@ export async function getAllArticles(
         slug,
         title: metadata.title || 'Untitled',
         date: metadata.date || new Date().toISOString(),
+        updatedAt: (metadata as Record<string, string>).updatedAt,
         description: metadata.description || '',
+        tags: (metadata as Record<string, unknown>).tags as
+          | ArticleTag[]
+          | undefined,
+        readingTime: calculateReadingTime(fileContents),
         author: resolveAuthor(
           metadata as Partial<Article> & {
             authorSlug?: string;
@@ -179,6 +208,33 @@ export async function getAllArticleSlugs(): Promise<string[]> {
   }
 
   return Array.from(slugs);
+}
+
+// Get related articles based on shared tags
+export async function getRelatedArticles(
+  currentSlug: string,
+  locale: Locale = defaultLocale,
+  limit: number = 3,
+): Promise<Article[]> {
+  const allArticles = await getAllArticles(locale);
+  const current = allArticles.find((a) => a.slug === currentSlug);
+  if (!current || !current.tags?.length) {
+    return allArticles.filter((a) => a.slug !== currentSlug).slice(0, limit);
+  }
+
+  const scored = allArticles
+    .filter((a) => a.slug !== currentSlug)
+    .map((a) => ({
+      article: a,
+      score: (a.tags || []).filter((t) => current.tags!.includes(t)).length,
+    }))
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        new Date(b.article.date).getTime() - new Date(a.article.date).getTime(),
+    );
+
+  return scored.slice(0, limit).map((s) => s.article);
 }
 
 // Process MDX content to strip imports/exports and convert image paths

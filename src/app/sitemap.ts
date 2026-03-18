@@ -148,7 +148,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articleUrls = locales.flatMap((locale) =>
     articles.map((article) => ({
       url: `${siteConfig.url}/${locale}/articles/${article.slug}`,
-      lastModified: new Date(article.date),
+      lastModified: new Date(article.updatedAt || article.date),
       changeFrequency: 'monthly' as const,
       priority: 0.8,
       alternates: {

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import { setRequestLocale } from 'next-intl/server';
 
 import {
@@ -225,91 +226,47 @@ export default async function ConferencesPage({ params }: Props) {
 
             <div className='mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
               {conferences.map((conf) => (
-                <div
+                <a
                   key={conf.name}
-                  className='group relative overflow-hidden rounded-2xl border border-[rgb(var(--mono-200))] bg-white p-6 transition-all duration-300 hover:border-[rgb(var(--finnish-blue))/0.3] hover:shadow-xl'
+                  href={conf.url}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='group relative overflow-hidden rounded-2xl border border-[rgb(var(--mono-200))] bg-white transition-all duration-300 hover:border-[rgb(var(--finnish-blue))/0.3] hover:shadow-xl'
                 >
-                  {/* Conference badge */}
-                  <div className='mb-4 flex items-center justify-between'>
-                    <span className='rounded-full bg-[rgb(var(--finnish-blue))/0.1] px-3 py-1 font-mono text-xs font-semibold text-[rgb(var(--finnish-blue))]'>
-                      {conf.date}
-                    </span>
-                  </div>
-
-                  <h3 className='text-xl font-bold text-[rgb(var(--mono-900))]'>
-                    {conf.name}
-                  </h3>
-
-                  <div className='mt-2 flex items-center gap-2 text-sm text-[rgb(var(--mono-500))]'>
-                    <svg
-                      className='h-4 w-4'
-                      fill='none'
-                      viewBox='0 0 24 24'
-                      stroke='currentColor'
-                    >
-                      <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth={2}
-                        d='M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z'
+                  {/* OG Image */}
+                  {conf.ogImage ? (
+                    <div className='relative aspect-[1200/630] w-full overflow-hidden bg-[rgb(var(--mono-100))]'>
+                      <Image
+                        src={conf.ogImage}
+                        alt={conf.name}
+                        fill
+                        sizes='(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw'
+                        className='object-cover transition-transform duration-300 group-hover:scale-[1.02]'
                       />
-                      <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth={2}
-                        d='M15 11a3 3 0 11-6 0 3 3 0 016 0z'
-                      />
-                    </svg>
-                    {conf.location}
-                  </div>
-
-                  <p className='mt-4 text-sm leading-6 text-[rgb(var(--mono-600))]'>
-                    {conf.description}
-                  </p>
-
-                  {/* CFP Status */}
-                  <div className='mt-4 flex items-center gap-2 rounded-lg bg-[rgb(var(--mono-50))] px-3 py-2'>
-                    <svg
-                      className='h-4 w-4 text-[rgb(var(--mono-500))]'
-                      fill='none'
-                      viewBox='0 0 24 24'
-                      stroke='currentColor'
-                    >
-                      <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth={2}
-                        d='M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z'
-                      />
-                    </svg>
-                    <span className='text-xs font-medium text-[rgb(var(--mono-600))]'>
-                      CFP: {conf.cfpStatus}
-                    </span>
-                  </div>
-
-                  {/* Tags */}
-                  <div className='mt-4 flex flex-wrap gap-2'>
-                    {conf.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className='rounded-full bg-[rgb(var(--mono-100))] px-2 py-0.5 text-xs font-medium text-[rgb(var(--mono-600))]'
-                      >
-                        {tag}
+                    </div>
+                  ) : (
+                    <div className='flex aspect-[1200/630] w-full items-center justify-center bg-[rgb(var(--mono-100))]'>
+                      <span className='text-lg font-bold text-[rgb(var(--mono-300))]'>
+                        {conf.name}
                       </span>
-                    ))}
-                  </div>
+                    </div>
+                  )}
 
-                  {/* Links */}
-                  <div className='mt-6 flex items-center gap-4 border-t border-[rgb(var(--mono-100))] pt-4'>
-                    <a
-                      href={conf.url}
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className='inline-flex items-center gap-1 text-sm font-semibold text-[rgb(var(--finnish-blue))] hover:underline'
-                    >
-                      Website
+                  <div className='p-6'>
+                    {/* Conference badge */}
+                    <div className='mb-3 flex items-center justify-between'>
+                      <span className='rounded-full bg-[rgb(var(--finnish-blue))/0.1] px-3 py-1 font-mono text-xs font-semibold text-[rgb(var(--finnish-blue))]'>
+                        {conf.date}
+                      </span>
+                    </div>
+
+                    <h3 className='text-xl font-bold text-[rgb(var(--mono-900))] group-hover:text-[rgb(var(--finnish-blue))]'>
+                      {conf.name}
+                    </h3>
+
+                    <div className='mt-2 flex items-center gap-2 text-sm text-[rgb(var(--mono-500))]'>
                       <svg
-                        className='h-3 w-3'
+                        className='h-4 w-4'
                         fill='none'
                         viewBox='0 0 24 24'
                         stroke='currentColor'
@@ -318,22 +275,55 @@ export default async function ConferencesPage({ params }: Props) {
                           strokeLinecap='round'
                           strokeLinejoin='round'
                           strokeWidth={2}
-                          d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14'
+                          d='M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z'
+                        />
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2}
+                          d='M15 11a3 3 0 11-6 0 3 3 0 016 0z'
                         />
                       </svg>
-                    </a>
-                    {conf.cfpUrl && (
-                      <a
-                        href={conf.cfpUrl}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        className='inline-flex items-center gap-1 text-sm font-semibold text-[rgb(var(--mono-600))] hover:text-[rgb(var(--finnish-blue))] hover:underline'
+                      {conf.location}
+                    </div>
+
+                    <p className='mt-3 text-sm leading-6 text-[rgb(var(--mono-600))]'>
+                      {conf.description}
+                    </p>
+
+                    {/* CFP Status */}
+                    <div className='mt-4 flex items-center gap-2 rounded-lg bg-[rgb(var(--mono-50))] px-3 py-2'>
+                      <svg
+                        className='h-4 w-4 text-[rgb(var(--mono-500))]'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        stroke='currentColor'
                       >
-                        Submit Talk
-                      </a>
-                    )}
+                        <path
+                          strokeLinecap='round'
+                          strokeLinejoin='round'
+                          strokeWidth={2}
+                          d='M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z'
+                        />
+                      </svg>
+                      <span className='text-xs font-medium text-[rgb(var(--mono-600))]'>
+                        CFP: {conf.cfpStatus}
+                      </span>
+                    </div>
+
+                    {/* Tags */}
+                    <div className='mt-4 flex flex-wrap gap-2'>
+                      {conf.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className='rounded-full bg-[rgb(var(--mono-100))] px-2 py-0.5 text-xs font-medium text-[rgb(var(--mono-600))]'
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
