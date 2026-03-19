@@ -7,6 +7,7 @@ import { getAllDevelopers } from '@/lib/developers';
 import { getAllEvents } from '@/lib/events';
 
 import { FAQSection } from '@/components/FAQSection';
+import { NewsletterSignup } from '@/components/NewsletterSignup';
 
 import { Hero } from '@/app/components/hero';
 import { siteConfig } from '@/constant/config';
@@ -231,6 +232,13 @@ export default async function HomePage({ params }: Props) {
 
       {/* FAQ Section */}
       <FAQSection />
+
+      {/* Newsletter — full-width hero-style section */}
+      <section className='bg-[rgb(var(--mono-50))] py-24 sm:py-32'>
+        <div className='mx-auto max-w-7xl px-6 lg:px-8'>
+          <NewsletterSignup variant='banner' />
+        </div>
+      </section>
 
       {/* Community CTA - Dark section */}
       <section className='relative overflow-hidden bg-[rgb(var(--navy-950))] py-24 sm:py-32'>

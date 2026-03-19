@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "bun run scripts/copy-assets.ts && next dev",
-    "build": "bun run scripts/copy-assets.ts && next build",
+    "build": "bun run scripts/fetch-og-images.ts && bun run scripts/copy-assets.ts && next build",
+    "fetch-og-images": "bun run scripts/fetch-og-images.ts",
     "start": "next start",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix && bun format",

@@ -9,6 +9,7 @@ export interface Conference {
   recurring: string;
   cfpStatus: string;
   cfpUrl?: string;
+  ogImage?: string;
 }
 
 export interface Meetup {

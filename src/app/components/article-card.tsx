@@ -11,6 +11,7 @@ export type ArticleCardProps = {
     title: string;
     description: string;
     date: string;
+    readingTime?: number;
     imageUrl?: string;
     locale?: string;
     category?: { title: string; href: string };
@@ -88,13 +89,23 @@ export const ArticleCard = ({ article }: ArticleCardProps) => {
               </Link>
             )}
           </h3>
-          <time dateTime={article.date} className='text-sm text-gray-500 mt-2'>
-            {new Date(article.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
-          </time>
+          <div className='flex items-center gap-2 mt-2'>
+            <time dateTime={article.date} className='text-sm text-gray-500'>
+              {new Date(article.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })}
+            </time>
+            {article.readingTime && (
+              <>
+                <span className='text-sm text-gray-400'>·</span>
+                <span className='text-sm text-gray-500'>
+                  {article.readingTime} min read
+                </span>
+              </>
+            )}
+          </div>
           <p className='mt-5 line-clamp-3 text-sm/6 text-gray-600'>
             {article.description}
           </p>

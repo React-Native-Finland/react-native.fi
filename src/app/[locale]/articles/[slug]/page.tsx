@@ -10,13 +10,18 @@ import {
   getAllArticleSlugs,
   getArticleBySlug,
   getArticleContent,
+  getRelatedArticles,
   hasTranslation,
 } from '@/lib/articles';
 
 import { ArticleJsonLd } from '@/components/ArticleJsonLd';
+import { AuthorBio } from '@/components/AuthorBio';
 import { Breadcrumbs } from '@/components/Breadcrumbs';
 import { Callout } from '@/components/Callout';
 import { Keyboard } from '@/components/Keyboard';
+import { NewsletterSignup } from '@/components/NewsletterSignup';
+import { RelatedArticles } from '@/components/RelatedArticles';
+import { TableOfContents } from '@/components/TableOfContents';
 import { YouTubeEmbed } from '@/components/YouTubeEmbed';
 
 import { siteConfig } from '@/constant/config';
@@ -103,6 +108,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: articleUrl,
       type: 'article',
       publishedTime: article.date,
+      ...(article.updatedAt && { modifiedTime: article.updatedAt }),
       authors: [
         typeof article.author === 'string'
           ? article.author
@@ -127,6 +133,9 @@ export default async function ArticlePage({ params }: Props) {
   const isShowingFallback =
     locale !== defaultLocale && !hasTranslation(slug, locale);
 
+  // Get related articles
+  const relatedArticles = await getRelatedArticles(slug, locale, 3);
+
   // Compile MDX content
   const { content: mdxContent } = await compileMDX({
     source: content,
@@ -148,6 +157,17 @@ export default async function ArticlePage({ params }: Props) {
     },
   );
 
+  const formattedUpdatedDate = article.updatedAt
+    ? new Date(article.updatedAt).toLocaleDateString(
+        locale === 'fi' ? 'fi-FI' : 'en-US',
+        {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        },
+      )
+    : null;
+
   const authorName =
     typeof article.author === 'string' ? article.author : article.author.name;
   const articleUrl = `${siteConfig.url}/${locale}/articles/${slug}`;
@@ -159,6 +179,7 @@ export default async function ArticlePage({ params }: Props) {
         title={article.title}
         description={article.description}
         datePublished={article.date}
+        dateModified={article.updatedAt}
         authorName={authorName}
         url={articleUrl}
         imageUrl={ogImageUrl}
@@ -192,16 +213,50 @@ export default async function ArticlePage({ params }: Props) {
             <h1 className='mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
               {article.title}
             </h1>
-            <div className='mt-3 flex items-center gap-3'>
+            <div className='mt-3 flex items-center gap-3 flex-wrap'>
               <p className='text-sm text-gray-700'>
                 {locale === 'fi' ? 'Kirjoittanut' : 'By'}{' '}
                 <span className='font-medium'>{authorName}</span>
               </p>
-              <span className='text-sm text-gray-400'>•</span>
+              <span className='text-sm text-gray-400'>·</span>
               <time dateTime={article.date} className='text-sm text-gray-500'>
                 {formattedDate}
               </time>
+              {formattedUpdatedDate && (
+                <>
+                  <span className='text-sm text-gray-400'>·</span>
+                  <span className='text-sm text-gray-500'>
+                    {locale === 'fi' ? 'Päivitetty' : 'Updated'}{' '}
+                    {formattedUpdatedDate}
+                  </span>
+                </>
+              )}
+              {article.readingTime && (
+                <>
+                  <span className='text-sm text-gray-400'>·</span>
+                  <span className='text-sm text-gray-500'>
+                    {article.readingTime} min{' '}
+                    {locale === 'fi' ? 'luku' : 'read'}
+                  </span>
+                </>
+              )}
             </div>
+
+            {/* Tags */}
+            {article.tags && article.tags.length > 0 && (
+              <div className='mt-4 flex flex-wrap gap-2'>
+                {article.tags.map((tag) => (
+                  <Link
+                    key={tag}
+                    href={`/${locale}/articles?tag=${tag}`}
+                    className='rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600 hover:bg-gray-200 transition-colors'
+                  >
+                    {tag}
+                  </Link>
+                ))}
+              </div>
+            )}
+
             <div className='relative mt-6 mb-8 aspect-[1200/630] overflow-hidden rounded-xl'>
               <Image
                 src={`/${locale}/articles/${slug}/opengraph-image`}
@@ -215,9 +270,22 @@ export default async function ArticlePage({ params }: Props) {
               />
             </div>
           </header>
+
+          {/* Table of Contents */}
+          <TableOfContents locale={locale} />
+
           <div className='prose prose-lg prose-gray max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-pre:bg-gray-900'>
             {mdxContent}
           </div>
+
+          {/* Author Bio */}
+          <AuthorBio author={article.author} locale={locale} />
+
+          {/* Newsletter Signup */}
+          <NewsletterSignup variant='inline' className='mt-12' />
+
+          {/* Related Articles */}
+          <RelatedArticles articles={relatedArticles} locale={locale} />
 
           {/* Back to articles */}
           <div className='mt-12 pt-8 border-t border-gray-200'>

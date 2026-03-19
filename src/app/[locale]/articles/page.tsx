@@ -1,10 +1,15 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { Suspense } from 'react';
 
-import { getAllArticles } from '@/lib/articles';
+import { ArticleTag, getAllArticles } from '@/lib/articles';
 
-import { ArticleCard } from '@/app/components/article-card';
+import { ArticleFilteredGrid } from '@/components/ArticleFilteredGrid';
+import { ArticleTagFilter } from '@/components/ArticleTagFilter';
+import { Breadcrumbs } from '@/components/Breadcrumbs';
+import { NewsletterSignup } from '@/components/NewsletterSignup';
+
 import { siteConfig } from '@/constant/config';
 import { Locale } from '@/i18n/config';
 
@@ -35,8 +40,42 @@ export default async function LearnAndArticlesPage({ params }: Props) {
   const t = await getTranslations('articles');
   const articles = await getAllArticles(locale);
 
+  // Collect unique tags from articles
+  const availableTags = Array.from(
+    new Set(articles.flatMap((a) => a.tags || [])),
+  ).sort() as ArticleTag[];
+
+  // CollectionPage structured data
+  const collectionJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: t('title'),
+    description: t('pageDescription'),
+    url: `${siteConfig.url}/${locale}/articles`,
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: articles.length,
+      itemListElement: articles.map((article, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `${siteConfig.url}/${locale}/articles/${article.slug}`,
+        name: article.title,
+      })),
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'React Native Finland',
+      url: siteConfig.url,
+    },
+  };
+
   return (
     <div className='bg-white'>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
+      />
+
       {/* Hero Image */}
       <div className='relative h-64 sm:h-80 lg:h-96 w-full'>
         <Image
@@ -51,6 +90,12 @@ export default async function LearnAndArticlesPage({ params }: Props) {
       </div>
 
       <div className='mx-auto max-w-7xl px-6 py-16 lg:px-8'>
+        {/* Breadcrumbs */}
+        <Breadcrumbs
+          homeLabel={locale === 'fi' ? 'Etusivu' : 'Home'}
+          items={[{ name: locale === 'fi' ? 'Artikkelit' : 'Articles' }]}
+        />
+
         {/* Header section */}
         <div className='mx-auto max-w-2xl lg:mx-0'>
           <p className='text-base/7 font-semibold text-indigo-600'>
@@ -70,15 +115,25 @@ export default async function LearnAndArticlesPage({ params }: Props) {
           <p className='mt-4 text-base text-gray-600'>
             {t('communityDescription')}
           </p>
+
+          {/* Tag filter */}
+          {availableTags.length > 0 && (
+            <div className='mt-8'>
+              <Suspense>
+                <ArticleTagFilter availableTags={availableTags} />
+              </Suspense>
+            </div>
+          )}
         </div>
 
         {articles.length > 0 && (
-          <div className='mt-12 grid grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-3'>
-            {articles.map((article) => (
-              <ArticleCard key={article.slug} article={article} />
-            ))}
-          </div>
+          <Suspense>
+            <ArticleFilteredGrid articles={articles} />
+          </Suspense>
         )}
+
+        {/* Newsletter Signup */}
+        <NewsletterSignup variant='banner' className='mt-16' />
       </div>
     </div>
   );
