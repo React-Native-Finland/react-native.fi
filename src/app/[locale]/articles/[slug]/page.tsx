@@ -87,9 +87,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // If this locale has no translation, canonical should point to the default locale
   const isUntranslated =
     locale !== defaultLocale && !hasTranslation(slug, locale);
-  const canonicalUrl = isUntranslated
-    ? `${siteConfig.url}/${defaultLocale}/articles/${slug}`
-    : `${siteConfig.url}/${locale}/articles/${slug}`;
+  const canonicalUrl =
+    article.canonical ||
+    (isUntranslated
+      ? `${siteConfig.url}/${defaultLocale}/articles/${slug}`
+      : `${siteConfig.url}/${locale}/articles/${slug}`);
   const articleUrl = `${siteConfig.url}/${locale}/articles/${slug}`;
 
   return {

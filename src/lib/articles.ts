@@ -27,6 +27,7 @@ export interface Article {
         imageUrl: string;
       };
   imageUrl?: string;
+  canonical?: string;
   locale?: Locale;
   hasTranslation?: boolean;
 }
@@ -130,6 +131,7 @@ export async function getArticleBySlug(
       },
     ),
     imageUrl: `/${locale}/articles/${slug}/opengraph-image`,
+    canonical: (metadata as Record<string, string>).canonical,
     locale: usedLocale,
     hasTranslation: hasTranslation(slug, locale),
   };
