@@ -28,5 +28,17 @@
     "linkedinUrl": "https://www.linkedin.com/in/tobias-helsing/",
     "expertise": ["React Native", "Native Modules", "UI/UX", "iOS", "Android"],
     "availability": "Open to consulting"
+  },
+  {
+    "slug": "eduardo-cebola",
+    "name": "Eduardo Cebola",
+    "role": "Founder and Mobile Developer",
+    "location": "Helsinki, Finland",
+    "imageUrl": "/images/eduardo.jpeg",
+    "bio": "Software Developer with  experience building full-stack web and mobile applications, specializing in React Native, with a passion for practical problem-solving and delivering products that work.",
+    "linkedinUrl": "https://linkedin.com/in/eduardo-cebola",
+    "githubUrl": "https://github.com/Eduard-02",
+    "expertise": ["React Native", "Mobile Development"],
+    "availability": "Available for hire"
   }
 ]
